@@ -1,0 +1,5 @@
+C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\bin\Release\ForumSystem.exe.config
+C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\bin\Release\ForumSystem.exe
+C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\bin\Release\ForumSystem.pdb
+C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\obj\Release\ForumSystem.exe
+C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\obj\Release\ForumSystem.pdb
