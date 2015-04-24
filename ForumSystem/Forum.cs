@@ -64,7 +64,7 @@ namespace ForumSystem
         //This method adds a sub-forum to the current forum
         public void addSubForum(SubForum subForum)
         {
-            if (!(subForum == null))
+            if (subForum != null)
             {
                 subForums.Add(subForum);
                 Logger.logDebug(string.Format("The new sub forum: {0} has been created successfully with id {1}", subForum.Title, subForum.ID));
@@ -79,6 +79,18 @@ namespace ForumSystem
         public string ID
         {
             get { return this.id; }
+        }
+
+        public SubForum SearchSubForum(string sfName)
+        {
+            foreach (SubForum sf in subForums)
+            {
+                if (sf.Title.Equals(sfName))
+                {
+                    return sf;
+                }
+            }
+            return null;
         }
     }
 }
