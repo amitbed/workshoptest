@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenPop">
+      <HintPath>..\OpenPop.NET 2.0.5\binaries\signed (strong name)\OpenPop.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,12 +46,14 @@
   <ItemGroup>
     <Compile Include="Forum.cs" />
     <Compile Include="ForumSystem.cs" />
+    <Compile Include="GoldMember.cs" />
     <Compile Include="Guest.cs" />
     <Compile Include="IdGen.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SilverMember.cs" />
     <Compile Include="SubForum.cs" />
     <Compile Include="Thread.cs" />
     <Compile Include="User.cs" />

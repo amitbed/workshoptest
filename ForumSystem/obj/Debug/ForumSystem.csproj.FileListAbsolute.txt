@@ -18,3 +18,4 @@ C:\Users\deana.HAIFA\Documents\Sadna\workshop-151\ForumSystem\obj\Debug\ForumSys
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\ForumSystem.pdb
 \\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
 \\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
+\\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\OpenPop.dll

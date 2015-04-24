@@ -21,6 +21,8 @@ namespace ForumSystem
         private double timeLoggedIn;
         //private int numberOfMessagesLastYear;
 
+        public Member() { }
+
         public Member(string username, string password, string emailAddress)
         {
             this.username = username;
