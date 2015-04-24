@@ -11,12 +11,12 @@ namespace ForumSystem
     {
         static void Main(string[] args)
         {
-           ForumSystem forumSystem = ForumSystem.getInstance();        //create singleton instance of Forum System
-            forumSystem.addForum(new Forum(0, "Sports", new List<int>()));
-            forumSystem.addForum(new Forum(0, "Politics", new List<int>()));
-            forumSystem.addForum(new Forum(0, "Travel", new List<int>()));
-            forumSystem.addForum(new Forum(0, "Cars", new List<int>()));
-            forumSystem.addForum(new Forum(0, "Fashion", new List<int>()));
+            ForumSystem forumSystem = ForumSystem.initForumSystem();        //create singleton instance of Forum System
+            forumSystem.addForum(new Forum("Sports", new List<string>()));
+            forumSystem.addForum(new Forum("Politics", new List<string>()));
+            forumSystem.addForum(new Forum("Travel", new List<string>()));
+            forumSystem.addForum(new Forum("Cars", new List<string>()));
+            forumSystem.addForum(new Forum("Fashion", new List<string>()));
             bool flag = true;
             string forum;
             string subForum;
@@ -156,10 +156,10 @@ namespace ForumSystem
         //This method creates a sub-forum
         static void createSubForum(string title, string parent, List<string> moderators, ForumSystem forumSystem)
         {
-            SubForum subForum = new SubForum(0, title, moderators, parent);
+            SubForum subForum = new SubForum(title, moderators, parent);
             foreach (Forum forum in forumSystem.getForums())
             {
-                if (string.Equals(forum.getTitle(), parent))
+                if (string.Equals(forum.Title, parent))
                 {
                     forum.addSubForum(subForum);
                 }
@@ -171,7 +171,7 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(forumName, forum.getTitle()))
+                if (String.Equals(forumName, forum.Title))
                 {
                     forum.displaySubforums(); 
                 }
@@ -183,11 +183,11 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(parent, forum.getTitle()))
+                if (String.Equals(parent, forum.Title))
                 {
                     foreach (SubForum subForum in forum.getSubForums())
                     {
-                        if (String.Equals(subForumName, subForum.getTitle()))
+                        if (String.Equals(subForumName, subForum.Title))
                         {
                             subForum.displayThreads();
                         }
@@ -201,15 +201,15 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(parent, forum.getTitle()))
+                if (String.Equals(parent, forum.Title))
                 {
                     foreach (SubForum subForum in forum.getSubForums())
                     {
-                        if (String.Equals(subForumName, subForum.getTitle()))
+                        if (String.Equals(subForumName, subForum.Title))
                         {
                             foreach (Thread thread in subForum.getThreads())
                             {
-                                if (threadId == thread.getTopicId())
+                                if (threadId.Equals(thread.ID))
                                 {
                                     thread.displayMessages();
                                 }
@@ -225,19 +225,19 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(forumName, forum.getTitle()))
+                if (String.Equals(forumName, forum.Title))
                 {
                     foreach (SubForum subForum in forum.getSubForums())
                     {
-                        if (String.Equals(subForumName, subForum.getTitle()))
+                        if (String.Equals(subForumName, subForum.Title))
                         {
                             foreach (Thread thread in subForum.getThreads())
                             {
-                                if (discussionId == thread.getTopicId())
+                                if (discussionId.Equals(thread.ID))
                                 {
                                     foreach (Message message in thread.getMessages())
                                     {
-                                        if (messageId == message.getMessageId())
+                                        if (messageId.Equals(message.ID))
                                         {
                                             foreach (Message reply in message.getReplies())
                                             {
@@ -267,15 +267,15 @@ namespace ForumSystem
             Thread thread = new Thread(threadTitle);
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
-            Message message = new Message(thread.getTopicId(), content, username);
+            Message message = new Message(content, username);
             thread.getMessages().Add(message);
             foreach (Forum forumName in forumSystem.getForums())
             {
-                if (string.Equals(forumName.getTitle(), forum))
+                if (string.Equals(forumName.Title, forum))
                 {
                     foreach (SubForum subForumName in forumName.getSubForums())
                     {
-                        if (string.Equals(subForumName.getTitle(), subForum))
+                        if (string.Equals(subForumName.Title, subForum))
                         {
                             subForumName.getThreads().Add(thread);
                         }
@@ -301,22 +301,22 @@ namespace ForumSystem
             int messageId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
-            Message message = new Message(messageId, content, username);
+            Message message = new Message(content, username);
             foreach (Forum forumName in forumSystem.getForums())
             {
-                if (String.Equals(forum, forumName.getTitle()))
+                if (String.Equals(forum, forumName.Title))
                 {
                     foreach (SubForum subForumName in forumName.getSubForums())
                     {
-                        if (String.Equals(subForum, subForumName.getTitle()))
+                        if (String.Equals(subForum, subForumName.Title))
                         {
                             foreach (Thread thread in subForumName.getThreads())
                             {
-                                if (discussionId == thread.getTopicId())
+                                if (discussionId.Equals(thread.ID))
                                 {
                                     foreach (Message threadMessage in thread.getMessages())
                                     {
-                                        if (messageId == threadMessage.getMessageId())
+                                        if (messageId.Equals(threadMessage.ID))
                                         {
                                             threadMessage.getReplies().Add(message);
                                         }

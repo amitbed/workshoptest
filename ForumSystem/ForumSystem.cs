@@ -15,6 +15,7 @@ namespace ForumSystem
         //Constructor
         private ForumSystem()
         {
+            members = new List<Member>();
             forums = new List<Forum>();
         }
 
@@ -39,8 +40,13 @@ namespace ForumSystem
         {
             foreach (Forum forum in forums)
             {
-                Console.WriteLine(forum.getTitle());
+                Console.WriteLine(forum.Title);
             }
+        }
+
+        public List<Member> Members
+        {
+            get { return this.members; }
         }
 
         //This method returns all the forums in the system

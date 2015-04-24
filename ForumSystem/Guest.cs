@@ -34,7 +34,7 @@ namespace ForumSystem
         public bool login(string username, string password, ForumSystem forumSystem)
         {
             bool loggedIn = false;
-            foreach (Member member in forumSystem.members)
+            foreach (Member member in forumSystem.Members)
             {
                 if (String.Equals(username, member.username) && String.Equals(password, member.password))
                 {

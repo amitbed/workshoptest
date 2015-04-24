@@ -8,7 +8,7 @@ namespace ForumSystem
 {
     public class Member : User
     {
-        public long id { get; set; }
+        public string id { get; set; }
         public string username { get; set; }
         private string email;
         public string password { get; set; }
@@ -21,16 +21,13 @@ namespace ForumSystem
         private double timeLoggedIn;
         //private int numberOfMessagesLastYear;
 
-        public Member()
-        {
-        }
         public Member(string username, string password, string emailAddress)
         {
             this.username = username;
             this.password = password;
             this.email = emailAddress;
             this.timeLoggedIn = 0;
-            this.id = ForumSystem.idGen.generate();
+            this.id = IdGen.generateMemberId();
             this.isActive = true;
             this.myForums = new List<long>();
             this.mySubForums = new List<long>();
@@ -44,7 +41,7 @@ namespace ForumSystem
             SubForum subForum = new SubForum(title, moderators, parent);
             foreach (Forum forum in forumSystem.getForums())
             {
-                if (string.Equals(forum.title, parent))
+                if (string.Equals(forum.Title, parent))
                 {
                     forum.getSubForums().Add(subForum);
                 }
@@ -56,7 +53,7 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(forumName, forum.title))
+                if (String.Equals(forumName, forum.Title))
                 {
                     forum.displaySubforums();
                 }
@@ -68,7 +65,7 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(parent, forum.title))
+                if (String.Equals(parent, forum.Title))
                 {
                     foreach (SubForum subForum in forum.getSubForums())
                     {
@@ -86,7 +83,7 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(parent, forum.title))
+                if (String.Equals(parent, forum.Title))
                 {
                     foreach (SubForum subForum in forum.getSubForums())
                     {
@@ -94,7 +91,7 @@ namespace ForumSystem
                         {
                             foreach (Thread thread in subForum.getThreads())
                             {
-                                if (threadId == thread.id)
+                                if (threadId.Equals(thread.ID))
                                 {
                                     thread.displayMessages();
                                 }
@@ -110,7 +107,7 @@ namespace ForumSystem
         {
             foreach (Forum forum in mainForum.getForums())
             {
-                if (String.Equals(forumName, forum.title))
+                if (String.Equals(forumName, forum.Title))
                 {
                     foreach (SubForum subForum in forum.getSubForums())
                     {
@@ -118,11 +115,11 @@ namespace ForumSystem
                         {
                             foreach (Thread thread in subForum.getThreads())
                             {
-                                if (discussionId == thread.id)
+                                if (discussionId.Equals(thread.ID))
                                 {
                                     foreach (Message message in thread.getMessages())
                                     {
-                                        if (messageId == message.id)
+                                        if (messageId.Equals(message.ID))
                                         {
                                             foreach (Message reply in message.getReplies())
                                             {
@@ -151,11 +148,11 @@ namespace ForumSystem
             Thread thread = new Thread(threadTitle);
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
-            Message message = new Message(thread.id, content, this.id);
+            Message message = new Message(content, this.id);
             thread.getMessages().Add(message);
             foreach (Forum forumName in forumSystem.getForums())
             {
-                if (string.Equals(forumName.title, forum))
+                if (string.Equals(forumName.Title, forum))
                 {
                     foreach (SubForum subForumName in forumName.getSubForums())
                     {
@@ -184,10 +181,10 @@ namespace ForumSystem
             int messageId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
-            Message message = new Message(messageId, content, id);
+            Message message = new Message(content, id);
             foreach (Forum forumName in forumSystem.getForums())
             {
-                if (String.Equals(forum, forumName.title))
+                if (String.Equals(forum, forumName.Title))
                 {
                     foreach (SubForum subForumName in forumName.getSubForums())
                     {
@@ -195,11 +192,11 @@ namespace ForumSystem
                         {
                             foreach (Thread thread in subForumName.getThreads())
                             {
-                                if (discussionId == thread.id)
+                                if (discussionId.Equals(thread.ID))
                                 {
                                     foreach (Message threadMessage in thread.getMessages())
                                     {
-                                        if (messageId == threadMessage.id)
+                                        if (messageId.Equals(threadMessage.ID))
                                         {
                                             threadMessage.getReplies().Add(message);
                                         }

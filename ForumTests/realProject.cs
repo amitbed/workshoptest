@@ -8,22 +8,22 @@ namespace ForumTests
 {
     public class realProject : BridgeProject
     {
-        ForumSystem.ForumSystem system = ForumSystem.ForumSystem.getInstance();
+        ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
 
         public void addNewaddNewForum(Forum forum)
         {
             system.addForum(forum);
         }
 
-        public Forum createForum(int id, string title, List<int> admins)
+        public Forum createForum(string title, List<string> admins)
         {
-            return (new Forum(id, title, admins));
+            return (new Forum(title, admins));
         }
 
 
-        public SubForum createSubForum(int id, string title, List<string> moderators, string parent)
+        public SubForum createSubForum(string title, List<string> moderators, string parent)
         {
-            return new SubForum(id, title, moderators, parent); 
+            return new SubForum(title, moderators, parent); 
         }
 
         public void addForumToSystem(Forum forum)

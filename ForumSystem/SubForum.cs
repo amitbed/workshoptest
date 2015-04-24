@@ -9,25 +9,25 @@ namespace ForumSystem
     public class SubForum
     {
         //Overload Constructor
-        public SubForum(int id, string title, List<string> moderators, string parent)
+        public SubForum(string title, List<string> moderators, string parent)
         {
-            this.id = id;
+            this.id = IdGen.generateSubForumId();
             this.threads = new List<Thread>();
             this.title = title;
             this.moderators = moderators;
         }
 
         //Member Variables
-        private int id;
+        private string id;
         private string title;
         private List<Thread> threads;
         private List<string> moderators;
 
         //Methods
         //This method returns the thread title
-        public string getTitle()
+        public string Title
         {
-            return title;
+            get { return this.title; }
         }
 
         //This method returns all threads in the subForum
@@ -41,7 +41,7 @@ namespace ForumSystem
         {
             foreach (Thread thread in threads)
             {
-                Console.WriteLine(thread.getTopicId() + ". " + thread.getTitle());
+                Console.WriteLine(thread.ID + ". " + thread.getTitle());
             }
         }
     }

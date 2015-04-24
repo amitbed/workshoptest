@@ -44,6 +44,7 @@
     <Compile Include="Forum.cs" />
     <Compile Include="ForumSystem.cs" />
     <Compile Include="Guest.cs" />
+    <Compile Include="IdGen.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />

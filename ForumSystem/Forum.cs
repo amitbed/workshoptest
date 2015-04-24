@@ -9,26 +9,26 @@ namespace ForumSystem
     public class Forum
     {
         //Overload Constructor
-        public Forum(int id, string title, List<int> admins)
+        public Forum(string title, List<string> admins)
         {
-            this.id = id;
+            this.id = IdGen.generateForumId();
             this.subForums = new List<SubForum>();
             this.title = title;
             this.admins = admins;
         }
 
         //Member Variables
-        private int id;
+        private string id;
         private string title;
         private List<SubForum> subForums;
-        private List<int> admins;
+        private List<string> admins;
 
         //Methods
 
         //Gets the forum's title
-        public string getTitle()
+        public string Title
         {
-            return title;
+            get { return this.title; }
         }
 
         //This method displays a forum's sub forums
@@ -36,7 +36,7 @@ namespace ForumSystem
         {
             foreach (SubForum subForum in subForums)
             {
-                Console.WriteLine(subForum.getTitle());
+                Console.WriteLine(subForum.Title);
             }
         }
 

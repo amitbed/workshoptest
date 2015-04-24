@@ -31,9 +31,9 @@ namespace ForumTests
 
         private void setUpForum()
         {
-            system = ForumSystem.ForumSystem.getInstance();
-            Forum Dating = bridge.createForum(1, "Dating", new List<int>(30548));
-            Forum Food = bridge.createForum(2, "Food", new List<int>(20365));
+            system = ForumSystem.ForumSystem.initForumSystem();
+            Forum Dating = bridge.createForum("Dating", new List<string>(30548));
+            Forum Food = bridge.createForum("Food", new List<string>(20365));
 
             bridge.addForumToSystem(Dating);
             bridge.addForumToSystem(Food);
@@ -46,7 +46,7 @@ namespace ForumTests
 
         public SubForum setUpSubForum(int id, string title, List<string> moderators, string parent)
         {
-            return bridge.createSubForum(id, title, moderators, parent);
+            return bridge.createSubForum(title, moderators, parent);
         }
 
         public bool subForumInForum(List<SubForum> FoodSubs, Forum Food)

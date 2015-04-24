@@ -11,14 +11,13 @@ namespace ForumSystem
         //Overload Constructor
         public Thread(string title)
         {
-            Random rnd = new Random();
-            this.id = rnd.Next(1, 1000);
+            this.id = IdGen.generateThreadId();
             this.title = title;
             this.messages = new List<Message>();
         }
 
         //Member Variables
-        private int id;
+        private string id;
         private string title;
         private List<Message> messages;
 
@@ -33,9 +32,9 @@ namespace ForumSystem
             return messages;
         }
 
-        public int getTopicId()
+        public string ID
         {
-            return id;
+            get { return this.id; }
         }
 
         public void displayMessages()

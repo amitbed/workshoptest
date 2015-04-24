@@ -21,7 +21,7 @@ namespace ForumTests
 
         private void setUpForum()
         {
-            system = ForumSystem.ForumSystem.getInstance();
+            system = ForumSystem.ForumSystem.initForumSystem();
             Dating = getForum(0);
             Food = getForum(1);
         }

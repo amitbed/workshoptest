@@ -31,21 +31,21 @@ namespace ForumTests
             }
         }
 
-        public ForumSystem.Forum createForum(int id, string title, List<int> admins)
+        public ForumSystem.Forum createForum(string title, List<string> admins)
         {
             if (this.real != null)
             {
-                return (real.createForum(id, title, admins));
+                return (real.createForum(title, admins));
             }
             return null;
         }
 
 
-        public SubForum createSubForum(int id, string title, List<string> moderators, string parent)
+        public SubForum createSubForum(string title, List<string> moderators, string parent)
         {
             if (this.real != null)
             {
-                return (real.createSubForum(id, title, moderators, parent));
+                return (real.createSubForum(title, moderators, parent));
             }
             return null;
         }

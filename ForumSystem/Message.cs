@@ -9,19 +9,17 @@ namespace ForumSystem
     public class Message
     {
         //Overload Contructor
-        public Message(int topicId, string content, string userId)
+        public Message(string content, string userId)
         {
-            Random rnd = new Random();
-            this.id = rnd.Next(2000, 20000);
-            this.topicId = topicId;
+            this.id = IdGen.generateMessageId();
             this.content = content;
             this.date = DateTime.Now;
             this.userId = userId;
             this.replies = new List<Message>();
         }
         //Member Variables
-        private int id;
-        private int topicId;
+        private string id;
+        //private int topicId;
         private string content;
         private DateTime date;
         private string userId;
@@ -35,9 +33,9 @@ namespace ForumSystem
         }
 
         //This method returns the message id
-        public int getMessageId()
+        public string ID
         {
-            return id;
+            get { return id; }
         }
 
         //This method returns the message date
@@ -49,7 +47,7 @@ namespace ForumSystem
         //This method displays the message
         public void displayMessage()
         {
-            Console.WriteLine("Message Id: " + getMessageId());
+            Console.WriteLine("Message Id: " + this.id);
             Console.WriteLine(date);
             Console.WriteLine(content);
         }
