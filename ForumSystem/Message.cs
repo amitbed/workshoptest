@@ -27,6 +27,11 @@ namespace ForumSystem
 
         //Methods
         //This method returns a message content
+        public string UserID
+        {
+            get { return this.userId; }
+        }
+
         public string getContent()
         {
             return content;

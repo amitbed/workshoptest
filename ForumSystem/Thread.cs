@@ -44,5 +44,18 @@ namespace ForumSystem
                 message.displayMessage();
             }
         }
+
+        public bool removeMessage(string memberID, string messageID)
+        {
+            foreach (Message m in messages)
+            {
+                if ((m.Equals(messageID)) && (m.UserID.Equals(messageID)))
+                {
+                    this.messages.Remove(m);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

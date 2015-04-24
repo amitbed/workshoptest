@@ -15,6 +15,7 @@ namespace ForumSystem
             this.threads = new List<Thread>();
             this.title = title;
             this.moderators = moderators;
+            this.members = new List<Member>();
         }
 
         //Member Variables
@@ -22,6 +23,7 @@ namespace ForumSystem
         private string title;
         private List<Thread> threads;
         private List<string> moderators;
+        private List<Member> members;
 
         //Methods
         //This method returns the thread title

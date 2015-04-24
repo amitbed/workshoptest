@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Net.Mail;
 namespace ForumSystem
 {
    public class Guest : User
@@ -16,19 +16,28 @@ namespace ForumSystem
             forumSystem.addMember(username, password, email);     
         }
 
-        public bool validateUsername(string username)
+        private bool validateUsername(string username)
         {
            return forumSystem.isUsernameExists(username);
         }
 
-        public bool validateEmail(string email)
+        private bool validateEmail(string email)
         {
             return email.Contains("@");   
         }
         
-        private void approveEmail()
+        private bool approveEmail()
         {
-            //send and receive approve
+            MailMessage meassage = new MailMessage();
+            SmtpClient server = new SmtpClient("smtp.gmail.com");
+            meassage.From = new MailAddress("forumworkshop152@gmail.com");
+            meassage.Subject = "Approve this mail in order to register the forum";
+            meassage.Body = "please reply this mail with any content in order to complete the registration";
+            server.Port = 587;
+            server.Credentials = new System.Net.NetworkCredential("forumworkshop152", "nofarifatdeanamitsagi");
+            server.EnableSsl = true;
+            server.Send(meassage);
+            return true;
         }
 
         public bool login(string username, string password, ForumSystem forumSystem)
