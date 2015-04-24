@@ -8,13 +8,10 @@ namespace ForumTests
     [TestClass]
     public class ProjectTest
     {
-        private BridgeProject bridge;
-        ForumSystem.ForumSystem system;
+        private BridgeProject bridge = Driver.getBridge();
+        protected ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
 
         //List<UserInfo> membersList;
-        //readonly User Sagi = createMember(30548, "sagiav", "sagiav@post.bgu.ac.il","gold", "maihyafa", true, null, null, null, null);
-        //readonly UserInfo Amit = createMember(20566, "amitbed", "amitbed@post.bgu.ac.il","silver", "ronahayafa", true, null, null, null, null);
-        //readonly UserInfo Dean = createMember(20365, "abadie", "abadie.post@post.bgu.ac.il",null , "liatush", true, null, null, null, null);
 
 
         //recipesForPassover = createSubForum(11, null, "recipesForPassover", new List<long>(20566));
@@ -22,103 +19,76 @@ namespace ForumTests
 
         public virtual void SetUp()
         {
-            this.bridge = Driver.getBridge();
-            //setUpMembers();
+            //this.bridge = Driver.getBridge();
+            setUpMembers();
             setUpForum();
-            //setUpForumSystem();
-            //setUpSubForum();
+        }
+
+        private void setUpMembers()
+        {
+            Member Sagi = bridge.createMember("sagiav", "maihayafa", "sagiav@post.bgu.ac.il"); //30548, "sagiav", "sagiav@post.bgu.ac.il", "gold", "maihyafa", true, null, null, null, null);
+            Member Amit = bridge.createMember("amitbed", "ronahayafa","amitbed@post.bgu.ac.il");
+            Member Dean = bridge.createMember("abadie", "liatush", "abadie.post@post.bgu.ac.il");
         }
 
         private void setUpForum()
         {
-            system = ForumSystem.ForumSystem.initForumSystem();
-            Forum Dating = bridge.createForum("Dating", new List<string>(30548));
-            Forum Food = bridge.createForum("Food", new List<string>(20365));
-
-            bridge.addForumToSystem(Dating);
-            bridge.addForumToSystem(Food);
+            List<string> adminDating = new List<string>();
+            adminDating.Add("sagiav");
+            List<string> adminFood = new List<string>();
+            adminFood.Add("amitbed");
+            Forum Dating = bridge.createForum("Dating", adminDating);
+            Forum Food = bridge.createForum("Food", adminFood);
         }
 
-        public Forum getForum(int i)
+        public Forum createForum(string title, List<string> admins)
         {
-            return system.getForums()[i];
+            return bridge.createForum(title, admins);
         }
 
-        public SubForum setUpSubForum(int id, string title, List<string> moderators, string parent)
+        public Forum searchForum(string forumName)
+        {
+            return system.searchForum(forumName);
+        }
+
+        public SubForum setUpSubForum(string title, List<string> moderators, string parent)
         {
             return bridge.createSubForum(title, moderators, parent);
         }
 
-        public bool subForumInForum(List<SubForum> FoodSubs, Forum Food)
+        public bool subForumInForum(List<SubForum> subForums, Forum forum)
         {
             bool ans = true;
-            for (int i = 0; i < FoodSubs.Count; i++)
+            List<SubForum> listToCheck = forum.getSubForums();
+            foreach (SubForum sub in subForums)
             {
-                foreach (SubForum sub in Food.getSubForums())
+                if (!listToCheck.Contains(sub))
+                ans = false;
+            }
+
+            return ans;
+        }
+
+        public bool isGuestRegistered(string guestName)
+        {
+            bool ans = false;
+            foreach (Member m in system.Members)
+            {
+                if (m.username == guestName)
                 {
-                    if (!FoodSubs.Contains(sub))
-                    {
-                        ans = false;
-                    }
+                    ans = true;
                 }
             }
             return ans;
         }
-        //private void setUpForumSystem()
-        //{
-        //    ForumSystem.ForumSystem system = ;
-        //    //forumSystem.forums = forums;
-        //}
+        public void Register(Guest g, string username, string password, string email)
+        {
+            bridge.register(g, username, password, email);
+        }
 
-        //private void setUpMembers()
-        //{
-        //    //TODO: add an interface for add member method
-
-        //    membersList.Add(Sagi);
-        //    membersList.Add(Amit);
-        //    membersList.Add(Dean);
-
-
-        //}
-        //public static SubForumInfo createSubForum(int id, List<ThreadInfo> threds, string title, List<long> moderatorsID)
-        //{
-        //    SubForumInfo currSubForum = new SubForumInfo();
-        //    currSubForum.id = id;
-        //    currSubForum.threads = threds;
-        //    currSubForum.title = title;
-        //    currSubForum.moderatorIDs = moderatorsID;
-
-        //    return currSubForum;
-
-        //}
-
-
-        //public static ForumInfo createForum(int id, List<SubForumInfo> subForums, string title, List<long> adminsID)
-        //{
-        //    ForumInfo currForum = new ForumInfo();
-        //    currForum.id = id;
-        //    currForum.subForums = subForums;
-        //    currForum.title = title;
-        //    currForum.adminIDs = adminsID;
-
-        //    return currForum;
-        //}
-
-        //public static UserInfo createMember(long id, string userName, string email,String memberType, string password, bool active, List<UserInfo> friends, List<ThreadInfo> myThreads, List<int> mySubForums, List<int> myForum)
-        //{
-        //    UserInfo currUser = new UserInfo();
-        //    currUser.id = id;
-        //    currUser.userName = userName;
-        //    currUser.email = email;
-        //    currUser.password = password;
-        //    currUser.memberType = memberType;
-        //    currUser.active = active;
-        //    currUser.friends = friends;
-        //    currUser.myForums = myForum;
-        //    currUser.mySubForum = mySubForums;
-        //    currUser.myThreads = myThreads;
-
-        //    return currUser;
-        //}
+        public void removeSubForum(string sfName, string forumName)
+        {
+            bridge.removeSubForum(sfName, forumName);
+        }
     }
 }

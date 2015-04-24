@@ -11,7 +11,10 @@ namespace ForumTests
         void addNewaddNewForum(ForumSystem.Forum Forum);
         Forum createForum(string title, List<string> admins);
         SubForum createSubForum(string title, List<string> moderators, string parent);
-        void addForumToSystem(Forum Dating);
+        Member createMember(string username, string password, string email);
+        void register(Guest g, string username, string password, string email);
+        void removeSubForum(string sfName, string forumName);
+        //void addMemberToSystem(Member member);
     }
 }
 

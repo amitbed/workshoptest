@@ -50,11 +50,39 @@ namespace ForumTests
             return null;
         }
 
-        public void addForumToSystem(Forum forum)
+        public Member createMember(string username, string password, string email)
         {
             if (this.real != null)
             {
-                real.addForumToSystem(forum);
+                return real.createMember(username, password, email);
+            }
+            return null;
+        }
+
+
+        //public void addMemberToSystem(Member member)
+        //{
+        //    if (this.real != null)
+        //    {
+        //        real.addMemberToSystem(member);
+        //    }
+        //}
+
+
+        public void removeSubForum(string sfName, string forumName)
+        {
+            if (this.real != null)
+            {
+                real.removeSubForum(sfName, forumName);
+            }
+        }
+
+
+        public void register(Guest g, string username, string password, string email)
+        {
+            if (this.real != null)
+            {
+                real.register(g, username, password, email);
             }
         }
     }

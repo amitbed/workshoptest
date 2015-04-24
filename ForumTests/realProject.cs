@@ -17,18 +17,47 @@ namespace ForumTests
 
         public Forum createForum(string title, List<string> admins)
         {
-            return (new Forum(title, admins));
+            Forum f = new Forum(title, admins);
+            system.addForum(f);
+            return f;
         }
-
 
         public SubForum createSubForum(string title, List<string> moderators, string parent)
         {
-            return new SubForum(title, moderators, parent); 
+            SubForum sb = new SubForum(title, moderators, parent);
+            Forum f = system.searchForum(parent);
+            if (f != null)
+            {
+                f.addSubForum(sb);
+            }
+            else
+            {
+                f = new Forum(parent, moderators);
+                f.addSubForum(sb);
+            }
+            return sb;
+
         }
 
-        public void addForumToSystem(Forum forum)
+        public Member createMember(string username, string password, string email)
         {
-            system.addForum(forum);
+            Guest g = new Guest();
+            g.register(username, password, email);
+            return new Member(username, password, email);
+        }
+
+        public void removeSubForum(string sfName, string forumName)
+        {
+            Forum f = system.searchForum(forumName);
+            SubForum sf = f.SearchSubForum(sfName);
+
+            //TODO:
+        }
+
+
+        public void register(Guest g, string username, string password, string email)
+        {
+            g.register(username, password, email);
         }
     }
 }
