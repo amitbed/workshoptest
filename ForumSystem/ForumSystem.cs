@@ -15,6 +15,7 @@ namespace ForumSystem
         //Constructor
         private ForumSystem()
         {
+            Logger log = new Logger();
             members = new List<Member>();
             forums = new List<Forum>();
             Logger.logDebug(string.Format("A new forum system has been created"));
