@@ -11,11 +11,26 @@ namespace ForumSystem
         //Overload Contructor
         public Message(string content, string userId)
         {
-            this.id = IdGen.generateMessageId();
-            this.content = content;
-            this.date = DateTime.Now;
-            this.userId = userId;
-            this.replies = new List<Message>();
+            if ((String.IsNullOrEmpty(content)) || (String.IsNullOrEmpty(userId)))
+            {
+                if (String.IsNullOrEmpty(content))
+                {
+                    Logger.logError("Failed to create a new message. Reason: content is empty");
+                }
+
+                if (String.IsNullOrEmpty(userId))
+                {
+                    Logger.logError("Failed to create a new message. Reason: ID is empty");
+                }
+            }
+            else
+            {
+                this.id = IdGen.generateMessageId();
+                this.content = content;
+                this.date = DateTime.Now;
+                this.userId = userId;
+                this.replies = new List<Message>();
+            }
         }
         //Member Variables
         private string id;

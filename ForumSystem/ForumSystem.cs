@@ -17,6 +17,7 @@ namespace ForumSystem
         {
             members = new List<Member>();
             forums = new List<Forum>();
+            Logger.logDebug(string.Format("A new forum system has been created"));
         }
 
         //Methods
@@ -32,7 +33,15 @@ namespace ForumSystem
         //This method adds a forum to the main forum system
         public void addForum(Forum forum)
         {
-            forums.Add(forum);
+            if (forum == null)
+            {
+                forums.Add(forum);
+                Logger.logError("Failed to add a new forum. Reason: forum is null");
+            }
+            else
+            {
+                Logger.logDebug(String.Format("A new forum has been added to forum system. ID: {0}, Title: {1}", forum.ID, forum.Title));
+            }
         }
 
         //This method displays all the forums in the system
@@ -55,9 +64,31 @@ namespace ForumSystem
             return forums;
         }
 
-        internal void addMember(string username, string password, string email)
+        internal bool addMember(string username, string password, string email)
         {
-            members.Add(new Member(username, password, email));
+            if ((String.IsNullOrEmpty(username)) || (String.IsNullOrEmpty(password)) || (String.IsNullOrEmpty(email)))
+            {
+                if (String.IsNullOrEmpty(username))
+                {
+                    Logger.logError("Filed to add a new member. Reason: username is null");
+                }
+                if (String.IsNullOrEmpty(password))
+                {
+                    Logger.logError("Filed to add a new member. Reason: password is null");
+                }
+                if (String.IsNullOrEmpty(email))
+                {
+                    Logger.logError("Filed to add a new member. Reason: email is null");
+                }
+                return false;
+            }
+            else
+            {   
+                Member toAdd=new Member(username, password, email);
+                members.Add(toAdd);
+                Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, passord: {2}, email: {3}",toAdd.id,username,password,email));
+                return true;
+            }
         }
 
         public bool isUsernameExists(string newUsername)

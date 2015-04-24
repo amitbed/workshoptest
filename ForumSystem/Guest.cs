@@ -42,21 +42,20 @@ namespace ForumSystem
 
         public bool login(string username, string password, ForumSystem forumSystem)
         {
-            bool loggedIn = false;
             foreach (Member member in forumSystem.Members)
             {
                 if (String.Equals(username, member.username) && String.Equals(password, member.password))
                 {
-                    Console.WriteLine("Login Successfull.");
-                    loggedIn = true;
-                    return loggedIn;
+                    Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in",member.id,member.username));
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Login Failed.");
+                    Logger.logDebug(String.Format("Username: {0}, password{1} failed to log in. Reason: member not found"));
+                    return false;
                 }
             }
-            return loggedIn;
+            return false;
         }
     }
 }

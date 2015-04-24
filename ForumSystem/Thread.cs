@@ -11,9 +11,17 @@ namespace ForumSystem
         //Overload Constructor
         public Thread(string title)
         {
-            this.id = IdGen.generateThreadId();
-            this.title = title;
-            this.messages = new List<Message>();
+            if (String.IsNullOrEmpty(title))
+            {
+                Logger.logError("Failed to create a new thread. Reason: title is empty");
+            }
+            else
+            {
+                this.id = IdGen.generateThreadId();
+                this.title = title;
+                this.messages = new List<Message>();
+                Logger.logDebug(String.Format("A new thread has been created. ID: {0}, title: {1}",this.id,this.title));
+            }
         }
 
         //Member Variables
@@ -47,15 +55,32 @@ namespace ForumSystem
 
         public bool removeMessage(string memberID, string messageID)
         {
-            foreach (Message m in messages)
+            if ((String.IsNullOrEmpty(memberID)) || (String.IsNullOrEmpty(messageID)))
             {
-                if ((m.Equals(messageID)) && (m.UserID.Equals(messageID)))
+                if ((String.IsNullOrEmpty(memberID)))
                 {
-                    this.messages.Remove(m);
-                    return true;
+                    Logger.logError("Failed to remove a message. Reason: member id is empty");
                 }
+                if ((String.IsNullOrEmpty(messageID)))
+                {
+                    Logger.logError("Failed to remove a message. Reason: message id is empty");
+                }
+                return false;
             }
-            return false;
+            else
+            {
+                foreach (Message m in messages)
+                {
+                    if ((m.Equals(messageID)) && (m.UserID.Equals(messageID)))
+                    {
+                        this.messages.Remove(m);
+                        Logger.logDebug(String.Format("Message has been removed. ID:{0}",m.ID));
+                        return true;
+                    }
+                }
+                Logger.logError("Failed to remove a message. Reason: message id not found");
+                return false;
+            }
         }
     }
 }

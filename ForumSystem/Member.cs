@@ -25,28 +25,74 @@ namespace ForumSystem
 
         public Member(string username, string password, string emailAddress)
         {
-            this.username = username;
-            this.password = password;
-            this.email = emailAddress;
-            this.timeLoggedIn = 0;
-            this.id = IdGen.generateMemberId();
-            this.isActive = true;
-            this.myForums = new List<long>();
-            this.mySubForums = new List<long>();
-            this.myThreads = new List<long>();
-            this.myFriends = new List<long>();
+            if ((String.IsNullOrEmpty(username)) || (String.IsNullOrEmpty(password)) || (String.IsNullOrEmpty(emailAddress)))
+            {
+                if (String.IsNullOrEmpty(username))
+                {
+                    Logger.logError("Failed to create a new member. Reason: username is empty");
+                }
+                if (String.IsNullOrEmpty(password))
+                {
+                    Logger.logError("Failed to create a new member. Reason: password is empty");
+                }
+                if (String.IsNullOrEmpty(emailAddress))
+                {
+                    Logger.logError("Failed to create a new member. Reason: email is empty");
+                }
+            }
+            else
+            {
+                this.username = username;
+                this.password = password;
+                this.email = emailAddress;
+                this.timeLoggedIn = 0;
+                this.id = IdGen.generateMemberId();
+                this.isActive = true;
+                this.myForums = new List<long>();
+                this.mySubForums = new List<long>();
+                this.myThreads = new List<long>();
+                this.myFriends = new List<long>();
+                Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, pasword: {2}, email: {3}",id,username,password,emailAddress));
+            }
         }
 
         //This method creates a sub-forum
-        public void createSubForum(string title, string parent, List<string> moderators, ForumSystem forumSystem)
+        public bool createSubForum(string title, string parent, List<string> moderators)
         {
-            SubForum subForum = new SubForum(title, moderators, parent);
-            foreach (Forum forum in forumSystem.getForums())
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+            if ((String.IsNullOrEmpty(title)) || (String.IsNullOrEmpty(parent) || (moderators == null)))
             {
-                if (string.Equals(forum.Title, parent))
+                if ((String.IsNullOrEmpty(title)))
                 {
-                    forum.getSubForums().Add(subForum);
+                    Logger.logError("Failed to create a new sub-forum. Reason: title is empty");
                 }
+
+                if ((String.IsNullOrEmpty(parent)))
+                {
+                    Logger.logError("Failed to create a new sub-forum. Reason: parent is empty");
+                }
+
+                if (moderators == null)
+                {
+                    Logger.logError("Failed to create a new sub-forum. Reason: moderators is null");
+                }
+
+                return false;
+            }
+            else
+            {
+                SubForum subForum = new SubForum(title, moderators, parent);
+                foreach (Forum forum in forumSystem.getForums())
+                {
+                    if (string.Equals(forum.Title, parent))
+                    {
+                        forum.getSubForums().Add(subForum);
+                        Logger.logDebug(String.Format("Sub forum has added succesfully. ID: {0}, title: {1}",subForum.ID,subForum.Title));
+                        return true;
+                    }
+                }
+                Logger.logError("Failed to add a new subform. Reason: parent can not be found");
+                return false;
             }
         }
 
