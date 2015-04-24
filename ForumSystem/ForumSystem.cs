@@ -36,11 +36,11 @@ namespace ForumSystem
         {
             if (forum == null)
             {
-                forums.Add(forum);
                 Logger.logError("Failed to add a new forum. Reason: forum is null");
             }
             else
-            {
+            {                
+                forums.Add(forum);
                 Logger.logDebug(String.Format("A new forum has been added to forum system. ID: {0}, Title: {1}", forum.ID, forum.Title));
             }
         }
@@ -100,6 +100,18 @@ namespace ForumSystem
                     return true;
             }
             return false;
+        }
+
+        public Forum searchForum(string forumName)
+        {
+            foreach (Forum f in forums)
+            {
+                if (f.Title.Equals(forumName))
+                {
+                    return f;
+                }
+            }
+            return null;
         }
 
     }
