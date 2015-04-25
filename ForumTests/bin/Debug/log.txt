@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 25/04/2015 19:19:25 Debug: A new forum system has been created
 25/04/2015 19:19:25 Debug: New member id has been generated: 1
 25/04/2015 19:19:25 Debug: A new user has been created. ID: member1 username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
@@ -19,3 +20,36 @@
 25/04/2015 19:19:25 Debug: A new member has been added. ID: member4, username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
 25/04/2015 19:19:25 Debug: New member id has been generated: 5
 25/04/2015 19:19:25 Debug: A new
+=======
+25/04/2015 18:45:51 Debug: A new forum system has been created
+25/04/2015 18:45:51 Debug: New member id has been generated: 1
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member1 username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: A new member has been added. ID: member1, username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New member id has been generated: 2
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member2 username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New member id has been generated: 3
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member3 username: amitbed, password: ronahayafa, email: amitbed@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: A new member has been added. ID: member3, username: amitbed, password: ronahayafa, email: amitbed@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New member id has been generated: 4
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member4 username: amitbed, password: ronahayafa, email: amitbed@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New member id has been generated: 5
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member5 username: abadie, password: liatush, email: abadie.post@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: A new member has been added. ID: member5, username: abadie, password: liatush, email: abadie.post@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New member id has been generated: 6
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member6 username: abadie, password: liatush, email: abadie.post@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New forum id has been generated: 1
+25/04/2015 18:45:51 Debug: The new forum: Dating has been created successfully with id forum1
+25/04/2015 18:45:51 Debug: New forum id has been generated: 2
+25/04/2015 18:45:51 Debug: The new forum: Sport has been created successfully with id forum2
+25/04/2015 18:45:51 Debug: New member id has been generated: 7
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member7 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: A new member has been added. ID: member7, username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New member id has been generated: 8
+25/04/2015 18:45:51 Debug: A new user has been created. ID: member8 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: A new member has been added. ID: member8, username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 18:45:51 Debug: New sub forum id has been generated: 1
+25/04/2015 18:45:51 Debug: A new sub-forum has been created. ID: subforum1, title: PassoverRecepies
+25/04/2015 18:45:51 Debug: New sub forum id has been generated: 2
+25/04/2015 18:45:51 Debug: A new sub-forum has been created. ID: subforum2, title: PassoverRecepies
+25/04/2015 18:45:
+>>>>>>> Stashed changes

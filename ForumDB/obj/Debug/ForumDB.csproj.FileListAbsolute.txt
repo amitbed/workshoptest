@@ -1,0 +1,10 @@
+\\psf\Home\Documents\workshoptest\ForumDB\bin\Debug\ForumDB.exe.config
+\\psf\Home\Documents\workshoptest\ForumDB\bin\Debug\ForumDB.exe
+\\psf\Home\Documents\workshoptest\ForumDB\bin\Debug\ForumDB.pdb
+\\psf\Home\Documents\workshoptest\ForumDB\bin\Debug\EntityFramework.dll
+\\psf\Home\Documents\workshoptest\ForumDB\bin\Debug\EntityFramework.SqlServer.dll
+\\psf\Home\Documents\workshoptest\ForumDB\bin\Debug\EntityFramework.xml
+\\psf\Home\Documents\workshoptest\ForumDB\bin\Debug\EntityFramework.SqlServer.xml
+\\psf\Home\Documents\workshoptest\ForumDB\obj\Debug\ForumDB.csprojResolveAssemblyReference.cache
+\\psf\Home\Documents\workshoptest\ForumDB\obj\Debug\ForumDB.exe
+\\psf\Home\Documents\workshoptest\ForumDB\obj\Debug\ForumDB.pdb
