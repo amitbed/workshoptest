@@ -9,7 +9,7 @@ namespace ForumSystem
     public class ForumSystem
     {
         private static ForumSystem forumSystem = null;
-        private List<Forum> forums;
+        public List<Forum> Forums { get; }
         private List<Member> members;
 
         //Constructor
@@ -17,7 +17,7 @@ namespace ForumSystem
         {
             Logger log = new Logger();
             members = new List<Member>();
-            forums = new List<Forum>();
+            Forums = new List<Forum>();
             Logger.logDebug(string.Format("A new forum system has been created"));
         }
 
@@ -60,12 +60,8 @@ namespace ForumSystem
         }
 
         //This method returns all the forums in the system
-        public List<Forum> getForums()
-        {
-            return forums;
-        }
 
-        internal bool addMember(string username, string password, string email)
+        public Member addMember(string username, string password, string email)
         {
             if ((String.IsNullOrEmpty(username)) || (String.IsNullOrEmpty(password)) || (String.IsNullOrEmpty(email)))
             {
@@ -81,14 +77,14 @@ namespace ForumSystem
                 {
                     Logger.logError("Filed to add a new member. Reason: email is null");
                 }
-                return false;
+                return null;
             }
             else
             {   
                 Member toAdd=new Member(username, password, email);
                 members.Add(toAdd);
-                Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, passord: {2}, email: {3}",toAdd.id,username,password,email));
-                return true;
+                Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, password: {2}, email: {3}",toAdd.id,username,password,email));
+                return toAdd;
             }
         }
 
@@ -102,11 +98,11 @@ namespace ForumSystem
             return false;
         }
 
-        public Forum searchForum(string forumName)
+        public Forum searchForum(string forumID)
         {
-            foreach (Forum f in forums)
+            foreach (Forum f in Forums)
             {
-                if (f.Title.Equals(forumName))
+                if (f.ID.Equals(forumID))
                 {
                     return f;
                 }

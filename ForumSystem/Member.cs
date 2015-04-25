@@ -52,7 +52,7 @@ namespace ForumSystem
                 this.mySubForums = new List<long>();
                 this.myThreads = new List<long>();
                 this.myFriends = new List<long>();
-                Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, pasword: {2}, email: {3}",id,username,password,emailAddress));
+                Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}",id,username,password,emailAddress));
             }
         }
 
@@ -86,7 +86,7 @@ namespace ForumSystem
                 {
                     if (string.Equals(forum.Title, parent))
                     {
-                        forum.getSubForums().Add(subForum);
+                        forum.addSubForum(subForum);
                         Logger.logDebug(String.Format("Sub forum has added succesfully. ID: {0}, title: {1}",subForum.ID,subForum.Title));
                         return true;
                     }
@@ -213,6 +213,22 @@ namespace ForumSystem
             }
         }
 
+        public string enterForum(string forumName)
+        {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+            string forumID = forumSystem.getForumIdByName(forumName);
+            string allSubForums=forumSystem.searchForum(forumID).displaySubforum();
+            if (String.IsNullOrEmpty(allSubForums))
+            {
+                Logger.logError(String.Format("Failed to recieve all sub fours in {0}", forumID));
+            }
+            else
+            {
+                Logger.logDebug(String.Format("{0} enterd to forum {1}",this.id,forumID));
+                return allSubForums;
+            }
+        }
+
         public void postReply(ForumSystem forumSystem, string username)
         {
             Console.WriteLine("Select a forum to view:");
@@ -230,7 +246,7 @@ namespace ForumSystem
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
             Message message = new Message(content, id);
-            foreach (Forum forumName in forumSystem.getForums())
+            foreach (Forum forumName in forumSystem.Forums)
             {
                 if (String.Equals(forum, forumName.Title))
                 {

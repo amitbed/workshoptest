@@ -5,13 +5,6 @@
 \\psf\Home\Documents\workshop-151\ForumTests\obj\Debug\ForumTests.csprojResolveAssemblyReference.cache
 \\psf\Home\Documents\workshop-151\ForumTests\obj\Debug\ForumTests.dll
 \\psf\Home\Documents\workshop-151\ForumTests\obj\Debug\ForumTests.pdb
-\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumTests.dll
-\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumTests.pdb
-\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumSystem.exe
-\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumSystem.pdb
-\\psf\Home\Documents\workshoptest\ForumTests\obj\Debug\ForumTests.csprojResolveAssemblyReference.cache
-\\psf\Home\Documents\workshoptest\ForumTests\obj\Debug\ForumTests.dll
-\\psf\Home\Documents\workshoptest\ForumTests\obj\Debug\ForumTests.pdb
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumTests\bin\Debug\ForumTests.dll
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumTests\bin\Debug\ForumTests.pdb
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumTests\bin\Debug\ForumSystem.exe
@@ -19,3 +12,10 @@ C:\Users\נופר\Documents\GitHub\workshoptest\ForumTests\bin\Debug\ForumSystem
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumTests\obj\Debug\ForumTests.csprojResolveAssemblyReference.cache
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumTests\obj\Debug\ForumTests.dll
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumTests\obj\Debug\ForumTests.pdb
+\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumTests.dll
+\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumTests.pdb
+\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumSystem.exe
+\\psf\Home\Documents\workshoptest\ForumTests\bin\Debug\ForumSystem.pdb
+\\psf\Home\Documents\workshoptest\ForumTests\obj\Debug\ForumTests.csprojResolveAssemblyReference.cache
+\\psf\Home\Documents\workshoptest\ForumTests\obj\Debug\ForumTests.dll
+\\psf\Home\Documents\workshoptest\ForumTests\obj\Debug\ForumTests.pdb

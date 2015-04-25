@@ -35,7 +35,7 @@ namespace ForumSystem
         //Member Variables
         private string id;
         private string title;
-        private List<SubForum> subForums;
+        public List<SubForum> SubForums { get; }
         private List<string> admins;
 
         //Methods
@@ -47,18 +47,14 @@ namespace ForumSystem
         }
 
         //This method displays a forum's sub forums
-        public void displaySubforums()
+        public string displaySubforums()
         {
-            foreach (SubForum subForum in subForums)
+            StringBuilder sb = new StringBuilder();
+            foreach (SubForum subForum in SubForums)
             {
-                Console.WriteLine(subForum.Title);
+                sb.Append(subForum.Title + "\n");
             }
-        }
-
-        //This method returns a forum's sub-forums
-        public List<SubForum> getSubForums()
-        {
-            return subForums;
+            return sb.ToString();
         }
 
         //This method adds a sub-forum to the current forum

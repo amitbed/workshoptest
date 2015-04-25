@@ -1,42 +1,42 @@
-24/04/2015 23:16:04 Debug: A new forum system has been created
-24/04/2015 23:16:04 Debug: New member id has been generated: 1
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member1 username: sagiav, pasword: maihayafa, email: sagiav@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: A new member has been added. ID: member1, username: sagiav, passord: maihayafa, email: sagiav@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New member id has been generated: 2
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member2 username: sagiav, pasword: maihayafa, email: sagiav@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New member id has been generated: 3
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member3 username: amitbed, pasword: ronahayafa, email: amitbed@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: A new member has been added. ID: member3, username: amitbed, passord: ronahayafa, email: amitbed@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New member id has been generated: 4
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member4 username: amitbed, pasword: ronahayafa, email: amitbed@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New member id has been generated: 5
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member5 username: abadie, pasword: liatush, email: abadie.post@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: A new member has been added. ID: member5, username: abadie, passord: liatush, email: abadie.post@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New member id has been generated: 6
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member6 username: abadie, pasword: liatush, email: abadie.post@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New forum id has been generated: 1
-24/04/2015 23:16:04 Debug: The new forum: Dating has been created successfully with id forum1
-24/04/2015 23:16:04 Debug: A new forum has been added to forum system. ID: forum1, Title: Dating
-24/04/2015 23:16:04 Debug: New forum id has been generated: 2
-24/04/2015 23:16:04 Debug: The new forum: Food has been created successfully with id forum2
-24/04/2015 23:16:04 Debug: A new forum has been added to forum system. ID: forum2, Title: Food
-24/04/2015 23:16:04 Debug: New forum id has been generated: 3
-24/04/2015 23:16:04 Debug: The new forum: Sport has been created successfully with id forum3
-24/04/2015 23:16:04 Debug: A new forum has been added to forum system. ID: forum3, Title: Sport
-24/04/2015 23:16:04 Debug: New member id has been generated: 7
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member7 username: benshnof, pasword: matanShoham, email: benshnof@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: A new member has been added. ID: member7, username: benshnof, passord: matanShoham, email: benshnof@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New member id has been generated: 8
-24/04/2015 23:16:04 Debug: A new user has been created. ID: member8 username: benshnof, pasword: matanShoham, email: benshnof@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: A new member has been added. ID: member8, username: benshnof, passord: matanShoham, email: benshnof@post.bgu.ac.il
-24/04/2015 23:16:04 Debug: New sub forum id has been generated: 1
-24/04/2015 23:16:04 Debug: A new sub-forum has been created. ID: subforum1, title: PassoverRecepies
-24/04/2015 23:16:04 Debug: The new sub forum: PassoverRecepies has been created successfully with id subforum1
-24/04/2015 23:16:04 Debug: New sub forum id has been generated: 2
-24/04/2015 23:16:04 Debug: A new sub-forum has been created. ID: subforum2, title: ChosherRecepies
-24/04/2015 23:16:04 Debug: The new sub forum: ChosherRecepies has been created successfully with id subforum2
-24/04/2015 23:16:04 Debug: New sub forum id has been generated: 3
-24/04/2015 23:16:04 Debug: A new sub-forum has been created. ID: subforum3, title: PassoverRecepies
-24/04/2015 23:16:04 Debug: New forum id has been generated: 4
-24/04/2015 23:16:04 Debug: The new forum: Ochel has been created successfully with id forum4
-24/04/2015 23:16:04 Debug: The new sub forum: PassoverRecepi
+25/04/2015 12:12:26 Debug: A new forum system has been created
+25/04/2015 12:12:26 Debug: New member id has been generated: 1
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member1 username: sagiav, pasword: maihayafa, email: sagiav@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: A new member has been added. ID: member1, username: sagiav, passord: maihayafa, email: sagiav@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New member id has been generated: 2
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member2 username: sagiav, pasword: maihayafa, email: sagiav@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New member id has been generated: 3
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member3 username: amitbed, pasword: ronahayafa, email: amitbed@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: A new member has been added. ID: member3, username: amitbed, passord: ronahayafa, email: amitbed@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New member id has been generated: 4
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member4 username: amitbed, pasword: ronahayafa, email: amitbed@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New member id has been generated: 5
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member5 username: abadie, pasword: liatush, email: abadie.post@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: A new member has been added. ID: member5, username: abadie, passord: liatush, email: abadie.post@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New member id has been generated: 6
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member6 username: abadie, pasword: liatush, email: abadie.post@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New forum id has been generated: 1
+25/04/2015 12:12:26 Debug: The new forum: Dating has been created successfully with id forum1
+25/04/2015 12:12:26 Debug: A new forum has been added to forum system. ID: forum1, Title: Dating
+25/04/2015 12:12:26 Debug: New forum id has been generated: 2
+25/04/2015 12:12:26 Debug: The new forum: Food has been created successfully with id forum2
+25/04/2015 12:12:26 Debug: A new forum has been added to forum system. ID: forum2, Title: Food
+25/04/2015 12:12:26 Debug: New forum id has been generated: 3
+25/04/2015 12:12:26 Debug: The new forum: Sport has been created successfully with id forum3
+25/04/2015 12:12:26 Debug: A new forum has been added to forum system. ID: forum3, Title: Sport
+25/04/2015 12:12:26 Debug: New member id has been generated: 7
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member7 username: benshnof, pasword: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: A new member has been added. ID: member7, username: benshnof, passord: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New member id has been generated: 8
+25/04/2015 12:12:26 Debug: A new user has been created. ID: member8 username: benshnof, pasword: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: A new member has been added. ID: member8, username: benshnof, passord: matanShoham, email: benshnof@post.bgu.ac.il
+25/04/2015 12:12:26 Debug: New sub forum id has been generated: 1
+25/04/2015 12:12:26 Debug: A new sub-forum has been created. ID: subforum1, title: PassoverRecepies
+25/04/2015 12:12:26 Debug: The new sub forum: PassoverRecepies has been created successfully with id subforum1
+25/04/2015 12:12:26 Debug: New sub forum id has been generated: 2
+25/04/2015 12:12:26 Debug: A new sub-forum has been created. ID: subforum2, title: ChosherRecepies
+25/04/2015 12:12:26 Debug: The new sub forum: ChosherRecepies has been created successfully with id subforum2
+25/04/2015 12:12:26 Debug: New sub forum id has been generated: 3
+25/04/2015 12:12:26 Debug: A new sub-forum has been created. ID: subforum3, title: PassoverRecepies
+25/04/2015 12:12:26 Debug: New forum id has been generated: 4
+25/04/2015 12:12:26 Debug: The new forum: Ochel has been created successfully with id forum4
+25/04/2015 12:12:26 Debug: The new sub forum: PassoverRecepi

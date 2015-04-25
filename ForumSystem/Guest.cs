@@ -10,10 +10,11 @@ namespace ForumSystem
     {
         private ForumSystem forumSystem = ForumSystem.initForumSystem();
 
-        public void register(string username, string password, string email)
+        public string register(string username, string password, string email)
         {
             //approveEmail();
-            forumSystem.addMember(username, password, email);     
+            Member added= forumSystem.addMember(username, password, email);
+            return added.id;
         }
 
         private bool validateUsername(string username)
@@ -40,22 +41,23 @@ namespace ForumSystem
             return true;
         }
 
-        public bool login(string username, string password, ForumSystem forumSystem)
+        public List<Forum> login(string username, string password)
         {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
             foreach (Member member in forumSystem.Members)
             {
                 if (String.Equals(username, member.username) && String.Equals(password, member.password))
                 {
                     Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in",member.id,member.username));
-                    return true;
+                    return forumSystem.Forums;
                 }
                 else
                 {
                     Logger.logDebug(String.Format("Username: {0}, password{1} failed to log in. Reason: member not found"));
-                    return false;
+                    return null;
                 }
             }
-            return false;
+            return null;
         }
     }
 }
