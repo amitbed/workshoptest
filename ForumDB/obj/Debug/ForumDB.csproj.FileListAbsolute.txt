@@ -1,0 +1,10 @@
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\bin\Debug\ForumDB.exe.config
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\bin\Debug\ForumDB.exe
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\bin\Debug\ForumDB.pdb
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.dll
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.xml
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\obj\Debug\ForumDB.exe
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\obj\Debug\ForumDB.pdb
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\obj\Debug\ForumDB.csprojResolveAssemblyReference.cache
