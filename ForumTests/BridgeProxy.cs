@@ -40,6 +40,14 @@ namespace ForumTests
             return null;
         }
 
+        public string login(Guest g,string id, string username, string password)
+        {
+            if (this.real != null)
+            {
+                return real.login(g,id, username, password);
+            }
+            return null;
+        }
 
         public SubForum createSubForum(string title, List<string> moderators, string parent)
         {

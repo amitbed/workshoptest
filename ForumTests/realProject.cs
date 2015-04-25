@@ -54,6 +54,11 @@ namespace ForumTests
             //TODO:
         }
 
+        public string login(Guest g,string id, string username, string password)
+        {
+            return g.login(id,username,password);
+        }
+
 
         public void register(Guest g, string username, string password, string email)
         {

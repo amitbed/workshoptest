@@ -124,11 +124,24 @@ namespace ForumTests
             currForum.addSubForum(ShavuotRecepies);
             Assert.IsTrue(IsSubForumExists("ShavuotRecepies", "Food"));
         }
-        //[TestMethod]
-        //public void removeSubForum()
-        //{
-        //    removeSubForum("PassoverRecepies", "Food");
 
-        //}
+        [TestMethod]
+        public void loginTest()
+        {
+            Guest NofarGuest = new Guest();
+            Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
+            String forumList = login(NofarGuest,Nofar.ID, "benshnof", "matanShoham");
+            String realForumList=system.displayForums();
+            Assert.IsTrue(String.Equals(forumList,realForumList));
+        }
+
+        [TestMethod]
+        public void loginFalseTest()
+        {
+            Guest NofarGuest = new Guest();
+            String forumList = login(NofarGuest, "", "benshnof", "matanShoham");
+            String realForumList = system.displayForums();
+            Assert.IsFalse(String.Equals(forumList, realForumList));
+        }
     }
 }

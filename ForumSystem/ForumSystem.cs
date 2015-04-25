@@ -105,7 +105,6 @@ namespace ForumSystem
             }
             else return null;
         }
-
         //public string getForumIdByName(string forumName)
         //{
         //    foreach (Forum f in Forums.Values)
