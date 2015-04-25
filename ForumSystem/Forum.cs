@@ -78,40 +78,49 @@ namespace ForumSystem
 
         public SubForum SearchSubForum(string sfName)
         {
-            return SubForums[sfName];
+            if (SubForums.ContainsKey(sfName))
+            {
+                return SubForums[sfName];
+            }
+            else return null;
         }
 
         public SubForum enterSubForum(string subForumName, User user)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
-            SubForum subForumToEnter = this.SubForums[subForumName];
-            if (subForumToEnter == null)
+            SubForum subForumToEnter = null;
+            if (SubForums.ContainsKey(subForumName))
             {
-                Logger.logError(String.Format("Failed to recieve sub forum {0}", subForumName));
-                return null;
-            }
-            else
-            {
-                if (user.GetType().Name.Equals("Member"))
+                subForumToEnter = this.SubForums[subForumName];
+                if (subForumToEnter == null)
                 {
-                    Member newUser = (Member)user;
-                    if (subForumToEnter.Moderators.Contains(newUser.ID))
-                    {
-                        Logger.logDebug(String.Format("{0} enterd to sub forum {1} as moderator", this.ID, subForumName));
-                        return ModeratorSubForums[subForumName];
-                    }
-                    else
-                    {
-                        Logger.logDebug(String.Format("{0} enterd to sub forum {1} as member", this.ID, subForumName));
-                        return MemberSubForums[subForumName];
-                    }
+                    Logger.logError(String.Format("Failed to recieve sub forum {0}", subForumName));
+                    return null;
                 }
                 else
                 {
-                    Logger.logDebug(String.Format("{0} enterd to sub forum {1} as guest", this.ID, subForumName));
-                    return subForumToEnter;
+                    if (user.GetType().Name.Equals("Member"))
+                    {
+                        Member newUser = (Member)user;
+                        if (subForumToEnter.Moderators.Contains(newUser.ID))
+                        {
+                            Logger.logDebug(String.Format("{0} enterd to sub forum {1} as moderator", this.ID, subForumName));
+                            return ModeratorSubForums[subForumName];
+                        }
+                        else
+                        {
+                            Logger.logDebug(String.Format("{0} enterd to sub forum {1} as member", this.ID, subForumName));
+                            return MemberSubForums[subForumName];
+                        }
+                    }
+                    else
+                    {
+                        Logger.logDebug(String.Format("{0} enterd to sub forum {1} as guest", this.ID, subForumName));
+                        return subForumToEnter;
+                    }
                 }
             }
+            return null;
         }
     }
         #endregion

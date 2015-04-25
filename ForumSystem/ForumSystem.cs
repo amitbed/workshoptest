@@ -99,7 +99,11 @@ namespace ForumSystem
         public Forum searchForum(string forumName)
         {
             //string forumID = getForumIdByName(forumName);
-            return (Forums[forumName]);
+            if (Forums.ContainsKey(forumName))
+            {
+                return (Forums[forumName]);
+            }
+            else return null;
         }
 
         //public string getForumIdByName(string forumName)
