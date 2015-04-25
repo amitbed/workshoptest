@@ -73,14 +73,14 @@ namespace ForumSystem
                         Console.WriteLine("Select a sub-forum to view:");
                         viewSubForums(forum, forumSystem);
                         subForum = Console.ReadLine();
-                        viewDiscussions(subForum,forum,forumSystem);
+                        viewDiscussions(subForum, forum);
                         break;
 
                     //Use Case 9: Create New Thread
                     case "4":
                         if (loggedIn)
                         {
-                            createThread(forumSystem, username);
+                            createThread(username);
                         }
                         else
                         {
@@ -92,7 +92,7 @@ namespace ForumSystem
                     case "5":
                         if (loggedIn)
                         {
-                            postReply(forumSystem, username);
+                            postReply(username);
                         }
                         else
                         {
@@ -114,12 +114,12 @@ namespace ForumSystem
                         viewSubForums(forum, forumSystem);
                         subForum = Console.ReadLine();
                         Console.WriteLine("Select a Discussion ID:");
-                        viewDiscussions(subForum, forum, forumSystem);
+                        viewDiscussions(subForum, forum);
                         int threadId = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Select a message ID:");
-                        viewMessages(threadId,subForum, forum, forumSystem);
+                        viewMessages(threadId, subForum, forum);
                         int replyId = Convert.ToInt32(Console.ReadLine());
-                        displayReplies(forumSystem, forum, subForum, threadId, replyId);
+                        displayReplies(forum, subForum, threadId, replyId);
                         break;
 
                     //Exit
@@ -157,7 +157,7 @@ namespace ForumSystem
         static void createSubForum(string title, string parent, List<string> moderators, ForumSystem forumSystem)
         {
             SubForum subForum = new SubForum(title, moderators, parent);
-            foreach (Forum forum in forumSystem.getForums())
+            foreach (Forum forum in forumSystem.Forums.Values)
             {
                 if (string.Equals(forum.Title, parent))
                 {
@@ -169,160 +169,121 @@ namespace ForumSystem
         //This method shows all sub forums of a given forum
         static void viewSubForums(string forumName, ForumSystem mainForum)
         {
-            foreach (Forum forum in mainForum.getForums())
+            foreach (Forum forum in mainForum.Forums.Values)
             {
                 if (String.Equals(forumName, forum.Title))
                 {
-                    forum.displaySubforums(); 
+                    forum.displaySubforums();
                 }
             }
         }
 
         //This method shows all discussions of a given sub-forum
-        static void viewDiscussions(string subForumName, string parent, ForumSystem mainForum)
+        static void viewDiscussions(string subForumName, string parent)
         {
-            foreach (Forum forum in mainForum.getForums())
-            {
-                if (String.Equals(parent, forum.Title))
-                {
-                    foreach (SubForum subForum in forum.getSubForums())
-                    {
-                        if (String.Equals(subForumName, subForum.Title))
-                        {
-                            subForum.displayThreads();
-                        }
-                    }
-                }
-            }
+            ForumSystem mainForum = ForumSystem.initForumSystem();
+
+            Forum currForum = mainForum.Forums[parent];
+            SubForum subForum = currForum.SubForums[subForumName];
+            subForum.displayThreads();
         }
 
         //This method displays messages of a thread
-        static void viewMessages(int threadId,string subForumName, string parent, ForumSystem mainForum)
+        static void viewMessages(int threadId, string subForumName, string parent)
         {
-            foreach (Forum forum in mainForum.getForums())
+            ForumSystem mainForum = ForumSystem.initForumSystem();
+            Forum forum = mainForum.Forums[parent];
+            SubForum subForum = forum.SubForums[subForumName];
+            foreach (Thread thread in subForum.Threads)
             {
-                if (String.Equals(parent, forum.Title))
+                if (threadId.Equals(thread.ID))
                 {
-                    foreach (SubForum subForum in forum.getSubForums())
-                    {
-                        if (String.Equals(subForumName, subForum.Title))
-                        {
-                            foreach (Thread thread in subForum.getThreads())
-                            {
-                                if (threadId.Equals(thread.ID))
-                                {
-                                    thread.displayMessages();
-                                }
-                            }
-                        }
-                    }
+                    thread.displayMessages();
                 }
             }
         }
 
         //This method displays a message's replies
-        static void displayReplies(ForumSystem mainForum, string forumName, string subForumName, int discussionId, int messageId)
+        static string displayReplies(string forumName, string subForumName, int discussionId, int messageId)
         {
-            foreach (Forum forum in mainForum.getForums())
+            StringBuilder sb = new StringBuilder();
+            ForumSystem mainForum = ForumSystem.initForumSystem();
+            Forum currForum = mainForum.Forums[forumName];
+            SubForum subForum = currForum.SubForums[subForumName];
+            foreach (Thread thread in subForum.Threads)
             {
-                if (String.Equals(forumName, forum.Title))
+                if (discussionId.Equals(thread.ID))
                 {
-                    foreach (SubForum subForum in forum.getSubForums())
+                    foreach (Message message in thread.Messages)
                     {
-                        if (String.Equals(subForumName, subForum.Title))
+                        if (messageId.Equals(message.ID))
                         {
-                            foreach (Thread thread in subForum.getThreads())
+                            foreach (Message reply in message.Replies)
                             {
-                                if (discussionId.Equals(thread.ID))
-                                {
-                                    foreach (Message message in thread.getMessages())
-                                    {
-                                        if (messageId.Equals(message.ID))
-                                        {
-                                            foreach (Message reply in message.getReplies())
-                                            {
-                                                reply.displayMessage();
-                                            }
-                                        }
-                                    }
-                                }
+                                sb.Append(reply.displayMessage() + "\n");
                             }
                         }
                     }
                 }
             }
+            return sb.ToString();
         }
 
         //This method creates a new thread
-        static void createThread(ForumSystem forumSystem, string username)
+        static void createThread(string username)
         {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+
             Console.WriteLine("Select a forum to view:");
             forumSystem.displayForums();
-            string forum = Console.ReadLine();
+            string forumName = Console.ReadLine();
             Console.WriteLine("Select a sub-forum to view");
-            viewSubForums(forum, forumSystem);
-            string subForum = Console.ReadLine();
+            viewSubForums(forumName, forumSystem);
+            string subForumName = Console.ReadLine();
             Console.WriteLine("Enter Thread Title:");
             string threadTitle = Console.ReadLine();
             Thread thread = new Thread(threadTitle);
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
             Message message = new Message(content, username);
-            thread.getMessages().Add(message);
-            foreach (Forum forumName in forumSystem.getForums())
-            {
-                if (string.Equals(forumName.Title, forum))
-                {
-                    foreach (SubForum subForumName in forumName.getSubForums())
-                    {
-                        if (string.Equals(subForumName.Title, subForum))
-                        {
-                            subForumName.getThreads().Add(thread);
-                        }
-                    }
-                }
-            }
+            thread.Messages.Add(message);
+
+            Forum forum = forumSystem.Forums[forumName];
+            SubForum subForum = forum.SubForums[subForumName];
+            subForum.Threads.Add(thread);
         }
 
         //This method posts a reply
-        static void postReply(ForumSystem forumSystem, string username)
+        static void postReply(string username)
         {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
             Console.WriteLine("Select a forum to view:");
             forumSystem.displayForums();
-            string forum = Console.ReadLine();
+            string forumName = Console.ReadLine();
             Console.WriteLine("Select a sub-forum to view:");
-            viewSubForums(forum, forumSystem);
-            string subForum = Console.ReadLine();
+            viewSubForums(forumName, forumSystem);
+            string subForumName = Console.ReadLine();
             Console.WriteLine("Select a Discussion ID:");
-            viewDiscussions(subForum, forum, forumSystem);
+            viewDiscussions(subForumName, forumName);
             int discussionId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Select a message ID to reply to:");
-            viewMessages(discussionId,subForum, forum, forumSystem);
+            viewMessages(discussionId, subForumName, forumName);
             int messageId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
             Message message = new Message(content, username);
-            foreach (Forum forumName in forumSystem.getForums())
+
+            Forum forum = forumSystem.Forums[forumName];
+            SubForum subForum = forum.SubForums[subForumName];
+            foreach (Thread thread in subForum.Threads)
             {
-                if (String.Equals(forum, forumName.Title))
+                if (discussionId.Equals(thread.ID))
                 {
-                    foreach (SubForum subForumName in forumName.getSubForums())
+                    foreach (Message threadMessage in thread.Messages)
                     {
-                        if (String.Equals(subForum, subForumName.Title))
+                        if (messageId.Equals(threadMessage.ID))
                         {
-                            foreach (Thread thread in subForumName.getThreads())
-                            {
-                                if (discussionId.Equals(thread.ID))
-                                {
-                                    foreach (Message threadMessage in thread.getMessages())
-                                    {
-                                        if (messageId.Equals(threadMessage.ID))
-                                        {
-                                            threadMessage.getReplies().Add(message);
-                                        }
-                                    }
-                                }
-                            }
+                            threadMessage.Replies.Add(message);
                         }
                     }
                 }

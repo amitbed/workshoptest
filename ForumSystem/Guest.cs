@@ -14,7 +14,7 @@ namespace ForumSystem
         {
             //approveEmail();
             Member added= forumSystem.addMember(username, password, email);
-            return added.id;
+            return added.ID;
         }
 
         private bool validateUsername(string username)
@@ -41,15 +41,15 @@ namespace ForumSystem
             return true;
         }
 
-        public List<Forum> login(string username, string password)
+        public string login(string username, string password)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
             foreach (Member member in forumSystem.Members)
             {
-                if (String.Equals(username, member.username) && String.Equals(password, member.password))
+                if (String.Equals(username, member.Username) && String.Equals(password, member.Password))
                 {
-                    Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in",member.id,member.username));
-                    return forumSystem.Forums;
+                    Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in",member.ID,member.Username));
+                    return forumSystem.displayForums();
                 }
                 else
                 {

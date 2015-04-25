@@ -17,40 +17,27 @@ namespace ForumSystem
             }
             else
             {
-                this.id = IdGen.generateThreadId();
-                this.title = title;
-                this.messages = new List<Message>();
-                Logger.logDebug(String.Format("A new thread has been created. ID: {0}, title: {1}",this.id,this.title));
+                this.ID = IdGen.generateThreadId();
+                this.Title = title;
+                this.Messages = new List<Message>();
+                Logger.logDebug(String.Format("A new thread has been created. ID: {0}, title: {1}",this.ID,this.Title));
             }
         }
 
         //Member Variables
-        private string id;
-        private string title;
-        private List<Message> messages;
+        public string ID { get; set; }
+        public string Title { get; set; }
+        public List<Message> Messages { get; set; }
 
-        //Methods
-        public string getTitle()
+        //Method
+        public string displayMessages()
         {
-            return title;
-        }
-
-        public List<Message> getMessages()
-        {
-            return messages;
-        }
-
-        public string ID
-        {
-            get { return this.id; }
-        }
-
-        public void displayMessages()
-        {
-            foreach (Message message in messages)
+            StringBuilder sb = new StringBuilder();
+            foreach (Message message in Messages)
             {
-                message.displayMessage();
+                sb.Append(message.displayMessage() + "\n");
             }
+            return sb.ToString();
         }
 
         public bool removeMessage(string memberID, string messageID)
@@ -69,11 +56,11 @@ namespace ForumSystem
             }
             else
             {
-                foreach (Message m in messages)
+                foreach (Message m in Messages)
                 {
                     if ((m.Equals(messageID)) && (m.UserID.Equals(messageID)))
                     {
-                        this.messages.Remove(m);
+                        this.Messages.Remove(m);
                         Logger.logDebug(String.Format("Message has been removed. ID:{0}",m.ID));
                         return true;
                     }

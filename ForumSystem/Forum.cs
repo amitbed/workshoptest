@@ -8,13 +8,24 @@ namespace ForumSystem
 {
     public class Forum
     {
-        //Overload Constructor
+        #region variables
+        public string ID { get; set; }
+        public string Title { get; set; }
+        public Dictionary<string, SubForum> SubForums { get; set; }
+        public Dictionary<string, MemberSubForum> MemberSubForums { get; set; }
+        public Dictionary<string, ModeratorSubForum> ModeratorSubForums { get; set; }
+        public List<string> Admins { get; set; }
+
+        #endregion
+
+        #region Ctor
+        public Forum() { }
         public Forum(string title, List<string> admins)
         {
-            this.id = IdGen.generateForumId();
-            this.subForums = new List<SubForum>();
-            this.title = title;
-            this.admins = admins;
+            this.ID = IdGen.generateForumId();
+            this.SubForums = new Dictionary<string, SubForum>();
+            this.Title = Title;
+            this.Admins = admins;
             if ((admins == null) || (String.IsNullOrEmpty(title)))
             {
                 if ((String.IsNullOrEmpty(title)) && (!(admins == null)))
@@ -28,31 +39,20 @@ namespace ForumSystem
             }
             else
             {
-                Logger.logDebug(string.Format("The new forum: {0} has been created successfully with id {1}", title, id));
+                Logger.logDebug(string.Format("The new forum: {0} has been created successfully with id {1}", title, ID));
             }
         }
+        #endregion
 
-        //Member Variables
-        private string id;
-        private string title;
-        public List<SubForum> SubForums { get; }
-        private List<string> admins;
-
-        //Methods
-
-        //Gets the forum's title
-        public string Title
-        {
-            get { return this.title; }
-        }
+        #region Methods
 
         //This method displays a forum's sub forums
         public string displaySubforums()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (SubForum subForum in SubForums)
+            foreach (string subForumTitle in SubForums.Keys)
             {
-                sb.Append(subForum.Title + "\n");
+                sb.Append(subForumTitle + "\n");
             }
             return sb.ToString();
         }
@@ -62,7 +62,11 @@ namespace ForumSystem
         {
             if (subForum != null)
             {
-                subForums.Add(subForum);
+                SubForums.Add(subForum.Title, subForum);
+                MemberSubForum msf = new MemberSubForum(subForum);
+                MemberSubForums.Add(subForum.Title, msf);
+                ModeratorSubForums.Add(subForum.Title, new ModeratorSubForum(msf));
+
                 Logger.logDebug(string.Format("The new sub forum: {0} has been created successfully with id {1}", subForum.Title, subForum.ID));
             }
             else
@@ -72,21 +76,43 @@ namespace ForumSystem
 
         }
 
-        public string ID
-        {
-            get { return this.id; }
-        }
-
         public SubForum SearchSubForum(string sfName)
         {
-            foreach (SubForum sf in subForums)
+            return SubForums[sfName];
+        }
+
+        public SubForum enterSubForum(string subForumName, User user)
+        {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+            SubForum subForumToEnter = this.SubForums[subForumName];
+            if (subForumToEnter == null)
             {
-                if (sf.Title.Equals(sfName))
+                Logger.logError(String.Format("Failed to recieve sub forum {0}", subForumName));
+                return null;
+            }
+            else
+            {
+                if (user.GetType().Name.Equals("Member"))
                 {
-                    return sf;
+                    Member newUser = (Member)user;
+                    if (subForumToEnter.Moderators.Contains(newUser.ID))
+                    {
+                        Logger.logDebug(String.Format("{0} enterd to sub forum {1} as moderator", this.ID, subForumName));
+                        return ModeratorSubForums[subForumName];
+                    }
+                    else
+                    {
+                        Logger.logDebug(String.Format("{0} enterd to sub forum {1} as member", this.ID, subForumName));
+                        return MemberSubForums[subForumName];
+                    }
+                }
+                else
+                {
+                    Logger.logDebug(String.Format("{0} enterd to sub forum {1} as guest", this.ID, subForumName));
+                    return subForumToEnter;
                 }
             }
-            return null;
         }
     }
+        #endregion
 }

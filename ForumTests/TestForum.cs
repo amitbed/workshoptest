@@ -36,17 +36,17 @@ namespace ForumTests
         [TestMethod]
         public void twoInitForumsAddedTest()
         {
-            Assert.AreEqual<int>(2, system.getForums().Count);
+            Assert.AreEqual<int>(2, system.Forums.Count);
         }
 
         [TestMethod]
         public void addForumTest()
         {
-            int prevNumOfForums = system.getForums().Count;
+            int prevNumOfForums = system.Forums.Count;
             List<string> adminSport = new List<string>();
             adminSport.Add("abadie");
             Forum Sport = createForum("Sport", adminSport);
-            int newNumOfForums = system.getForums().Count;
+            int newNumOfForums = system.Forums.Count;
 
             Assert.AreEqual<int>(newNumOfForums, prevNumOfForums + 1);
         }

@@ -8,15 +8,15 @@ namespace ForumSystem
 {
     public class Member : User
     {
-        public string id { get; set; }
-        public string username { get; set; }
+        public string ID { get; set; }
+        public string Username { get; set; }
         private string email;
-        public string password { get; set; }
+        public string Password { get; set; }
         private bool isActive;
-        private List<long> myFriends;
-        private List<long> myThreads;
-        private List<long> mySubForums;
-        private List<long> myForums;
+        private List<string> myFriends;
+        private List<string> myThreads;
+        private List<string> mySubForums;
+        private List<string> myForums;
         //private double seniority;
         private double timeLoggedIn;
         //private int numberOfMessagesLastYear;
@@ -42,17 +42,17 @@ namespace ForumSystem
             }
             else
             {
-                this.username = username;
-                this.password = password;
+                this.Username = username;
+                this.Password = password;
                 this.email = emailAddress;
                 this.timeLoggedIn = 0;
-                this.id = IdGen.generateMemberId();
+                this.ID = IdGen.generateMemberId();
                 this.isActive = true;
-                this.myForums = new List<long>();
-                this.mySubForums = new List<long>();
-                this.myThreads = new List<long>();
-                this.myFriends = new List<long>();
-                Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}",id,username,password,emailAddress));
+                this.myForums = new List<string>();
+                this.mySubForums = new List<string>();
+                this.myThreads = new List<string>();
+                this.myFriends = new List<string>();
+                Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}", ID, Username, Password, emailAddress));
             }
         }
 
@@ -82,12 +82,12 @@ namespace ForumSystem
             else
             {
                 SubForum subForum = new SubForum(title, moderators, parent);
-                foreach (Forum forum in forumSystem.getForums())
+                foreach (Forum forum in forumSystem.Forums.Values)
                 {
                     if (string.Equals(forum.Title, parent))
                     {
                         forum.addSubForum(subForum);
-                        Logger.logDebug(String.Format("Sub forum has added succesfully. ID: {0}, title: {1}",subForum.ID,subForum.Title));
+                        Logger.logDebug(String.Format("Sub forum has added succesfully. ID: {0}, title: {1}", subForum.ID, subForum.Title));
                         return true;
                     }
                 }
@@ -96,177 +96,137 @@ namespace ForumSystem
             }
         }
 
-        //This method shows all sub forums of a given forum
-        public void viewSubForums(string forumName, ForumSystem mainForum)
-        {
-            foreach (Forum forum in mainForum.getForums())
-            {
-                if (String.Equals(forumName, forum.Title))
-                {
-                    forum.displaySubforums();
-                }
-            }
-        }
-
         //This method shows all discussions of a given sub-forum
-        public void viewDiscussions(string subForumName, string parent, ForumSystem mainForum)
+        public void viewDiscussions(string subForumName, string parent)
         {
-            foreach (Forum forum in mainForum.getForums())
-            {
-                if (String.Equals(parent, forum.Title))
-                {
-                    foreach (SubForum subForum in forum.getSubForums())
-                    {
-                        if (String.Equals(subForumName, subForum.Title))
-                        {
-                            subForum.displayThreads();
-                        }
-                    }
-                }
-            }
+            ForumSystem mainForum = ForumSystem.initForumSystem();
+
+            Forum forum = mainForum.Forums[parent];
+            SubForum subForum = forum.SubForums[subForumName];
+
+            subForum.displayThreads();
         }
 
         //This method displays messages of a thread
-        public void viewMessages(int threadId, string subForumName, string parent, ForumSystem mainForum)
+        public void viewMessages(int threadId, string subForumName, string parent)
         {
-            foreach (Forum forum in mainForum.getForums())
+            ForumSystem mainForum = ForumSystem.initForumSystem();
+            Forum forum = mainForum.Forums[parent];
+            SubForum subForum = forum.SubForums[subForumName];
+            foreach (Thread thread in subForum.Threads)
             {
-                if (String.Equals(parent, forum.Title))
+                if (threadId.Equals(thread.ID))
                 {
-                    foreach (SubForum subForum in forum.getSubForums())
-                    {
-                        if (String.Equals(subForumName, subForum.Title))
-                        {
-                            foreach (Thread thread in subForum.getThreads())
-                            {
-                                if (threadId.Equals(thread.ID))
-                                {
-                                    thread.displayMessages();
-                                }
-                            }
-                        }
-                    }
+                    thread.displayMessages();
                 }
             }
         }
 
         //This method displays a message's replies
-        public void displayReplies(ForumSystem mainForum, string forumName, string subForumName, int discussionId, int messageId)
+        public string displayReplies(string forumName, string subForumName, int discussionId, int messageId)
         {
-            foreach (Forum forum in mainForum.getForums())
+            StringBuilder sb = new StringBuilder();
+            ForumSystem mainForum = ForumSystem.initForumSystem();
+
+            Forum forum = mainForum.Forums[forumName];
+            SubForum subForum = forum.SubForums[subForumName];
+            foreach (Thread thread in subForum.Threads)
             {
-                if (String.Equals(forumName, forum.Title))
+                if (discussionId.Equals(thread.ID))
                 {
-                    foreach (SubForum subForum in forum.getSubForums())
+                    foreach (Message message in thread.Messages)
                     {
-                        if (String.Equals(subForumName, subForum.Title))
+                        if (messageId.Equals(message.ID))
                         {
-                            foreach (Thread thread in subForum.getThreads())
+                            foreach (Message reply in message.Replies)
                             {
-                                if (discussionId.Equals(thread.ID))
-                                {
-                                    foreach (Message message in thread.getMessages())
-                                    {
-                                        if (messageId.Equals(message.ID))
-                                        {
-                                            foreach (Message reply in message.getReplies())
-                                            {
-                                                reply.displayMessage();
-                                            }
-                                        }
-                                    }
-                                }
+                                sb.Append(reply.displayMessage() + "\n");
                             }
                         }
                     }
                 }
             }
+            return sb.ToString();
         }
 
-        public void createThread(ForumSystem forumSystem)
+        public void createThread()
         {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+
             Console.WriteLine("Select a forum to view:");
             forumSystem.displayForums();
-            string forum = Console.ReadLine();
+            string forumName = Console.ReadLine();
             Console.WriteLine("Select a sub-forum to view");
-            viewSubForums(forum, forumSystem);
-            string subForum = Console.ReadLine();
+            //viewSubForums(forum, forumSystem);
+            string subForumName = Console.ReadLine();
             Console.WriteLine("Enter Thread Title:");
             string threadTitle = Console.ReadLine();
             Thread thread = new Thread(threadTitle);
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
-            Message message = new Message(content, this.id);
-            thread.getMessages().Add(message);
-            foreach (Forum forumName in forumSystem.getForums())
+            Message message = new Message(content, this.ID);
+            thread.Messages.Add(message);
+
+            Forum forum = forumSystem.Forums[forumName];
+            SubForum subForum = forum.SubForums[subForumName];
+            subForum.Threads.Add(thread);
+
+        }
+
+        public Forum enterForum(string forumName)
+        {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+            Forum forumToEnter = forumSystem.Forums[forumName];
+            if (forumToEnter == null)
             {
-                if (string.Equals(forumName.Title, forum))
+                Logger.logError(String.Format("Failed to recieve forum {0}", forumName));
+                return null;
+            }
+            else
+            {
+                if (myForums.Contains(forumToEnter.ID))
                 {
-                    foreach (SubForum subForumName in forumName.getSubForums())
-                    {
-                        if (string.Equals(subForumName.Title, subForum))
-                        {
-                            subForumName.getThreads().Add(thread);
-                        }
-                    }
+                    Logger.logDebug(String.Format("{0} enterd to forum {1} as Admin", this.ID, forumName));
+                    return forumSystem.AdminsForums[forumName];
+                }
+                else
+                {
+                    Logger.logDebug(String.Format("{0} enterd to forum {1} as guest", this.ID, forumName));
+                    return forumToEnter;
                 }
             }
         }
 
-        public string enterForum(string forumName)
+        public void postReply(string username)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
-            string forumID = forumSystem.getForumIdByName(forumName);
-            string allSubForums=forumSystem.searchForum(forumID).displaySubforum();
-            if (String.IsNullOrEmpty(allSubForums))
-            {
-                Logger.logError(String.Format("Failed to recieve all sub fours in {0}", forumID));
-            }
-            else
-            {
-                Logger.logDebug(String.Format("{0} enterd to forum {1}",this.id,forumID));
-                return allSubForums;
-            }
-        }
-
-        public void postReply(ForumSystem forumSystem, string username)
-        {
             Console.WriteLine("Select a forum to view:");
             forumSystem.displayForums();
-            string forum = Console.ReadLine();
+            string forumName = Console.ReadLine();
             Console.WriteLine("Select a sub-forum to view:");
-            viewSubForums(forum, forumSystem);
-            string subForum = Console.ReadLine();
+            //DisplaySubForums(forum, forumSystem);
+            string subForumName = Console.ReadLine();
             Console.WriteLine("Select a Discussion ID:");
-            viewDiscussions(subForum, forum, forumSystem);
+            viewDiscussions(subForumName, forumName);
             int discussionId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Select a message ID to reply to:");
-            viewMessages(discussionId, subForum, forum, forumSystem);
+            viewMessages(discussionId, subForumName, forumName);
             int messageId = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Message Content:");
             string content = Console.ReadLine();
-            Message message = new Message(content, id);
-            foreach (Forum forumName in forumSystem.Forums)
+            Message message = new Message(content, ID);
+
+            Forum forum = forumSystem.Forums[forumName];
+            SubForum subForum = forum.SubForums[subForumName];
+            foreach (Thread thread in subForum.Threads)
             {
-                if (String.Equals(forum, forumName.Title))
+                if (discussionId.Equals(thread.ID))
                 {
-                    foreach (SubForum subForumName in forumName.getSubForums())
+                    foreach (Message threadMessage in thread.Messages)
                     {
-                        if (String.Equals(subForum, subForumName.Title))
+                        if (messageId.Equals(threadMessage.ID))
                         {
-                            foreach (Thread thread in subForumName.getThreads())
-                            {
-                                if (discussionId.Equals(thread.ID))
-                                {
-                                    foreach (Message threadMessage in thread.getMessages())
-                                    {
-                                        if (messageId.Equals(threadMessage.ID))
-                                        {
-                                            threadMessage.getReplies().Add(message);
-                                        }
-                                    }
-                                }
-                            }
+                            threadMessage.Replies.Add(message);
                         }
                     }
                 }

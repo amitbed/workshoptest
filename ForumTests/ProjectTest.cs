@@ -59,10 +59,10 @@ namespace ForumTests
         public bool subForumInForum(List<SubForum> subForums, Forum forum)
         {
             bool ans = true;
-            List<SubForum> listToCheck = forum.getSubForums();
+            Dictionary<string, SubForum> listToCheck = forum.SubForums;
             foreach (SubForum sub in subForums)
             {
-                if (!listToCheck.Contains(sub))
+                if (!listToCheck.ContainsKey(sub.Title)) //Contains(sub))
                 ans = false;
             }
 
@@ -74,7 +74,7 @@ namespace ForumTests
             bool ans = false;
             foreach (Member m in system.Members)
             {
-                if (m.username == guestName)
+                if (m.Username == guestName)
                 {
                     ans = true;
                 }

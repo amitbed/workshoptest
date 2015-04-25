@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForum.cs" />
     <Compile Include="Forum.cs" />
     <Compile Include="ForumSystem.cs" />
     <Compile Include="GoldMember.cs" />
@@ -51,7 +52,9 @@
     <Compile Include="IdGen.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Member.cs" />
+    <Compile Include="MemberSubForum.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="ModeratorSubForum.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SilverMember.cs" />
