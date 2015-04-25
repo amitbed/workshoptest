@@ -29,4 +29,12 @@ C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFram
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
+<<<<<<< Updated upstream
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
+=======
+\\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.dll
+\\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.dll
+\\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.xml
+\\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
+\\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
+>>>>>>> Stashed changes
