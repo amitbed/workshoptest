@@ -11,7 +11,7 @@ namespace ForumSystem
         #region variables
         public string ID { get; set; }
         public string Title { get; set; }
-        public List<Thread> Threads { get; set; }
+        public Dictionary<string, Thread> Threads { get; set; }
         public List<string> Moderators { get; set; }
         private List<Member> members;
 
@@ -40,7 +40,7 @@ namespace ForumSystem
             else
             {
                 this.ID = IdGen.generateSubForumId();
-                this.Threads = new List<Thread>();
+                this.Threads = new Dictionary<string, Thread>();
                 this.Title = title;
                 this.Moderators = moderators;
                 this.members = new List<Member>();
@@ -55,11 +55,27 @@ namespace ForumSystem
         public string displayThreads()
         {               
             StringBuilder sb = new StringBuilder();
-            foreach (Thread thread in Threads)
+            foreach (string threadID in Threads.Keys)
             {
-                sb.Append(thread.ID + ". " + thread.Title + "\n");
+                sb.Append(threadID + ". " + Threads[threadID].Title + "\n");
             }
             return sb.ToString();
+        }
+
+        public Thread enterThread(string threadName)
+        {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+            Thread threadToEnter = Threads[threadName];
+            if (threadToEnter == null)
+            {
+                Logger.logError(String.Format("Failed to recieve thread {0}", threadName));
+                return null;
+            }
+            else
+            {
+                Logger.logDebug(String.Format("enterd to thread {1} as guest", threadName));
+                return threadToEnter;
+            }
         }
     }
 }

@@ -10,33 +10,32 @@ namespace ForumTests
     {
         private BridgeProject bridge = Driver.getBridge();
         protected ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
-
-        //List<UserInfo> membersList;
-
-
-        //recipesForPassover = createSubForum(11, null, "recipesForPassover", new List<long>(20566));
-        //readonly SubForum
-
+        List<Member> testMembers = new List<Member>();
+        protected Member Sagi;
+        protected Member Amit;
+        protected Member Dean;
         public virtual void SetUp()
         {
-            //this.bridge = Driver.getBridge();
             setUpMembers();
             setUpForum();
         }
 
         private void setUpMembers()
         {
-            Member Sagi = bridge.createMember("sagiav", "maihayafa", "sagiav@post.bgu.ac.il"); //30548, "sagiav", "sagiav@post.bgu.ac.il", "gold", "maihyafa", true, null, null, null, null);
-            Member Amit = bridge.createMember("amitbed", "ronahayafa","amitbed@post.bgu.ac.il");
-            Member Dean = bridge.createMember("abadie", "liatush", "abadie.post@post.bgu.ac.il");
+            Sagi = bridge.createMember("sagiav", "maihayafa", "sagiav@post.bgu.ac.il");
+            Amit = bridge.createMember("amitbed", "ronahayafa","amitbed@post.bgu.ac.il");
+            Dean = bridge.createMember("abadie", "liatush", "abadie.post@post.bgu.ac.il");
+            testMembers.Add(Sagi);
+            testMembers.Add(Amit);
+            testMembers.Add(Dean);
         }
 
         private void setUpForum()
         {
             List<string> adminDating = new List<string>();
-            adminDating.Add("sagiav");
+            adminDating.Add(Sagi.ID);
             List<string> adminFood = new List<string>();
-            adminFood.Add("amitbed");
+            adminFood.Add(Amit.ID);
             Forum Dating = bridge.createForum("Dating", adminDating);
             Forum Food = bridge.createForum("Food", adminFood);
         }
@@ -55,6 +54,20 @@ namespace ForumTests
         {
             return bridge.createSubForum(title, moderators, parent);
         }
+        public void Register(Guest g, string username, string password, string email)
+        {
+            bridge.register(g, username, password, email);
+        }
+
+        public void removeSubForum(string sfName, string forumName)
+        {
+            bridge.removeSubForum(sfName, forumName);
+        }
+
+        public Member CreateMember(string username, string password, string email)
+        {
+            return bridge.createMember(username, password, email);
+        }
 
         public bool subForumInForum(List<SubForum> subForums, Forum forum)
         {
@@ -69,10 +82,15 @@ namespace ForumTests
             return ans;
         }
 
+        public bool IsSubForumExists(string subForumName, string forumName)
+        {
+            return IsSubForumExists(subForumName, forumName);
+        }
+
         public bool isGuestRegistered(string guestName)
         {
             bool ans = false;
-            foreach (Member m in system.Members)
+            foreach (Member m in system.Members.Values)
             {
                 if (m.Username == guestName)
                 {
@@ -80,15 +98,6 @@ namespace ForumTests
                 }
             }
             return ans;
-        }
-        public void Register(Guest g, string username, string password, string email)
-        {
-            bridge.register(g, username, password, email);
-        }
-
-        public void removeSubForum(string sfName, string forumName)
-        {
-            bridge.removeSubForum(sfName, forumName);
         }
     }
 }

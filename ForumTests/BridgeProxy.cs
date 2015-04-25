@@ -85,5 +85,15 @@ namespace ForumTests
                 real.register(g, username, password, email);
             }
         }
+
+
+        public bool IsSubForumExists(string subForumName, string forumName)
+        {
+            if (this.real != null)
+            {
+                return real.IsSubForumExists(subForumName, forumName);
+            }
+            else return false;
+        }
     }
 }

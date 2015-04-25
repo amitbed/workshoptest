@@ -42,8 +42,8 @@ namespace ForumTests
         public Member createMember(string username, string password, string email)
         {
             Guest g = new Guest();
-            g.register(username, password, email);
-            return new Member(username, password, email);
+            string memberID = g.register(username, password, email);
+            return system.Members[memberID];
         }
 
         public void removeSubForum(string sfName, string forumName)
@@ -58,6 +58,13 @@ namespace ForumTests
         public void register(Guest g, string username, string password, string email)
         {
             g.register(username, password, email);
+        }
+
+
+        public bool IsSubForumExists(string subForumName, string forumName)
+        {
+            Forum forum =  system.Forums[forumName];
+            return (forum.SubForums[subForumName] != null);
         }
     }
 }

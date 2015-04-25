@@ -41,23 +41,20 @@ namespace ForumSystem
             return true;
         }
 
-        public string login(string username, string password)
+        public string login(string id, string username, string password)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
-            foreach (Member member in forumSystem.Members)
+            Member member = forumSystem.Members[id];
+            if (String.Equals(username, member.Username) && String.Equals(password, member.Password))
             {
-                if (String.Equals(username, member.Username) && String.Equals(password, member.Password))
-                {
-                    Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in",member.ID,member.Username));
-                    return forumSystem.displayForums();
-                }
-                else
-                {
-                    Logger.logDebug(String.Format("Username: {0}, password{1} failed to log in. Reason: member not found"));
-                    return null;
-                }
+                Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in", member.ID, member.Username));
+                return forumSystem.displayForums();
             }
-            return null;
+            else
+            {
+                Logger.logDebug(String.Format("Username: {0}, password{1} failed to log in. Reason: member not found"));
+                return null;
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ForumSystem
         {
             this.ID = IdGen.generateForumId();
             this.SubForums = new Dictionary<string, SubForum>();
-            this.Title = Title;
+            this.Title = title;
             this.Admins = admins;
             if ((admins == null) || (String.IsNullOrEmpty(title)))
             {

@@ -11,13 +11,13 @@ namespace ForumSystem
         private static ForumSystem forumSystem = null;
         public Dictionary<string, Forum> Forums { get; set; }
         public Dictionary<string, Forum> AdminsForums { get; set; }
-        public List<Member> Members { get; set; }
+        public Dictionary<string, Member> Members { get; set; }
 
         //Constructor
         private ForumSystem()
         {
             Logger log = new Logger();
-            Members = new List<Member>();
+            Members = new Dictionary<string, Member>();
             Forums = new Dictionary<string, Forum>();
             AdminsForums = new Dictionary<string, Forum>();
             Logger.logDebug(string.Format("A new forum system has been created"));
@@ -80,7 +80,7 @@ namespace ForumSystem
             else
             {   
                 Member toAdd=new Member(username, password, email);
-                Members.Add(toAdd);
+                Members.Add(toAdd.ID, toAdd);
                 Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, password: {2}, email: {3}",toAdd.ID,username,password,email));
                 return toAdd;
             }
@@ -88,7 +88,7 @@ namespace ForumSystem
 
         public bool isUsernameExists(string newUsername)
         {
-            foreach (Member m in Members)
+            foreach (Member m in Members.Values)
             {
                 if (m.Username.Equals(newUsername))
                     return true;

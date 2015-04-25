@@ -22,6 +22,11 @@ C:\Users\deana.HAIFA\Documents\Sadna\workshop-151\ForumSystem\obj\Debug\ForumSys
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe.config
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.pdb
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.dll
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\OpenPop.dll
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.xml
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache

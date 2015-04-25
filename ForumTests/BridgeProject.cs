@@ -14,6 +14,7 @@ namespace ForumTests
         Member createMember(string username, string password, string email);
         void register(Guest g, string username, string password, string email);
         void removeSubForum(string sfName, string forumName);
+        bool IsSubForumExists(string subForumName, string forumName);
         //void addMemberToSystem(Member member);
     }
 }

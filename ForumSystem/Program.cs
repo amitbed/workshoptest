@@ -115,7 +115,7 @@ namespace ForumSystem
                         subForum = Console.ReadLine();
                         Console.WriteLine("Select a Discussion ID:");
                         viewDiscussions(subForum, forum);
-                        int threadId = Convert.ToInt32(Console.ReadLine());
+                        string threadId = Console.ReadLine();
                         Console.WriteLine("Select a message ID:");
                         viewMessages(threadId, subForum, forum);
                         int replyId = Convert.ToInt32(Console.ReadLine());
@@ -189,40 +189,30 @@ namespace ForumSystem
         }
 
         //This method displays messages of a thread
-        static void viewMessages(int threadId, string subForumName, string parent)
+        static void viewMessages(string threadId, string subForumName, string parent)
         {
             ForumSystem mainForum = ForumSystem.initForumSystem();
             Forum forum = mainForum.Forums[parent];
             SubForum subForum = forum.SubForums[subForumName];
-            foreach (Thread thread in subForum.Threads)
-            {
-                if (threadId.Equals(thread.ID))
-                {
-                    thread.displayMessages();
-                }
-            }
+            Thread thread = subForum.Threads[threadId];
+            thread.displayMessages();
         }
 
         //This method displays a message's replies
-        static string displayReplies(string forumName, string subForumName, int discussionId, int messageId)
+        static string displayReplies(string forumName, string subForumName, string discussionId, int messageId)
         {
             StringBuilder sb = new StringBuilder();
             ForumSystem mainForum = ForumSystem.initForumSystem();
             Forum currForum = mainForum.Forums[forumName];
             SubForum subForum = currForum.SubForums[subForumName];
-            foreach (Thread thread in subForum.Threads)
+            Thread thread = subForum.Threads[discussionId];
+            foreach (Message message in thread.Messages)
             {
-                if (discussionId.Equals(thread.ID))
+                if (messageId.Equals(message.ID))
                 {
-                    foreach (Message message in thread.Messages)
+                    foreach (Message reply in message.Replies)
                     {
-                        if (messageId.Equals(message.ID))
-                        {
-                            foreach (Message reply in message.Replies)
-                            {
-                                sb.Append(reply.displayMessage() + "\n");
-                            }
-                        }
+                        sb.Append(reply.displayMessage() + "\n");
                     }
                 }
             }
@@ -250,7 +240,7 @@ namespace ForumSystem
 
             Forum forum = forumSystem.Forums[forumName];
             SubForum subForum = forum.SubForums[subForumName];
-            subForum.Threads.Add(thread);
+            subForum.Threads.Add(thread.ID, thread);
         }
 
         //This method posts a reply
@@ -265,7 +255,7 @@ namespace ForumSystem
             string subForumName = Console.ReadLine();
             Console.WriteLine("Select a Discussion ID:");
             viewDiscussions(subForumName, forumName);
-            int discussionId = Convert.ToInt32(Console.ReadLine());
+            string discussionId = Console.ReadLine();
             Console.WriteLine("Select a message ID to reply to:");
             viewMessages(discussionId, subForumName, forumName);
             int messageId = Convert.ToInt32(Console.ReadLine());
@@ -275,17 +265,12 @@ namespace ForumSystem
 
             Forum forum = forumSystem.Forums[forumName];
             SubForum subForum = forum.SubForums[subForumName];
-            foreach (Thread thread in subForum.Threads)
+            Thread thread = subForum.Threads[discussionId];
+            foreach (Message threadMessage in thread.Messages)
             {
-                if (discussionId.Equals(thread.ID))
+                if (messageId.Equals(threadMessage.ID))
                 {
-                    foreach (Message threadMessage in thread.Messages)
-                    {
-                        if (messageId.Equals(threadMessage.ID))
-                        {
-                            threadMessage.Replies.Add(message);
-                        }
-                    }
+                    threadMessage.Replies.Add(message);
                 }
             }
         }

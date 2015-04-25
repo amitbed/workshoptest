@@ -9,7 +9,6 @@ namespace ForumTests
     public class TestForum : ProjectTest
     {
         private Forum Dating, Food;
-        //ForumSystem.ForumSystem system;
 
         public override void SetUp()
         {
@@ -19,7 +18,6 @@ namespace ForumTests
 
         private void setUpForum()
         {
-            //system = ForumSystem.ForumSystem.initForumSystem();
             Dating = searchForum("Dating");
             Food = searchForum("Food");
         }
@@ -44,14 +42,14 @@ namespace ForumTests
         {
             int prevNumOfForums = system.Forums.Count;
             List<string> adminSport = new List<string>();
-            adminSport.Add("abadie");
+            adminSport.Add(base.Dean.ID);
             Forum Sport = createForum("Sport", adminSport);
             int newNumOfForums = system.Forums.Count;
 
             Assert.AreEqual<int>(newNumOfForums, prevNumOfForums + 1);
         }
 
-        //UC6 - register
+       //UC6 - register
         [TestMethod]
         public void registerTest()
         {
@@ -81,7 +79,7 @@ namespace ForumTests
         public void AddNewSubForumTest()
         {
             List<string> moderators = new List<string>();
-            moderators.Add("sagiav");
+            moderators.Add(base.Sagi.ID);
             List<SubForum> FoodSubs = new List<SubForum>();
             SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Food");
             SubForum ChosherRecepies = setUpSubForum("ChosherRecepies", moderators, "Food");
@@ -94,7 +92,7 @@ namespace ForumTests
         public void AddNewSubForumWithWrongForumNameTest()
         {
             List<string> moderators = new List<string>();
-            moderators.Add("sagiav");
+            moderators.Add(base.Sagi.ID);
             List<SubForum> FoodSubs = new List<SubForum>();
             SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Ochel");
             FoodSubs.Add(PassoverRecepies);
@@ -114,7 +112,18 @@ namespace ForumTests
             Assert.IsFalse(subForumInForum(FoodSubs,f));
         }
 
-
+        [TestMethod]
+        public void nonAdminAddSubForumTest()
+        {
+            Guest NofarGuest = new Guest();
+            Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
+            Forum currForum = Nofar.enterForum("Food");
+            List<string> moderators = new List<string>();
+            moderators.Add(Nofar.ID);
+            SubForum ShavuotRecepies = setUpSubForum("ShavuotRecepies", moderators, "Food");
+            currForum.addSubForum(ShavuotRecepies);
+            Assert.IsTrue(IsSubForumExists("ShavuotRecepies", "Food"));
+        }
         //[TestMethod]
         //public void removeSubForum()
         //{
