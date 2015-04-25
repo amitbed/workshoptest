@@ -64,6 +64,11 @@ namespace ForumTests
             bridge.removeSubForum(sfName, forumName);
         }
 
+        public string login(Guest g,string id, string username, string password)
+        {
+           return bridge.login(g,id, username, password);
+        }
+
         public Member CreateMember(string username, string password, string email)
         {
             return bridge.createMember(username, password, email);
@@ -99,5 +104,7 @@ namespace ForumTests
             }
             return ans;
         }
+
+
     }
 }

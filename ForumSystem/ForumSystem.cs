@@ -101,7 +101,6 @@ namespace ForumSystem
             //string forumID = getForumIdByName(forumName);
             return (Forums[forumName]);
         }
-
         //public string getForumIdByName(string forumName)
         //{
         //    foreach (Forum f in Forums.Values)

@@ -1,40 +1,10 @@
-C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\bin\Debug\ForumSystem.exe.config
-C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\bin\Debug\ForumSystem.exe
-C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\bin\Debug\ForumSystem.pdb
-C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\obj\Debug\ForumSystem.exe
-C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\obj\Debug\ForumSystem.pdb
-\\psf\Home\Documents\workshop-151\ForumSystem\bin\Debug\ForumSystem.exe.config
-\\psf\Home\Documents\workshop-151\ForumSystem\bin\Debug\ForumSystem.exe
-\\psf\Home\Documents\workshop-151\ForumSystem\bin\Debug\ForumSystem.pdb
-\\psf\Home\Documents\workshop-151\ForumSystem\obj\Debug\ForumSystem.exe
-\\psf\Home\Documents\workshop-151\ForumSystem\obj\Debug\ForumSystem.pdb
-C:\Users\Amit\Documents\university\שנה ג\סמסטר ו\סדנא\git\workshop-151\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
-C:\Users\Amit\Documents\university\שנה ג\סמסטר ו\סדנא\git\workshop-151\ForumSystem\obj\Debug\ForumSystem.exe
-C:\Users\deana.HAIFA\Documents\Sadna\workshop-151\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
-C:\Users\deana.HAIFA\Documents\Sadna\workshop-151\ForumSystem\obj\Debug\ForumSystem.exe
-C:\Users\deana.HAIFA\Documents\Sadna\workshop-151\ForumSystem\obj\Debug\ForumSystem.pdb
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe.config
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\ForumSystem.pdb
-\\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\OpenPop.dll
-\\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
-\\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe.config
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.pdb
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.dll
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\OpenPop.dll
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.xml
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
-<<<<<<< Updated upstream
-C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
-=======
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.dll
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.dll
+\\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\OpenPop.dll
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.xml
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
-\\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
->>>>>>> Stashed changes
+\\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
+\\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
