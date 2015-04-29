@@ -31,31 +31,77 @@ namespace ForumTests
             }
         }
 
-        public ForumSystem.Forum createForum(int id, string title, List<int> admins)
+        public ForumSystem.Forum createForum(string title, List<string> admins)
         {
             if (this.real != null)
             {
-                return (real.createForum(id, title, admins));
+                return (real.createForum(title, admins));
+            }
+            return null;
+        }
+
+        public string login(Guest g,string id, string username, string password)
+        {
+            if (this.real != null)
+            {
+                return real.login(g,id, username, password);
+            }
+            return null;
+        }
+
+        public SubForum createSubForum(string title, List<string> moderators, string parent)
+        {
+            if (this.real != null)
+            {
+                return (real.createSubForum(title, moderators, parent));
+            }
+            return null;
+        }
+
+        public Member createMember(string username, string password, string email)
+        {
+            if (this.real != null)
+            {
+                return real.createMember(username, password, email);
             }
             return null;
         }
 
 
-        public SubForum createSubForum(int id, string title, List<string> moderators, string parent)
+        //public void addMemberToSystem(Member member)
+        //{
+        //    if (this.real != null)
+        //    {
+        //        real.addMemberToSystem(member);
+        //    }
+        //}
+
+
+        public void removeSubForum(string sfName, string forumName)
         {
             if (this.real != null)
             {
-                return (real.createSubForum(id, title, moderators, parent));
+                real.removeSubForum(sfName, forumName);
             }
-            return null;
         }
 
-        public void addForumToSystem(Forum forum)
+
+        public void register(Guest g, string username, string password, string email)
         {
             if (this.real != null)
             {
-                real.addForumToSystem(forum);
+                real.register(g, username, password, email);
             }
+        }
+
+
+        public bool IsSubForumExists(string subForumName, string forumName)
+        {
+            if (this.real != null)
+            {
+                return real.IsSubForumExists(subForumName, forumName);
+            }
+            else return false;
         }
     }
 }

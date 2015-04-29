@@ -9,54 +9,46 @@ namespace ForumSystem
     public class Message
     {
         //Overload Contructor
-        public Message(int topicId, string content, string userId)
+        public Message(string content, string userId)
         {
-            Random rnd = new Random();
-            this.id = rnd.Next(2000, 20000);
-            this.topicId = topicId;
-            this.content = content;
-            this.date = DateTime.Now;
-            this.userId = userId;
-            this.replies = new List<Message>();
+            if ((String.IsNullOrEmpty(content)) || (String.IsNullOrEmpty(userId)))
+            {
+                if (String.IsNullOrEmpty(content))
+                {
+                    Logger.logError("Failed to create a new message. Reason: content is empty");
+                }
+
+                if (String.IsNullOrEmpty(userId))
+                {
+                    Logger.logError("Failed to create a new message. Reason: ID is empty");
+                }
+            }
+            else
+            {
+                this.ID = IdGen.generateMessageId();
+                this.Content = content;
+                this.Date = DateTime.Now;
+                this.UserID = userId;
+                this.Replies = new List<Message>();
+            }
         }
         //Member Variables
-        private int id;
-        private int topicId;
-        private string content;
-        private DateTime date;
-        private string userId;
-        private List<Message> replies;
+        public string ID { get; set; }
+        public string Content { get; set; }
+        public DateTime Date { get; set; }
+        public string UserID { get; set; }
+        public List<Message> Replies { get; set; }
 
         //Methods
-        //This method returns a message content
-        public string getContent()
-        {
-            return content;
-        }
-
-        //This method returns the message id
-        public int getMessageId()
-        {
-            return id;
-        }
-
-        //This method returns the message date
-        public DateTime getDate()
-        {
-            return date;
-        }
 
         //This method displays the message
-        public void displayMessage()
+        public string displayMessage()
         {
-            Console.WriteLine("Message Id: " + getMessageId());
-            Console.WriteLine(date);
-            Console.WriteLine(content);
-        }
-
-        public List<Message> getReplies()
-        {
-            return replies;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Message Id: " + this.ID);
+            sb.Append("Message Date: " + Date);
+            sb.Append("Message Content: " + Content + "\n");
+            return sb.ToString();
         }
     }
 }

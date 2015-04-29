@@ -35,7 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -54,12 +61,8 @@
     <Compile Include="BridgeProxy.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="realProject.cs" />
-    <Compile Include="TestMessage.cs" />
-    <Compile Include="TestSubForum.cs" />
-    <Compile Include="TestThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProjectTest.cs" />
-    <Compile Include="TestMember.cs" />
     <Compile Include="TestForum.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +70,9 @@
       <Project>{2c93acee-e94d-40d6-b4be-43434f07b99a}</Project>
       <Name>ForumSystem</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

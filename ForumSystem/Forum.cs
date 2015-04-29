@@ -8,48 +8,120 @@ namespace ForumSystem
 {
     public class Forum
     {
-        //Overload Constructor
-        public Forum(int id, string title, List<int> admins)
+        #region variables
+        public string ID { get; set; }
+        public string Title { get; set; }
+        public Dictionary<string, SubForum> SubForums { get; set; }
+        public Dictionary<string, MemberSubForum> MemberSubForums { get; set; }
+        public Dictionary<string, ModeratorSubForum> ModeratorSubForums { get; set; }
+        public List<string> Admins { get; set; }
+
+        #endregion
+
+        #region Ctor
+        public Forum() { }
+        public Forum(string title, List<string> admins)
         {
-            this.id = id;
-            this.subForums = new List<SubForum>();
-            this.title = title;
-            this.admins = admins;
-        }
-
-        //Member Variables
-        private int id;
-        private string title;
-        private List<SubForum> subForums;
-        private List<int> admins;
-
-        //Methods
-
-        //Gets the forum's title
-        public string getTitle()
-        {
-            return title;
-        }
-
-        //This method displays a forum's sub forums
-        public void displaySubforums()
-        {
-            foreach (SubForum subForum in subForums)
+            this.ID = IdGen.generateForumId();
+            this.SubForums = new Dictionary<string, SubForum>();
+            this.Title = title;
+            this.Admins = admins;
+            if ((admins == null) || (String.IsNullOrEmpty(title)))
             {
-                Console.WriteLine(subForum.getTitle());
+                if ((String.IsNullOrEmpty(title)) && (!(admins == null)))
+                {
+                    Logger.logError(string.Format("Failed to create a new forum. Reason: title is empty"));
+                }
+                if ((!String.IsNullOrEmpty(title)) && ((admins == null)))
+                {
+                    Logger.logError(string.Format("Failed to create a new forum. Reason: admins is null"));
+                }
+            }
+            else
+            {
+                Logger.logDebug(string.Format("The new forum: {0} has been created successfully with id {1}", title, ID));
             }
         }
+        #endregion
 
-        //This method returns a forum's sub-forums
-        public List<SubForum> getSubForums()
+        #region Methods
+
+        //This method displays a forum's sub forums
+        public string displaySubforums()
         {
-            return subForums;
+            StringBuilder sb = new StringBuilder();
+            foreach (string subForumTitle in SubForums.Keys)
+            {
+                sb.Append(subForumTitle + "\n");
+            }
+            return sb.ToString();
         }
 
         //This method adds a sub-forum to the current forum
         public void addSubForum(SubForum subForum)
         {
-            subForums.Add(subForum);
+            if (subForum != null)
+            {
+                SubForums.Add(subForum.Title, subForum);
+                MemberSubForum msf = new MemberSubForum(subForum);
+                MemberSubForums.Add(subForum.Title, msf);
+                ModeratorSubForums.Add(subForum.Title, new ModeratorSubForum(msf));
+
+                Logger.logDebug(string.Format("The new sub forum: {0} has been created successfully with id {1}", subForum.Title, subForum.ID));
+            }
+            else
+            {
+                Logger.logError("Failed to add sub forum. Reason: sub forum is null");
+            }
+
+        }
+
+        public SubForum SearchSubForum(string sfName)
+        {
+            if (SubForums.ContainsKey(sfName))
+            {
+                return SubForums[sfName];
+            }
+            else return null;
+        }
+
+        public SubForum enterSubForum(string subForumName, User user)
+        {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+            SubForum subForumToEnter = null;
+            if (SubForums.ContainsKey(subForumName))
+            {
+                subForumToEnter = this.SubForums[subForumName];
+                if (subForumToEnter == null)
+                {
+                    Logger.logError(String.Format("Failed to recieve sub forum {0}", subForumName));
+                    return null;
+                }
+                else
+                {
+                    if (user.GetType().Name.Equals("Member"))
+                    {
+                        Member newUser = (Member)user;
+                        if (subForumToEnter.Moderators.Contains(newUser.ID))
+                        {
+                            Logger.logDebug(String.Format("{0} enterd to sub forum {1} as moderator", this.ID, subForumName));
+                            return ModeratorSubForums[subForumName];
+                        }
+                        else
+                        {
+                            Logger.logDebug(String.Format("{0} enterd to sub forum {1} as member", this.ID, subForumName));
+                            return MemberSubForums[subForumName];
+                        }
+                    }
+                    else
+                    {
+                        Logger.logDebug(String.Format("{0} enterd to sub forum {1} as guest", this.ID, subForumName));
+                        return subForumToEnter;
+                    }
+                }
+            }
+            return null;
         }
     }
+        #endregion
 }

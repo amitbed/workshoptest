@@ -9,9 +9,14 @@ namespace ForumTests
     interface BridgeProject
     {
         void addNewaddNewForum(ForumSystem.Forum Forum);
-        Forum createForum(int id, string title, List<int> admins);
-        SubForum createSubForum(int id, string title, List<string> moderators, string parent);
-        void addForumToSystem(Forum Dating);
+        Forum createForum(string title, List<string> admins);
+        SubForum createSubForum(string title, List<string> moderators, string parent);
+        Member createMember(string username, string password, string email);
+        void register(Guest g, string username, string password, string email);
+        void removeSubForum(string sfName, string forumName);
+        bool IsSubForumExists(string subForumName, string forumName);
+        string login(Guest g,string id, string username, string password);
+        //void addMemberToSystem(Member member);
     }
 }
 

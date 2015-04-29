@@ -3,3 +3,4 @@ C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSy
 C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\bin\Release\ForumSystem.pdb
 C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\obj\Release\ForumSystem.exe
 C:\Users\נופר\documents\visual studio 2012\Projects\ForumSystemTests\ForumSystem\obj\Release\ForumSystem.pdb
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Release\ForumSystem.exe

@@ -11,38 +11,62 @@ namespace ForumSystem
         //Overload Constructor
         public Thread(string title)
         {
-            Random rnd = new Random();
-            this.id = rnd.Next(1, 1000);
-            this.title = title;
-            this.messages = new List<Message>();
+            if (String.IsNullOrEmpty(title))
+            {
+                Logger.logError("Failed to create a new thread. Reason: title is empty");
+            }
+            else
+            {
+                this.ID = IdGen.generateThreadId();
+                this.Title = title;
+                this.Messages = new List<Message>();
+                Logger.logDebug(String.Format("A new thread has been created. ID: {0}, title: {1}",this.ID,this.Title));
+            }
         }
 
         //Member Variables
-        private int id;
-        private string title;
-        private List<Message> messages;
+        public string ID { get; set; }
+        public string Title { get; set; }
+        public List<Message> Messages { get; set; }
 
-        //Methods
-        public string getTitle()
+        //Method
+        public string displayMessages()
         {
-            return title;
-        }
-
-        public List<Message> getMessages()
-        {
-            return messages;
-        }
-
-        public int getTopicId()
-        {
-            return id;
-        }
-
-        public void displayMessages()
-        {
-            foreach (Message message in messages)
+            StringBuilder sb = new StringBuilder();
+            foreach (Message message in Messages)
             {
-                message.displayMessage();
+                sb.Append(message.displayMessage() + "\n");
+            }
+            return sb.ToString();
+        }
+
+        public bool removeMessage(string memberID, string messageID)
+        {
+            if ((String.IsNullOrEmpty(memberID)) || (String.IsNullOrEmpty(messageID)))
+            {
+                if ((String.IsNullOrEmpty(memberID)))
+                {
+                    Logger.logError("Failed to remove a message. Reason: member id is empty");
+                }
+                if ((String.IsNullOrEmpty(messageID)))
+                {
+                    Logger.logError("Failed to remove a message. Reason: message id is empty");
+                }
+                return false;
+            }
+            else
+            {
+                foreach (Message m in Messages)
+                {
+                    if ((m.Equals(messageID)) && (m.UserID.Equals(messageID)))
+                    {
+                        this.Messages.Remove(m);
+                        Logger.logDebug(String.Format("Message has been removed. ID:{0}",m.ID));
+                        return true;
+                    }
+                }
+                Logger.logError("Failed to remove a message. Reason: message id not found");
+                return false;
             }
         }
     }

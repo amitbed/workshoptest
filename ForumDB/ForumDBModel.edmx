@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ForumModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="bigint" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Forums">
+          <Key>
+            <PropertyRef Name="ForumID" />
+          </Key>
+          <Property Name="ForumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="Admins" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Seniority" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemberTypes">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberType" Type="nchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Topic" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Content" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="MemberID" Type="bigint" Nullable="false" />
+          <Property Name="ThreadID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Moderators">
+          <Key>
+            <PropertyRef Name="ModeratorID" />
+          </Key>
+          <Property Name="ModeratorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="bigint" Nullable="false" />
+          <Property Name="Username" Type="nchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubForums">
+          <Key>
+            <PropertyRef Name="SubForumID" />
+          </Key>
+          <Property Name="SubForumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="Moderators" Type="int" Nullable="false" />
+          <Property Name="ForumID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Threads">
+          <Key>
+            <PropertyRef Name="ThreadID" />
+          </Key>
+          <Property Name="ThreadID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="SubForumID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Admins__MemberID__164452B1">
+          <End Role="Members" Type="Self.Members" Multiplicity="1" />
+          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forums__Admins__1BFD2C07">
+          <End Role="Admins" Type="Self.Admins" Multiplicity="1" />
+          <End Role="Forums" Type="Self.Forums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admins">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Forums">
+              <PropertyRef Name="Admins" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Members__Type__1367E606">
+          <End Role="MemberTypes" Type="Self.MemberTypes" Multiplicity="1" />
+          <End Role="Members" Type="Self.Members" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberTypes">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Members">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages__Thread__25869641">
+          <End Role="Threads" Type="Self.Threads" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Threads">
+              <PropertyRef Name="ThreadID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="ThreadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Moderator__Membe__1920BF5C">
+          <End Role="Members" Type="Self.Members" Multiplicity="1" />
+          <End Role="Moderators" Type="Self.Moderators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Moderators">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubForums__Forum__1FCDBCEB">
+          <End Role="Forums" Type="Self.Forums" Multiplicity="1" />
+          <End Role="SubForums" Type="Self.SubForums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forums">
+              <PropertyRef Name="ForumID" />
+            </Principal>
+            <Dependent Role="SubForums">
+              <PropertyRef Name="ForumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubForums__Moder__1ED998B2">
+          <End Role="Moderators" Type="Self.Moderators" Multiplicity="1" />
+          <End Role="SubForums" Type="Self.SubForums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moderators">
+              <PropertyRef Name="ModeratorID" />
+            </Principal>
+            <Dependent Role="SubForums">
+              <PropertyRef Name="Moderators" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Threads__SubForu__22AA2996">
+          <End Role="SubForums" Type="Self.SubForums" Multiplicity="1" />
+          <End Role="Threads" Type="Self.Threads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubForums">
+              <PropertyRef Name="SubForumID" />
+            </Principal>
+            <Dependent Role="Threads">
+              <PropertyRef Name="SubForumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ForumModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forums" EntityType="Self.Forums" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberTypes" EntityType="Self.MemberTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moderators" EntityType="Self.Moderators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubForums" EntityType="Self.SubForums" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Threads" EntityType="Self.Threads" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Admins__MemberID__164452B1" Association="Self.FK__Admins__MemberID__164452B1">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forums__Admins__1BFD2C07" Association="Self.FK__Forums__Admins__1BFD2C07">
+            <End Role="Admins" EntitySet="Admins" />
+            <End Role="Forums" EntitySet="Forums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Members__Type__1367E606" Association="Self.FK__Members__Type__1367E606">
+            <End Role="MemberTypes" EntitySet="MemberTypes" />
+            <End Role="Members" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages__Thread__25869641" Association="Self.FK__Messages__Thread__25869641">
+            <End Role="Threads" EntitySet="Threads" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Moderator__Membe__1920BF5C" Association="Self.FK__Moderator__Membe__1920BF5C">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Moderators" EntitySet="Moderators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubForums__Forum__1FCDBCEB" Association="Self.FK__SubForums__Forum__1FCDBCEB">
+            <End Role="Forums" EntitySet="Forums" />
+            <End Role="SubForums" EntitySet="SubForums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubForums__Moder__1ED998B2" Association="Self.FK__SubForums__Moder__1ED998B2">
+            <End Role="Moderators" EntitySet="Moderators" />
+            <End Role="SubForums" EntitySet="SubForums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Threads__SubForu__22AA2996" Association="Self.FK__Threads__SubForu__22AA2996">
+            <End Role="SubForums" EntitySet="SubForums" />
+            <End Role="Threads" EntitySet="Threads" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ForumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int64" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Admins__MemberID__164452B1" FromRole="Admins" ToRole="Members" />
+          <NavigationProperty Name="Forums" Relationship="Self.FK__Forums__Admins__1BFD2C07" FromRole="Admins" ToRole="Forums" />
+        </EntityType>
+        <EntityType Name="Forum">
+          <Key>
+            <PropertyRef Name="ForumID" />
+          </Key>
+          <Property Name="ForumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Admins" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK__Forums__Admins__1BFD2C07" FromRole="Forums" ToRole="Admins" />
+          <NavigationProperty Name="SubForums" Relationship="Self.FK__SubForums__Forum__1FCDBCEB" FromRole="Forums" ToRole="SubForums" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Seniority" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK__Admins__MemberID__164452B1" FromRole="Members" ToRole="Admins" />
+          <NavigationProperty Name="MemberType" Relationship="Self.FK__Members__Type__1367E606" FromRole="Members" ToRole="MemberTypes" />
+          <NavigationProperty Name="Moderators" Relationship="Self.FK__Moderator__Membe__1920BF5C" FromRole="Members" ToRole="Moderators" />
+        </EntityType>
+        <EntityType Name="MemberType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberType1" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Members" Relationship="Self.FK__Members__Type__1367E606" FromRole="MemberTypes" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Topic" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MemberID" Type="Int64" Nullable="false" />
+          <Property Name="ThreadID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Thread" Relationship="Self.FK__Messages__Thread__25869641" FromRole="Messages" ToRole="Threads" />
+        </EntityType>
+        <EntityType Name="Moderator">
+          <Key>
+            <PropertyRef Name="ModeratorID" />
+          </Key>
+          <Property Name="ModeratorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int64" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK__Moderator__Membe__1920BF5C" FromRole="Moderators" ToRole="Members" />
+          <NavigationProperty Name="SubForums" Relationship="Self.FK__SubForums__Moder__1ED998B2" FromRole="Moderators" ToRole="SubForums" />
+        </EntityType>
+        <EntityType Name="SubForum">
+          <Key>
+            <PropertyRef Name="SubForumID" />
+          </Key>
+          <Property Name="SubForumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Moderators" Type="Int32" Nullable="false" />
+          <Property Name="ForumID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Forum" Relationship="Self.FK__SubForums__Forum__1FCDBCEB" FromRole="SubForums" ToRole="Forums" />
+          <NavigationProperty Name="Moderator" Relationship="Self.FK__SubForums__Moder__1ED998B2" FromRole="SubForums" ToRole="Moderators" />
+          <NavigationProperty Name="Threads" Relationship="Self.FK__Threads__SubForu__22AA2996" FromRole="SubForums" ToRole="Threads" />
+        </EntityType>
+        <EntityType Name="Thread">
+          <Key>
+            <PropertyRef Name="ThreadID" />
+          </Key>
+          <Property Name="ThreadID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SubForumID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK__Messages__Thread__25869641" FromRole="Threads" ToRole="Messages" />
+          <NavigationProperty Name="SubForum" Relationship="Self.FK__Threads__SubForu__22AA2996" FromRole="Threads" ToRole="SubForums" />
+        </EntityType>
+        <Association Name="FK__Admins__MemberID__164452B1">
+          <End Role="Members" Type="Self.Member" Multiplicity="1" />
+          <End Role="Admins" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Forums__Admins__1BFD2C07">
+          <End Role="Admins" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Forums" Type="Self.Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admins">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Forums">
+              <PropertyRef Name="Admins" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubForums__Forum__1FCDBCEB">
+          <End Role="Forums" Type="Self.Forum" Multiplicity="1" />
+          <End Role="SubForums" Type="Self.SubForum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forums">
+              <PropertyRef Name="ForumID" />
+            </Principal>
+            <Dependent Role="SubForums">
+              <PropertyRef Name="ForumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Members__Type__1367E606">
+          <End Role="MemberTypes" Type="Self.MemberType" Multiplicity="1" />
+          <End Role="Members" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberTypes">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Members">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Moderator__Membe__1920BF5C">
+          <End Role="Members" Type="Self.Member" Multiplicity="1" />
+          <End Role="Moderators" Type="Self.Moderator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Moderators">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages__Thread__25869641">
+          <End Role="Threads" Type="Self.Thread" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Threads">
+              <PropertyRef Name="ThreadID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="ThreadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubForums__Moder__1ED998B2">
+          <End Role="Moderators" Type="Self.Moderator" Multiplicity="1" />
+          <End Role="SubForums" Type="Self.SubForum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moderators">
+              <PropertyRef Name="ModeratorID" />
+            </Principal>
+            <Dependent Role="SubForums">
+              <PropertyRef Name="Moderators" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Threads__SubForu__22AA2996">
+          <End Role="SubForums" Type="Self.SubForum" Multiplicity="1" />
+          <End Role="Threads" Type="Self.Thread" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubForums">
+              <PropertyRef Name="SubForumID" />
+            </Principal>
+            <Dependent Role="Threads">
+              <PropertyRef Name="SubForumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ForumDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Forums" EntityType="Self.Forum" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="MemberTypes" EntityType="Self.MemberType" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="Moderators" EntityType="Self.Moderator" />
+          <EntitySet Name="SubForums" EntityType="Self.SubForum" />
+          <EntitySet Name="Threads" EntityType="Self.Thread" />
+          <AssociationSet Name="FK__Admins__MemberID__164452B1" Association="Self.FK__Admins__MemberID__164452B1">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Forums__Admins__1BFD2C07" Association="Self.FK__Forums__Admins__1BFD2C07">
+            <End Role="Admins" EntitySet="Admins" />
+            <End Role="Forums" EntitySet="Forums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubForums__Forum__1FCDBCEB" Association="Self.FK__SubForums__Forum__1FCDBCEB">
+            <End Role="Forums" EntitySet="Forums" />
+            <End Role="SubForums" EntitySet="SubForums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Members__Type__1367E606" Association="Self.FK__Members__Type__1367E606">
+            <End Role="MemberTypes" EntitySet="MemberTypes" />
+            <End Role="Members" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Moderator__Membe__1920BF5C" Association="Self.FK__Moderator__Membe__1920BF5C">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Moderators" EntitySet="Moderators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages__Thread__25869641" Association="Self.FK__Messages__Thread__25869641">
+            <End Role="Threads" EntitySet="Threads" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubForums__Moder__1ED998B2" Association="Self.FK__SubForums__Moder__1ED998B2">
+            <End Role="Moderators" EntitySet="Moderators" />
+            <End Role="SubForums" EntitySet="SubForums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Threads__SubForu__22AA2996" Association="Self.FK__Threads__SubForu__22AA2996">
+            <End Role="SubForums" EntitySet="SubForums" />
+            <End Role="Threads" EntitySet="Threads" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ForumModelStoreContainer" CdmEntityContainer="ForumDBContext">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ForumModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forums">
+            <EntityTypeMapping TypeName="ForumModel.Forum">
+              <MappingFragment StoreEntitySet="Forums">
+                <ScalarProperty Name="ForumID" ColumnName="ForumID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Admins" ColumnName="Admins" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="ForumModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Seniority" ColumnName="Seniority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberTypes">
+            <EntityTypeMapping TypeName="ForumModel.MemberType">
+              <MappingFragment StoreEntitySet="MemberTypes">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="MemberType1" ColumnName="MemberType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="ForumModel.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ThreadID" ColumnName="ThreadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moderators">
+            <EntityTypeMapping TypeName="ForumModel.Moderator">
+              <MappingFragment StoreEntitySet="Moderators">
+                <ScalarProperty Name="ModeratorID" ColumnName="ModeratorID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubForums">
+            <EntityTypeMapping TypeName="ForumModel.SubForum">
+              <MappingFragment StoreEntitySet="SubForums">
+                <ScalarProperty Name="SubForumID" ColumnName="SubForumID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Moderators" ColumnName="Moderators" />
+                <ScalarProperty Name="ForumID" ColumnName="ForumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Threads">
+            <EntityTypeMapping TypeName="ForumModel.Thread">
+              <MappingFragment StoreEntitySet="Threads">
+                <ScalarProperty Name="ThreadID" ColumnName="ThreadID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SubForumID" ColumnName="SubForumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
