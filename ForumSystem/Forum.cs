@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ForumSystem
@@ -15,26 +16,31 @@ namespace ForumSystem
         public Dictionary<string, MemberSubForum> MemberSubForums { get; set; }
         public Dictionary<string, ModeratorSubForum> ModeratorSubForums { get; set; }
         public List<string> Admins { get; set; }
-
+        public Regex PassLimitation { get; set; }
         #endregion
 
         #region Ctor
         public Forum() { }
-        public Forum(string title, List<string> admins)
+        public Forum(string title, List<string> admins, Regex passLimitation)
         {
             this.ID = IdGen.generateForumId();
             this.SubForums = new Dictionary<string, SubForum>();
             this.Title = title;
             this.Admins = admins;
-            if ((admins == null) || (String.IsNullOrEmpty(title)))
+            this.PassLimitation = passLimitation;
+            if ((admins == null) || (String.IsNullOrEmpty(title)) || (passLimitation == null))
             {
-                if ((String.IsNullOrEmpty(title)) && (!(admins == null)))
+                if ((String.IsNullOrEmpty(title)) && (!(admins == null)) && (!(passLimitation == null)))
                 {
                     Logger.logError(string.Format("Failed to create a new forum. Reason: title is empty"));
                 }
-                if ((!String.IsNullOrEmpty(title)) && ((admins == null)))
+                if ((!String.IsNullOrEmpty(title)) && (admins == null) && (!(passLimitation == null)))
                 {
                     Logger.logError(string.Format("Failed to create a new forum. Reason: admins is null"));
+                }
+                if ((!String.IsNullOrEmpty(title)) && (!(admins == null)) && (passLimitation == null))
+                {
+                    Logger.logError(string.Format("Failed to create a new forum. Reason: password limitation is null"));
                 }
             }
             else

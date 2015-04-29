@@ -12,7 +12,7 @@ namespace ForumSystem
 
         public string register(string username, string password, string email)
         {
-            //approveEmail();
+            //approveEmail()
             Member added= forumSystem.addMember(username, password, email);
             return added.ID;
         }

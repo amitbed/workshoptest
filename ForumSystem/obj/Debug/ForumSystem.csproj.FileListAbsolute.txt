@@ -38,3 +38,5 @@ C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSyste
 \\psf\Home\Documents\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
 \\psf\Home\Documents\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
 >>>>>>> Stashed changes
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe

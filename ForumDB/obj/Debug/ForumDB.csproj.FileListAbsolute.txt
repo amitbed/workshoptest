@@ -21,3 +21,13 @@ C:\Users\נופר\Documents\GitHub\workshoptest\ForumDB\obj\Debug\ForumDB.csproj
 \\psf\Home\Documents\workshoptest\ForumDB\obj\Debug\ForumDB.exe
 \\psf\Home\Documents\workshoptest\ForumDB\obj\Debug\ForumDB.pdb
 >>>>>>> origin/master
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\bin\Debug\ForumDB.exe.config
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\bin\Debug\ForumDB.exe
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\bin\Debug\ForumDB.pdb
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.dll
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.xml
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\obj\Debug\ForumDB.csprojResolveAssemblyReference.cache
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\obj\Debug\ForumDB.exe
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumDB\obj\Debug\ForumDB.pdb

@@ -10,6 +10,12 @@ namespace ForumDB
     {
         static void Main(string[] args)
         {
+            using (var db = new ForumDBContext())
+            {
+                var forum = new Forum { ForumID = 1, Title = "Test forum" };
+                db.Forums.Add(forum);
+                db.SaveChanges();
+            }
         }
     }
 }
