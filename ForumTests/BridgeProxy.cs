@@ -103,5 +103,11 @@ namespace ForumTests
             }
             else return false;
         }
+
+
+        public void addMemberToSystem(Member member)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

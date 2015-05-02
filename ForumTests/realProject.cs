@@ -70,5 +70,11 @@ namespace ForumTests
             Forum forum =  system.Forums[forumName];
             return (forum.SubForums[subForumName] != null);
         }
+
+
+        public void addMemberToSystem(Member member)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

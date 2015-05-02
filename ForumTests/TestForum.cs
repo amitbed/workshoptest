@@ -147,13 +147,13 @@ namespace ForumTests
         public void addMemberToSystemCheckName(Member member)
         {
             Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
-            Assert.IsTrue(String.Equals(IfatMember.Username,"ifateli");
+            Assert.IsTrue(String.Equals(IfatMember.Username,"ifateli"));
         }
 
          public void addMemberToSystemCheckPassword(Member member)
         {
             Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
-            Assert.IsTrue(String.Equals(IfatMember.Password,"gilAd");
+            Assert.IsTrue(String.Equals(IfatMember.Password,"gilAd"));
         }
 
       
