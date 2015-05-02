@@ -16,7 +16,7 @@ namespace ForumTests
         void removeSubForum(string sfName, string forumName);
         bool IsSubForumExists(string subForumName, string forumName);
         string login(Guest g,string id, string username, string password);
-        //void addMemberToSystem(Member member);
+        void addMemberToSystem(Member member);
     }
 }
 

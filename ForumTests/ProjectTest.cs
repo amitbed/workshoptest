@@ -75,6 +75,10 @@ namespace ForumTests
             return bridge.createMember(username, password, email);
         }
 
+        public void addMemberToSystem(Member member)
+        {
+            bridge.addMemberToSystem(member);
+        }
         public bool subForumInForum(List<SubForum> subForums, Forum forum)
         {
             bool ans = true;

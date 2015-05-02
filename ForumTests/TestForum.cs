@@ -143,5 +143,21 @@ namespace ForumTests
             String realForumList = system.displayForums();
             Assert.IsFalse(String.Equals(forumList, realForumList));
         }
-    }
+
+        public void addMemberToSystemCheckName(Member member)
+        {
+            Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
+            Assert.IsTrue(String.Equals(IfatMember.Username,"ifateli");
+        }
+
+         public void addMemberToSystemCheckPassword(Member member)
+        {
+            Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
+            Assert.IsTrue(String.Equals(IfatMember.Password,"gilAd");
+        }
+
+      
+        }
+
+
 }
