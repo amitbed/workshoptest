@@ -9,7 +9,7 @@ namespace ForumTests
     public class TestForum : ProjectTest
     {
         private Forum Dating, Food;
-        private Member Sagi, Amit, Dean;
+
         public override void SetUp()
         {
             base.SetUp();
@@ -20,9 +20,6 @@ namespace ForumTests
         {
             Dating = searchForum("Dating");
             Food = searchForum("Food");
-            Sagi = searchMember("sagiav");
-            Amit = searchMember("amitbed");
-            Dean = searchMember("abadie");
         }
 
         //UC1 - init Forum
@@ -45,7 +42,7 @@ namespace ForumTests
         {
             int prevNumOfForums = system.Forums.Count;
             List<string> adminSport = new List<string>();
-            adminSport.Add(Dean.ID);
+            adminSport.Add(base.Dean.ID);
             Forum Sport = createForum("Sport", adminSport);
             int newNumOfForums = system.Forums.Count;
 
@@ -146,5 +143,21 @@ namespace ForumTests
             String realForumList = system.displayForums();
             Assert.IsFalse(String.Equals(forumList, realForumList));
         }
-    }
+
+        public void addMemberToSystemCheckName(Member member)
+        {
+            Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
+            Assert.IsTrue(String.Equals(IfatMember.Username,"ifateli");
+        }
+
+         public void addMemberToSystemCheckPassword(Member member)
+        {
+            Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
+            Assert.IsTrue(String.Equals(IfatMember.Password,"gilAd");
+        }
+
+      
+        }
+
+
 }
