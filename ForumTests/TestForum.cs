@@ -9,7 +9,7 @@ namespace ForumTests
     public class TestForum : ProjectTest
     {
         private Forum Dating, Food;
-
+        private Member Sagi, Amit, Dean;
         public override void SetUp()
         {
             base.SetUp();
@@ -20,6 +20,9 @@ namespace ForumTests
         {
             Dating = searchForum("Dating");
             Food = searchForum("Food");
+            Sagi = searchMember("sagiav");
+            Amit = searchMember("amitbed");
+            Dean = searchMember("abadie");
         }
 
         //UC1 - init Forum
@@ -42,7 +45,7 @@ namespace ForumTests
         {
             int prevNumOfForums = system.Forums.Count;
             List<string> adminSport = new List<string>();
-            adminSport.Add(base.Dean.ID);
+            adminSport.Add(Dean.ID);
             Forum Sport = createForum("Sport", adminSport);
             int newNumOfForums = system.Forums.Count;
 

@@ -50,6 +50,11 @@ namespace ForumTests
             return system.searchForum(forumName);
         }
 
+        public Member searchMember(string memberName)
+        {
+            return system.searchMember(memberName);
+        }
+
         public SubForum setUpSubForum(string title, List<string> moderators, string parent)
         {
             return bridge.createSubForum(title, moderators, parent);

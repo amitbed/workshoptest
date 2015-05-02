@@ -17,7 +17,7 @@ namespace ForumTests
 
         public Forum createForum(string title, List<string> admins)
         {
-            Forum f = new Forum(title, admins);
+            Forum f = new Forum(title, admins, new System.Text.RegularExpressions.Regex(""));
             system.addForum(f);
             return f;
         }
@@ -32,11 +32,10 @@ namespace ForumTests
             }
             else
             {
-                f = new Forum(parent, moderators);
+                f = new Forum(parent, moderators, new System.Text.RegularExpressions.Regex(""));  //(parent, moderators);
                 f.addSubForum(sb);
             }
             return sb;
-
         }
 
         public Member createMember(string username, string password, string email)
