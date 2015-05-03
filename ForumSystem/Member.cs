@@ -57,7 +57,7 @@ namespace ForumSystem
         }
 
         //This method creates a sub-forum
-        public bool createSubForum(string title, string parent, List<string> moderators)
+        public bool createSubForum(string title, string parent, List<string> moderators, int maxModerators)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
             if ((String.IsNullOrEmpty(title)) || (String.IsNullOrEmpty(parent) || (moderators == null)))
@@ -81,7 +81,7 @@ namespace ForumSystem
             }
             else
             {
-                SubForum subForum = new SubForum(title, moderators, parent);
+                SubForum subForum = new SubForum(title, moderators, parent, maxModerators);
                 foreach (Forum forum in forumSystem.Forums.Values)
                 {
                     if (string.Equals(forum.Title, parent))
@@ -191,47 +191,5 @@ namespace ForumSystem
             }
             else return null;
         }
-<<<<<<< Updated upstream
-=======
-
-        public void postReply(string username)
-        {
-            ForumSystem forumSystem = ForumSystem.initForumSystem();
-            Console.WriteLine("Select a forum to view:");
-            forumSystem.displayForums();
-            string forumName = Console.ReadLine();
-            Console.WriteLine("Select a sub-forum to view:");
-            //DisplaySubForums(forum, forumSystem);
-            string subForumName = Console.ReadLine();
-            Console.WriteLine("Select a Discussion ID:");
-            viewDiscussions(subForumName, forumName);
-            string discussionId = Console.ReadLine();
-            Console.WriteLine("Select a message ID to reply to:");
-            viewMessages(discussionId, subForumName, forumName);
-            int messageId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Message Content:");
-            string content = Console.ReadLine();
-            Message message = new Message(content, ID);
-            if (forumSystem.Forums.ContainsKey(forumName))
-            {
-                Forum forum = forumSystem.Forums[forumName];
-                if (forum.SubForums.ContainsKey(subForumName))
-                {
-                    SubForum subForum = forum.SubForums[subForumName];
-                    if (subForum.Threads.ContainsKey(discussionId))
-                    {
-                        Thread thread = subForum.Threads[discussionId];
-                        foreach (Message threadMessage in thread.Messages)
-                        {
-                            if (messageId.Equals(threadMessage.ID))
-                            {
-                                threadMessage.Replies.Add(message);
-                            }
-                        }
-                    }
-                }
-            }
-        }
->>>>>>> Stashed changes
     }
 }
