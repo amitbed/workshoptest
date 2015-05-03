@@ -166,7 +166,6 @@ namespace ForumSystem
         public void createThread()
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
-
             Console.WriteLine("Select a forum to view:");
             forumSystem.displayForums();
             string forumName = Console.ReadLine();

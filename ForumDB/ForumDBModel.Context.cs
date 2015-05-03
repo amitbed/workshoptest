@@ -25,7 +25,7 @@ namespace ForumDB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Admin> Admins { get; set; }
+     //   public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Forum> Forums { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<MemberType> MemberTypes { get; set; }
