@@ -99,7 +99,7 @@ namespace ForumSystem
             }
             else
             {
-                Logger.logError("Failed to add thread. Reason: sub forum is null");
+                Logger.logError("Failed to add thread. Reason: thread is null");
             }
         }
     }
