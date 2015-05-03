@@ -8,11 +8,21 @@ namespace ForumSystem
 {
     public class AdminForum : Forum
     {
-        Forum Parentforum;
+        Forum parentforum;
+        public int MaxModerators { get; set; }
 
         public AdminForum(Forum forum)
         {
-            Parentforum = forum;
+            parentforum = forum;
+
+        }
+
+        public void setProperties(int moderatorNumber)
+        {
+            foreach (SubForum s in parentforum.SubForums.Values)
+            {
+                s.MaxModerators = moderatorNumber;
+            }
         }
     }
 }

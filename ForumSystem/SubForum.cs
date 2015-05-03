@@ -13,13 +13,14 @@ namespace ForumSystem
         public string Title { get; set; }
         public Dictionary<string, Thread> Threads { get; set; }
         public List<string> Moderators { get; set; }
+        public int MaxModerators { get; set; }
         private List<Member> members;
 
         #endregion
 
         public SubForum() { }
         //Overload Constructor
-        public SubForum(string title, List<string> moderators, string parent)
+        public SubForum(string title, List<string> moderators, string parent, int maxModerators)
         {
             if ((String.IsNullOrEmpty(title)) || (String.IsNullOrEmpty(parent)) || (moderators == null))
             {
@@ -39,12 +40,20 @@ namespace ForumSystem
             }
             else
             {
-                this.ID = IdGen.generateSubForumId();
-                this.Threads = new Dictionary<string, Thread>();
-                this.Title = title;
-                this.Moderators = moderators;
-                this.members = new List<Member>();
-                Logger.logDebug(String.Format("A new sub-forum has been created. ID: {0}, title: {1}", this.ID,this.Title));
+                if (moderators.Count <= maxModerators)
+                {
+                    this.ID = IdGen.generateSubForumId();
+                    this.Threads = new Dictionary<string, Thread>();
+                    this.Title = title;
+                    this.MaxModerators = maxModerators;
+                    this.Moderators = moderators;
+                    this.members = new List<Member>();
+                    Logger.logDebug(String.Format("A new sub-forum has been created. ID: {0}, title: {1}", this.ID, this.Title));
+                }
+                else
+                {
+                    Logger.logError("Failed to create a new sub-forum. Reason: too many moderators");
+                }   
             }
         }
 

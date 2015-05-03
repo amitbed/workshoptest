@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ForumSystem
@@ -12,6 +13,7 @@ namespace ForumSystem
         public Dictionary<string, Forum> Forums { get; set; }
         public Dictionary<string, Forum> AdminsForums { get; set; }
         public Dictionary<string, Member> Members { get; set; }
+        public Regex PassLimitation { get; set; }
 
         //Constructor
         private ForumSystem()
@@ -29,6 +31,7 @@ namespace ForumSystem
             if (forumSystem == null)
             {
                 forumSystem = new ForumSystem();
+                Guest superGuest = new Guest(); // check if its neccessary
             }
             return forumSystem;
         }
