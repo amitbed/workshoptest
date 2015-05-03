@@ -12,11 +12,11 @@ namespace ForumSystem
         static void Main(string[] args)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();        //create singleton instance of Forum System
-            forumSystem.addForum(new Forum("Sports", new List<string>()));
-            forumSystem.addForum(new Forum("Politics", new List<string>()));
-            forumSystem.addForum(new Forum("Travel", new List<string>()));
-            forumSystem.addForum(new Forum("Cars", new List<string>()));
-            forumSystem.addForum(new Forum("Fashion", new List<string>()));
+            //forumSystem.addForum(new Forum("Sports", new List<string>()));
+            //forumSystem.addForum(new Forum("Politics", new List<string>()));
+            //forumSystem.addForum(new Forum("Travel", new List<string>()));
+            //forumSystem.addForum(new Forum("Cars", new List<string>()));
+            //forumSystem.addForum(new Forum("Fashion", new List<string>()));
             bool flag = true;
             string forum;
             string subForum;
