@@ -22,15 +22,6 @@ namespace ForumTests
             return this.real;
         }
 
-
-        public void addNewForum(ForumSystem.Forum forum)
-        {
-            if (this.real != null)
-            {
-                real.addNewaddNewForum(forum);
-            }
-        }
-
         public ForumSystem.Forum createForum(string title, List<string> admins)
         {
             if (this.real != null)
@@ -49,7 +40,7 @@ namespace ForumTests
             return null;
         }
 
-        public SubForum createSubForum(string title, List<string> moderators, string parent)
+        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
         {
             if (this.real != null)
             {

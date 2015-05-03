@@ -50,9 +50,9 @@ namespace ForumTests
             return system.searchForum(forumName);
         }
 
-        public SubForum setUpSubForum(string title, List<string> moderators, string parent)
+        public SubForum setUpSubForum(string title, List<string> moderators, string parent, int maxModerators)
         {
-            return bridge.createSubForum(title, moderators, parent);
+            return bridge.createSubForum(title, moderators, parent, maxModerators);
         }
 
         public void Register(Guest g, string username, string password, string email)
