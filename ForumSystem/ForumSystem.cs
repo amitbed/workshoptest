@@ -25,6 +25,7 @@ namespace ForumSystem
             Logger.logDebug(string.Format("A new forum system has been created"));
         }
 
+
         //Methods
         public static ForumSystem initForumSystem()
         {
