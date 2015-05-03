@@ -10,22 +10,29 @@ namespace ForumSystem
     class Logger
     {
         private static StreamWriter log;
-
+        private static Object lockWrite;
         public Logger()
         {
             Logger.log = new StreamWriter("log.txt");
+            lockWrite = new object();
         }
 
         public static void logError(string toWrite)
         {
-            string line = String.Format("{0} Error: {1}",System.DateTime.Now,toWrite);
-            log.WriteLine(line);
+            lock (lockWrite)
+            {
+                string line = String.Format("{0} Error: {1}", System.DateTime.Now, toWrite);
+                log.WriteLine(line);
+            }
         }
 
         public static void logDebug(string toWrite)
         {
-            string line = String.Format("{0} Debug: {1}", System.DateTime.Now, toWrite);
-            log.WriteLine(line);
+            lock (lockWrite)
+            {
+                string line = String.Format("{0} Debug: {1}", System.DateTime.Now, toWrite);
+                log.WriteLine(line);
+            }
         }
 
         public static void shutDown()
