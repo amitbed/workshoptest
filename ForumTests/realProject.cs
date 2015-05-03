@@ -10,7 +10,7 @@ namespace ForumTests
     {
         ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
 
-        public void addNewaddNewForum(Forum forum)
+        public void addNewForum(Forum forum)
         {
             system.addForum(forum);
         }

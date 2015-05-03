@@ -23,7 +23,7 @@ namespace ForumTests
         }
 
 
-        public void addNewaddNewForum(ForumSystem.Forum forum)
+        public void addNewForum(ForumSystem.Forum forum)
         {
             if (this.real != null)
             {

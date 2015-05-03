@@ -8,7 +8,8 @@ namespace ForumTests
 {
     class Driver
     {
-        public static BridgeProject getBridge(){
+        public static BridgeProject getBridge()
+        {
             BridgeProxy bridge = new BridgeProxy();
             bridge.setRealBridge(new realProject());
             return bridge;
