@@ -191,47 +191,5 @@ namespace ForumSystem
             }
             else return null;
         }
-<<<<<<< Updated upstream
-=======
-
-        public void postReply(string username)
-        {
-            ForumSystem forumSystem = ForumSystem.initForumSystem();
-            Console.WriteLine("Select a forum to view:");
-            forumSystem.displayForums();
-            string forumName = Console.ReadLine();
-            Console.WriteLine("Select a sub-forum to view:");
-            //DisplaySubForums(forum, forumSystem);
-            string subForumName = Console.ReadLine();
-            Console.WriteLine("Select a Discussion ID:");
-            viewDiscussions(subForumName, forumName);
-            string discussionId = Console.ReadLine();
-            Console.WriteLine("Select a message ID to reply to:");
-            viewMessages(discussionId, subForumName, forumName);
-            int messageId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Message Content:");
-            string content = Console.ReadLine();
-            Message message = new Message(content, ID);
-            if (forumSystem.Forums.ContainsKey(forumName))
-            {
-                Forum forum = forumSystem.Forums[forumName];
-                if (forum.SubForums.ContainsKey(subForumName))
-                {
-                    SubForum subForum = forum.SubForums[subForumName];
-                    if (subForum.Threads.ContainsKey(discussionId))
-                    {
-                        Thread thread = subForum.Threads[discussionId];
-                        foreach (Message threadMessage in thread.Messages)
-                        {
-                            if (messageId.Equals(threadMessage.ID))
-                            {
-                                threadMessage.Replies.Add(message);
-                            }
-                        }
-                    }
-                }
-            }
-        }
->>>>>>> Stashed changes
     }
 }
