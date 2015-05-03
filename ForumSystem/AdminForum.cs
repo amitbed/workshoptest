@@ -17,6 +17,11 @@ namespace ForumSystem
 
         }
 
+        public AdminForum()
+        {
+            // TODO: Complete member initialization
+        }
+
         public void setProperties(int moderatorNumber)
         {
             foreach (SubForum s in parentforum.SubForums.Values)

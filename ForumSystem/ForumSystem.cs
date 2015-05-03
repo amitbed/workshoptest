@@ -43,6 +43,7 @@ namespace ForumSystem
             return forumSystem;
         }
 
+
         //This method adds a forum to the main forum system
         public void addForum(Forum forum)
         {
