@@ -16,5 +16,6 @@ namespace ForumTests
         bool IsSubForumExists(string subForumName, string forumName);
         string login(Guest g,string id, string username, string password);
         void addMemberToSystem(Member member);
+        Member getMember(string userName);
     }
 }

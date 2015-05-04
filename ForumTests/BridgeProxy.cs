@@ -100,5 +100,15 @@ namespace ForumTests
         {
             throw new NotImplementedException();
         }
+
+
+        public Member getMember(string userName)
+        {
+            if (this.real != null)
+            {
+                return real.getMember(userName);
+            }
+            else return null;
+        }
     }
 }

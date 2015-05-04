@@ -73,7 +73,8 @@ namespace ForumSystem
             StringBuilder sb = new StringBuilder();
             foreach (string threadID in Threads.Keys)
             {
-                sb.Append(threadID + ". " + Threads[threadID].Title + "\n");
+                sb.Append(threadID + ". " + Threads[threadID].Title);
+                sb.AppendLine();
             }
             string ans = sb.ToString();
             Logger.logDebug(String.Format("displayThreads ", ans));

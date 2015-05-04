@@ -43,23 +43,30 @@ namespace ForumSystem
 
         public string login(string id, string username, string password)
         {
-            ForumSystem forumSystem = ForumSystem.initForumSystem();
-            if (forumSystem.Members.ContainsKey(username))
+            if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
             {
-                Member member = forumSystem.Members[username];
-                if (String.Equals(username, member.Username) && String.Equals(password, member.Password))
-                {
-                    Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in", member.ID, member.Username));
-                    return forumSystem.displayForums();
-                }
-                else
-                {
-                    Logger.logDebug(String.Format("Username: {0}, password{1} failed to log in. Reason: member not found"));
-                    return null;
-                }
+                Logger.logError("one of the arguments is empty or null");
+                return null;
             }
             else
-                return null;
+            {
+                ForumSystem forumSystem = ForumSystem.initForumSystem();
+                if (forumSystem.Members.ContainsKey(username))
+                {
+                    Member member = forumSystem.Members[username];
+                    if (String.Equals(username, member.Username) && String.Equals(password, member.Password))
+                    {
+                        Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in", member.ID, member.Username));
+                        return forumSystem.displayForums();
+                    }
+                    else
+                    {
+                        Logger.logDebug(String.Format("Username: {0}, password{1} failed to log in. Reason: member not found"));
+                        return null;
+                    }
+                }
+                else return null;
+            }
         }
     }
 }

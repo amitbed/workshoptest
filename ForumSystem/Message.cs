@@ -49,7 +49,8 @@ namespace ForumSystem
             StringBuilder sb = new StringBuilder();
             sb.Append("Message Id: " + this.ID);
             sb.Append("Message Date: " + Date);
-            sb.Append("Message Content: " + Content + "\n");
+            sb.Append("Message Content: " + Content);
+            sb.AppendLine();
             return sb.ToString();
         }
 

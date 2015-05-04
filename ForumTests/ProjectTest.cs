@@ -110,6 +110,9 @@ namespace ForumTests
             return ans;
         }
 
-
+        public Member getMember(string memberUsername)
+        {
+            return bridge.getMember(memberUsername);
+        }
     }
 }

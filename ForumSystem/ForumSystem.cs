@@ -83,7 +83,8 @@ namespace ForumSystem
             StringBuilder sb = new StringBuilder();
             foreach (string forumName in Forums.Keys)
             {
-                sb.Append(forumName + "\n");
+                sb.Append(forumName);
+                sb.AppendLine();
             }
             return sb.ToString();
         }
@@ -109,9 +110,17 @@ namespace ForumSystem
             else
             {
                 Member toAdd = new Member(username, password, email);
-                Members.Add(toAdd.Username, toAdd);
-                Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, password: {2}, email: {3}", toAdd.ID, username, password, email));
-                return toAdd;
+                if (Members.ContainsKey(username))
+                {
+                    Logger.logDebug(String.Format("A Member with the same user name alredy exist"));
+                    return Members[username];
+                }
+                else
+                {
+                    Members.Add(toAdd.Username, toAdd);
+                    Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, password: {2}, email: {3}", toAdd.ID, username, password, email));
+                    return toAdd;
+                }
             }
         }
 

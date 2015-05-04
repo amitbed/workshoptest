@@ -52,7 +52,8 @@ namespace ForumSystem
             StringBuilder sb = new StringBuilder();
             foreach (string subForumTitle in SubForums.Keys)
             {
-                sb.Append(subForumTitle + "\n");
+                sb.Append(subForumTitle);
+                sb.AppendLine();
             }
             return sb.ToString();
         }
