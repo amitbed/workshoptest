@@ -25,7 +25,8 @@ namespace ForumSystem
         
         public string Password { get; set; }
         public List<string> oldPasswords { get; set; }
-        
+        public Dictionary<string, string> PasswordQuestion { get; set; }
+
         public Member() { }
 
         public Member(string username, string password, string emailAddress)
@@ -61,6 +62,7 @@ namespace ForumSystem
                 this.MemberType = (int)Types.Regular;
                 this.NumOfPublishedMessages = 0;
                 this.oldPasswords = new List<string>();
+                this.PasswordQuestion = new Dictionary<string, string>();
                 Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}", ID, Username, Password, emailAddress));
             }
         }
@@ -78,7 +80,6 @@ namespace ForumSystem
             {
                 this.MemberType = (int)Types.Gold;
             }
-
         }
 
         public void logout()
@@ -97,7 +98,7 @@ namespace ForumSystem
             }
             else
             {
-                Logger.logError(String.Format("the password: {0} has already been used", newPasword);
+                Logger.logError(String.Format("the password: {0} has already been used", newPasword));
             }
         }
     }
