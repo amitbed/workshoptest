@@ -38,3 +38,4 @@ C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramewor
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
+C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
