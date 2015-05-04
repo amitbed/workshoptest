@@ -51,10 +51,10 @@ namespace ForumSystem
                 this.TimeLoggedIn = 0;
                 this.ID = IdGen.generateMemberId();
                 this.isActive = true;
-                this.myForums = new List<string>();
-                this.mySubForums = new List<string>();
-                this.myThreads = new List<string>();
-                this.myFriends = new List<string>();
+                this.MyForums = new List<string>();
+                this.MySubForums = new List<string>();
+                this.MyThreads = new List<string>();
+                this.MyFriends = new List<string>();
                 this.MemberType = (int)Types.Regular;
                 Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}", ID, Username, Password, emailAddress));
             }
