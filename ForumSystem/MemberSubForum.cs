@@ -82,7 +82,14 @@ namespace ForumSystem
                 Thread currThread = Threads[threadName];
                 if (currThread.Messages.ContainsKey(messageTopic))
                 {
+                    Message currMessage = currThread.Messages[messageTopic];
 
+                    if (memberUsername.Equals(currMessage.UserName))
+                    {
+                        currMessage.delete();
+                        currThread.Messages.Remove(messageTopic);
+                        Logger.logDebug(string.Format("Message: {0} was succesfully removed", messageTopic));
+                    }
                 }
                 else
                 {
