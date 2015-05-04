@@ -6,11 +6,12 @@ namespace unitTestingDevelopers
     [TestClass]
     public class GuestUT
     {
+        ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
         [TestMethod]
         public void registerTest()
         {
             bool ans = false;
-            ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
+         
             Guest Nofar = new Guest();
             Nofar.register("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
             if (system.Members.ContainsKey("benshnof"))
@@ -19,5 +20,16 @@ namespace unitTestingDevelopers
             }
             Assert.IsTrue(ans);
         }
+
+        [TestMethod]
+        public void loginTest()
+        {
+            Guest NofarGuest = new Guest();
+            String nofarID = NofarGuest.register("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
+            String forumList = NofarGuest.login(nofarID, "benshnof", "matanShoham");
+            String realForumList = system.displayForums();
+            Assert.IsTrue(String.Equals(forumList, realForumList));
+        }
+
     }
 }
