@@ -75,10 +75,10 @@ namespace ForumSystem
 
         public void removeMessage(string memberUsername, string threadName, string messageTopic)
         {
-            if (checkThreadAndMsg(threadName, msgTopic))
+            if (checkThreadAndMsg(threadName, messageTopic))
             {
                 Thread currThread = Threads[threadName];
-                Message currMessage = currThread.Messages[msgTopic];
+                Message currMessage = currThread.Messages[messageTopic];
 
                 if (memberUsername.Equals(currMessage.UserName))
                 {
