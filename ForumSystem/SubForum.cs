@@ -53,7 +53,7 @@ namespace ForumSystem
                 else
                 {
                     Logger.logError("Failed to create a new sub-forum. Reason: too many moderators");
-                }   
+                }
             }
         }
 
@@ -62,7 +62,7 @@ namespace ForumSystem
 
         //This method displays a sub-forum's threads
         public string displayThreads()
-        {               
+        {
             StringBuilder sb = new StringBuilder();
             foreach (string threadID in Threads.Keys)
             {
@@ -84,6 +84,22 @@ namespace ForumSystem
             {
                 Logger.logDebug(String.Format("enterd to thread {1} as guest", threadName));
                 return threadToEnter;
+            }
+        }
+
+
+        //This method creates a new thread
+        public void createThread(Thread threadToAdd)
+        {
+
+            if (threadToAdd != null)
+            {
+                Threads.Add(threadToAdd.Title, threadToAdd);
+                Logger.logDebug(string.Format("The new thread: {0} has been created successfully with id {1}", threadToAdd.Title, threadToAdd.ID));
+            }
+            else
+            {
+                Logger.logError("Failed to add thread. Reason: thread is null");
             }
         }
     }

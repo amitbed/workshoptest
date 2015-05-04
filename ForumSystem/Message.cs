@@ -9,7 +9,7 @@ namespace ForumSystem
     public class Message
     {
         //Overload Contructor
-        public Message(string content, string userId)
+        public Message(string title, string content, string userId)
         {
             if ((String.IsNullOrEmpty(content)) || (String.IsNullOrEmpty(userId)))
             {
@@ -26,6 +26,7 @@ namespace ForumSystem
             else
             {
                 this.ID = IdGen.generateMessageId();
+                this.Title = title;
                 this.Content = content;
                 this.Date = DateTime.Now;
                 this.UserID = userId;
@@ -35,6 +36,7 @@ namespace ForumSystem
         //Member Variables
         public string ID { get; set; }
         public string Content { get; set; }
+        public string Title { get; set; }
         public DateTime Date { get; set; }
         public string UserID { get; set; }
         public List<Message> Replies { get; set; }
@@ -49,6 +51,20 @@ namespace ForumSystem
             sb.Append("Message Date: " + Date);
             sb.Append("Message Content: " + Content + "\n");
             return sb.ToString();
+        }
+
+        public void postReply(Message reply, string replierID)
+        {
+
+            if (reply != null)
+            {
+                Replies.Add(reply);
+                Logger.logDebug(string.Format("The new reply: {0} has been created successfully with id {1}", reply.Title, reply.ID));
+            }
+            else
+            {
+                Logger.logError("Failed to add reply. Reason: reply is null");
+            }
         }
     }
 }

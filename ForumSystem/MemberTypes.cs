@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace ForumSystem
 {
-    class MemberTypes
-    {
-        enum Types { Gold, Silver, Regular };
-    }
+    public enum Types { Gold, Silver, Regular };
+
 }
