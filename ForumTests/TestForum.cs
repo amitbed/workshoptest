@@ -117,7 +117,7 @@ namespace ForumTests
         {
             Guest NofarGuest = new Guest();
             Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
-            Forum currForum = Nofar.enterForum("Food");
+            Forum currForum = system.enterForum(Nofar, "Food");
             AdminForum tempAdminType = new AdminForum();
             Assert.IsNotInstanceOfType(Nofar, tempAdminType.GetType());
  
