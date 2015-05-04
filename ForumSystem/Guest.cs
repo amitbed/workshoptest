@@ -44,9 +44,9 @@ namespace ForumSystem
         public string login(string id, string username, string password)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
-            if (forumSystem.Members.ContainsKey(id))
+            if (forumSystem.Members.ContainsKey(username))
             {
-                Member member = forumSystem.Members[id];
+                Member member = forumSystem.Members[username];
                 if (String.Equals(username, member.Username) && String.Equals(password, member.Password))
                 {
                     Logger.logDebug(String.Format("Member: ID:{0} usernamer:{1} has logged in", member.ID, member.Username));
