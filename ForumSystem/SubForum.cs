@@ -88,19 +88,5 @@ namespace ForumSystem
         }
 
 
-        //This method creates a new thread
-        public void createThread(Thread threadToAdd)
-        {
-
-            if (threadToAdd != null)
-            {
-                Threads.Add(threadToAdd.Title, threadToAdd);
-                Logger.logDebug(string.Format("The new thread: {0} has been created successfully with id {1}", threadToAdd.Title, threadToAdd.ID));
-            }
-            else
-            {
-                Logger.logError("Failed to add thread. Reason: thread is null");
-            }
-        }
     }
 }

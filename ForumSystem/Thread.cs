@@ -69,5 +69,14 @@ namespace ForumSystem
                 return false;
             }
         }
+
+        public void delete()
+        {
+            this.Title = null;
+            this.Messages = null;
+            Logger.logDebug(String.Format("Thread {0} has been deleted", this.ID));
+            this.ID = null;
+        }
+
     }
 }

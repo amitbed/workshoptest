@@ -8,11 +8,21 @@ namespace ForumSystem
 {
     public class ModeratorSubForum : MemberSubForum
     {
-        private MemberSubForum msf;
-
-        public ModeratorSubForum(MemberSubForum msf)
+        List<string> moderators;
+        public ModeratorSubForum(string title, List<string> moderators, string parent, int maxModerators)
+            : base(title, moderators, parent, maxModerators)
         {
-            this.msf = msf;
+            this.moderators = moderators;
         }
+
+        public void removeThread(string threadName)
+        {
+            Thread currThread = Threads[threadName];
+            if (currThread != null)
+            {
+                currThread.delete();
+            }
+        }
+
     }
 }

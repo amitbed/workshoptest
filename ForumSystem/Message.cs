@@ -66,5 +66,15 @@ namespace ForumSystem
                 Logger.logError("Failed to add reply. Reason: reply is null");
             }
         }
+
+        public void delete()
+        {
+            this.ID = null;
+            this.Title = null;
+            this.Content = null;
+            this.UserID = null;
+            this.Replies = null;
+
+        }
     }
 }

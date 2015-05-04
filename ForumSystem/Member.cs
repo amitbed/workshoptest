@@ -10,7 +10,7 @@ namespace ForumSystem
     {
         public string ID { get; set; }
         public string Username { get; set; }
-        private string email;
+        public string Email { get; set; }
         public string Password { get; set; }
         private bool isActive;
         public List<string> MyFriends { get; set; }
@@ -47,7 +47,7 @@ namespace ForumSystem
             {
                 this.Username = username;
                 this.Password = password;
-                this.email = emailAddress;
+                this.Email = emailAddress;
                 this.TimeLoggedIn = 0;
                 this.ID = IdGen.generateMemberId();
                 this.isActive = true;
