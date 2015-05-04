@@ -17,9 +17,9 @@ namespace ForumSystem
         }
 
         //This method creates a new thread with openning message
-        public void createThread(Message msg ,string threadToAddName)
+        public void createThread(Message msg, string threadToAddName)
         {
-            if (threadToAddName!=string.Empty && threadToAddName!=null)
+            if (threadToAddName != string.Empty && threadToAddName != null)
             {
                 Thread threadToAdd = Threads[threadToAddName];
                 if (threadToAdd != null)
@@ -39,15 +39,12 @@ namespace ForumSystem
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
             string username = msg.UserName;
-            Member currMember = forumSystem.Members[username];
-            if (currMember != null)
+            if (checkThreadAndMsg(relatedThreadName, msg.Title))
             {
+                Thread currThread = Threads[relatedThreadName];
+                Member currMember = forumSystem.Members[username];
                 Logger.logDebug(string.Format("Member: {0} increase number of published messages", username));
                 currMember.numOfPublishedMessages++;
-            }
-            Thread currThread = Threads[relatedThreadName];
-            if (currThread != null)
-            {
                 currThread.Messages.Add(msg.Title, msg);
                 Logger.logDebug(string.Format("Message: {0} has added to thread", msg.Title));
             }
@@ -63,7 +60,7 @@ namespace ForumSystem
                 Logger.logDebug(string.Format("Member: {0} increase number of published messages", username));
                 currMember.numOfPublishedMessages++;
             }
-         
+
             Thread currThread = Threads[threadName];
             if (currThread != null)
             {
@@ -78,25 +75,53 @@ namespace ForumSystem
 
         public void removeMessage(string memberUsername, string threadName, string messageTopic)
         {
-            if (Threads.ContainsKey(threadName)){
+            if (checkThreadAndMsg(threadName, msgTopic))
+            {
                 Thread currThread = Threads[threadName];
-                if (currThread.Messages.ContainsKey(messageTopic))
-                {
-                    Message currMessage = currThread.Messages[messageTopic];
+                Message currMessage = currThread.Messages[msgTopic];
 
-                    if (memberUsername.Equals(currMessage.UserName))
-                    {
-                        currMessage.delete();
-                        currThread.Messages.Remove(messageTopic);
-                        Logger.logDebug(string.Format("Message: {0} was succesfully removed", messageTopic));
-                    }
+                if (memberUsername.Equals(currMessage.UserName))
+                {
+                    currMessage.delete();
+                    currThread.Messages.Remove(messageTopic);
+                    Logger.logDebug(string.Format("Message: {0} was succesfully removed", messageTopic));
                 }
                 else
                 {
                     Logger.logError(string.Format("Msg: {0} does not exist", messageTopic));
                 }
             }
-            Logger.logError(string.Format("Thread: {0} does not exist", threadName));
+            else
+            {
+                Logger.logError(string.Format("Thread: {0} does not exist", threadName));
+            }
+        }
+
+        public void editMessage(string memberUsername, string msgTopic, string msgContent, string threadName)
+        {
+            if (checkThreadAndMsg(threadName, msgTopic))
+            {
+                Thread currThread = Threads[threadName];
+                Message currMessage = currThread.Messages[msgTopic];
+                if (memberUsername.Equals(currMessage.UserName))
+                {
+                    currMessage.Content = msgContent;
+                    Logger.logDebug(string.Format("Message: {0} was succesfully edit", msgTopic));
+                }
+                else
+                {
+                    Logger.logError(string.Format("Msg: {0} does not exist", msgTopic));
+                }
+            }
+            else
+            {
+                Logger.logError(string.Format("Thread: {0} does not exist", threadName));
+            }
+        }
+
+        private bool checkThreadAndMsg(string threadName, string msgTopic)
+        {
+            return (Threads.ContainsKey(threadName) && Threads[threadName].Messages.ContainsKey(msgTopic));
         }
     }
 }
