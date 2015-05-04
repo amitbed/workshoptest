@@ -109,7 +109,7 @@ namespace ForumSystem
             else
             {
                 Member toAdd = new Member(username, password, email);
-                Members.Add(toAdd.ID, toAdd);
+                Members.Add(toAdd.Username, toAdd);
                 Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, password: {2}, email: {3}", toAdd.ID, username, password, email));
                 return toAdd;
             }
@@ -134,16 +134,54 @@ namespace ForumSystem
             }
             else return null;
         }
-        //public string getForumIdByName(string forumName)
-        //{
-        //    foreach (Forum f in Forums.Values)
-        //    {
-        //        if (f.Title.Equals(forumName))
-        //        {
-        //            return f.ID;
-        //        }
-        //    }
-        //    return string.Empty;
-        //}
+
+        public Forum enterForum(Guest guest, string forumName)
+        {
+            if (Forums.ContainsKey(forumName))
+            {
+                Forum forumToEnter = Forums[forumName];
+                if (forumToEnter == null)
+                {
+                    Logger.logError(String.Format("Failed to recieve forum {0}", forumName));
+                    return null;
+                }
+                else
+                {
+                    return Forums[forumName];
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public Forum enterForum(Member member, string forumName)
+        {
+
+            if (Forums.ContainsKey(forumName))
+            {
+                Forum forumToEnter = Forums[forumName];
+                if (forumToEnter == null)
+                {
+                    Logger.logError(String.Format("Failed to recieve forum {0}", forumName));
+                    return null;
+                }
+                else
+                {
+                    if (member.MyForums.Contains(forumToEnter.ID))
+                    {
+                        Logger.logDebug(String.Format("{0} enterd to forum {1} as Admin", member.ID, forumName));
+                        return forumSystem.AdminsForums[forumName];
+                    }
+                    else
+                    {
+                        Logger.logDebug(String.Format("{0} enterd to forum {1} as guest", member.ID, forumName));
+                        return forumToEnter;
+                    }
+                }
+            }
+            else return null;
+        }
     }
 }

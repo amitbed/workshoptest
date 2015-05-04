@@ -10,18 +10,19 @@ namespace ForumSystem
     {
         public string ID { get; set; }
         public string Username { get; set; }
-        private string email;
+        public string Email { get; set; }
         public string Password { get; set; }
         private bool isActive;
-        private List<string> myFriends;
-        private List<string> myThreads;
-        private List<string> mySubForums;
-        private List<string> myForums;
+        public List<string> MyFriends { get; set; }
+        public List<string> MyThreads { get; set; }
+        public List<string> MySubForums { get; set; }
+        public List<string> MyForums { get; set; }
         //private double seniority;
         public long TimeLoggedIn { get; set; }
         //private int numberOfMessagesLastYear;
         public long NumberOfMessages { get; set; }
         public int MemberType { get; set; }
+        public int numOfPublishedMessages { get; set; }
 
         public Member() { }
 
@@ -47,47 +48,21 @@ namespace ForumSystem
             {
                 this.Username = username;
                 this.Password = password;
-                this.email = emailAddress;
+                this.Email = emailAddress;
                 this.TimeLoggedIn = 0;
                 this.ID = IdGen.generateMemberId();
                 this.isActive = true;
-                this.myForums = new List<string>();
-                this.mySubForums = new List<string>();
-                this.myThreads = new List<string>();
-                this.myFriends = new List<string>();
+                this.MyForums = new List<string>();
+                this.MySubForums = new List<string>();
+                this.MyThreads = new List<string>();
+                this.MyFriends = new List<string>();
                 this.MemberType = (int)Types.Regular;
+                this.numOfPublishedMessages = 0;
                 Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}", ID, Username, Password, emailAddress));
             }
         }
 
-        public Forum enterForum(string forumName)
-        {
-            ForumSystem forumSystem = ForumSystem.initForumSystem();
-
-            if (forumSystem.Forums.ContainsKey(forumName))
-            {
-                Forum forumToEnter = forumSystem.Forums[forumName];
-                if (forumToEnter == null)
-                {
-                    Logger.logError(String.Format("Failed to recieve forum {0}", forumName));
-                    return null;
-                }
-                else
-                {
-                    if (myForums.Contains(forumToEnter.ID))
-                    {
-                        Logger.logDebug(String.Format("{0} enterd to forum {1} as Admin", this.ID, forumName));
-                        return forumSystem.AdminsForums[forumName];
-                    }
-                    else
-                    {
-                        Logger.logDebug(String.Format("{0} enterd to forum {1} as guest", this.ID, forumName));
-                        return forumToEnter;
-                    }
-                }
-            }
-            else return null;
-        }
+        
 
         public void upgrade()
         {
