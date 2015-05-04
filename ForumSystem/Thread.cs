@@ -19,7 +19,7 @@ namespace ForumSystem
             {
                 this.ID = IdGen.generateThreadId();
                 this.Title = title;
-                this.Messages = new List<Message>();
+                this.Messages = new Dictionary<string,Message>();
                 Logger.logDebug(String.Format("A new thread has been created. ID: {0}, title: {1}",this.ID,this.Title));
             }
         }
@@ -27,13 +27,13 @@ namespace ForumSystem
         //Member Variables
         public string ID { get; set; }
         public string Title { get; set; }
-        public List<Message> Messages { get; set; }
+        public Dictionary<string, Message> Messages { get; set; }
 
         //Method
         public string displayMessages()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (Message message in Messages)
+            foreach (Message message in Messages.Values)
             {
                 sb.Append(message.displayMessage() + "\n");
             }
@@ -56,11 +56,11 @@ namespace ForumSystem
             }
             else
             {
-                foreach (Message m in Messages)
+                foreach (Message m in Messages.Values)
                 {
-                    if ((m.Equals(messageID)) && (m.UserID.Equals(messageID)))
+                    if ((m.Equals(messageID)) && (m.UserName.Equals(messageID)))
                     {
-                        this.Messages.Remove(m);
+                        this.Messages.Remove(m.Title);
                         Logger.logDebug(String.Format("Message has been removed. ID:{0}",m.ID));
                         return true;
                     }

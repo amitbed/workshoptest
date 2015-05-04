@@ -9,16 +9,16 @@ namespace ForumSystem
     public class Message
     {
         //Overload Contructor
-        public Message(string title, string content, string userId)
+        public Message(string title, string content, string userName)
         {
-            if ((String.IsNullOrEmpty(content)) || (String.IsNullOrEmpty(userId)))
+            if ((String.IsNullOrEmpty(content)) || (String.IsNullOrEmpty(userName)))
             {
                 if (String.IsNullOrEmpty(content))
                 {
                     Logger.logError("Failed to create a new message. Reason: content is empty");
                 }
 
-                if (String.IsNullOrEmpty(userId))
+                if (String.IsNullOrEmpty(userName))
                 {
                     Logger.logError("Failed to create a new message. Reason: ID is empty");
                 }
@@ -29,7 +29,7 @@ namespace ForumSystem
                 this.Title = title;
                 this.Content = content;
                 this.Date = DateTime.Now;
-                this.UserID = userId;
+                this.UserName = userName;
                 this.Replies = new List<Message>();
             }
         }
@@ -38,7 +38,7 @@ namespace ForumSystem
         public string Content { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
-        public string UserID { get; set; }
+        public string UserName { get; set; }
         public List<Message> Replies { get; set; }
 
         //Methods
@@ -72,7 +72,7 @@ namespace ForumSystem
             this.ID = null;
             this.Title = null;
             this.Content = null;
-            this.UserID = null;
+            this.UserName = null;
             this.Replies = null;
 
         }

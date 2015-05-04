@@ -45,8 +45,9 @@ namespace ForumSystem
                     this.ID = IdGen.generateSubForumId();
                     this.Threads = new Dictionary<string, Thread>();
                     this.Title = title;
-                    this.MaxModerators = maxModerators;
+                    this.MaxModerators = maxModerators + (getParentForum(parent)).Admins.Count;
                     this.Moderators = moderators;
+                    Moderators.Concat((getParentForum(parent)).Admins);
                     this.members = new List<Member>();
                     Logger.logDebug(String.Format("A new sub-forum has been created. ID: {0}, title: {1}", this.ID, this.Title));
                 }
@@ -60,6 +61,12 @@ namespace ForumSystem
 
         //Methods
 
+        public Forum getParentForum(string parentName)
+        {
+            ForumSystem forumSystem = ForumSystem.initForumSystem();
+            return forumSystem.Forums[parentName];
+        }
+
         //This method displays a sub-forum's threads
         public string displayThreads()
         {
@@ -68,25 +75,35 @@ namespace ForumSystem
             {
                 sb.Append(threadID + ". " + Threads[threadID].Title + "\n");
             }
-            return sb.ToString();
+            string ans = sb.ToString();
+            Logger.logDebug(String.Format("displayThreads ", ans));
+            return ans;
         }
 
-        public Thread enterThread(string threadName)
+        public Thread SearchThread(string threadName)
         {
             ForumSystem forumSystem = ForumSystem.initForumSystem();
-            Thread threadToEnter = Threads[threadName];
-            if (threadToEnter == null)
+            Thread threadToFind = Threads[threadName];
+            if (threadToFind == null)
             {
                 Logger.logError(String.Format("Failed to recieve thread {0}", threadName));
                 return null;
             }
             else
             {
-                Logger.logDebug(String.Format("enterd to thread {1} as guest", threadName));
-                return threadToEnter;
+                Logger.logDebug(String.Format("find thread {1} ", threadName));
+                return threadToFind;
             }
         }
 
-
+        public void delete()
+        {
+            this.Threads = new Dictionary<string, Thread>();
+            this.Title = null;
+            this.Moderators = null;
+            this.members = new List<Member>();
+            Logger.logDebug(String.Format("subForum: {0} has been deleted", this.ID));
+            this.ID = null;
+        }
     }
 }

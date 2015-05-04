@@ -51,9 +51,15 @@ namespace ForumSystem
 
         }
 
-        public void deleteSubForum(string subForumID)
+        public void removeSubForum(string subForumName)
         {
-            //TODO: add implementation
+            SubForum currSubForum = SubForums[subForumName];
+            if (currSubForum != null)
+            {
+                currSubForum.delete();
+                SubForums.Remove(subForumName);
+
+            }
         }
 
         public void upgradeMemberID(string memberID)

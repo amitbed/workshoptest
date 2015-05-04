@@ -109,7 +109,7 @@ namespace ForumSystem
             else
             {
                 Member toAdd = new Member(username, password, email);
-                Members.Add(toAdd.ID, toAdd);
+                Members.Add(toAdd.Username, toAdd);
                 Logger.logDebug(String.Format("A new member has been added. ID: {0}, username: {1}, password: {2}, email: {3}", toAdd.ID, username, password, email));
                 return toAdd;
             }

@@ -21,6 +21,7 @@ namespace ForumSystem
             if (currThread != null)
             {
                 currThread.delete();
+                Threads.Remove(threadName);
             }
         }
 

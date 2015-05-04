@@ -22,6 +22,7 @@ namespace ForumSystem
         //private int numberOfMessagesLastYear;
         public long NumberOfMessages { get; set; }
         public int MemberType { get; set; }
+        public int numOfPublishedMessages { get; set; }
 
         public Member() { }
 
@@ -56,6 +57,7 @@ namespace ForumSystem
                 this.MyThreads = new List<string>();
                 this.MyFriends = new List<string>();
                 this.MemberType = (int)Types.Regular;
+                this.numOfPublishedMessages = 0;
                 Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}", ID, Username, Password, emailAddress));
             }
         }
