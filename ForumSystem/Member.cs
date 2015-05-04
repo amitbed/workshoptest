@@ -11,19 +11,21 @@ namespace ForumSystem
         public string ID { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
         private bool isActive;
+
         public List<string> MyFriends { get; set; }
         public List<string> MyThreads { get; set; }
         public List<string> MySubForums { get; set; }
         public List<string> MyForums { get; set; }
-        //private double seniority;
+
         public long TimeLoggedIn { get; set; }
-        //private int numberOfMessagesLastYear;
         public long NumberOfMessages { get; set; }
         public int MemberType { get; set; }
-        public int numOfPublishedMessages { get; set; }
-
+        public int NumOfPublishedMessages { get; set; }
+        
+        public string Password { get; set; }
+        public List<string> oldPasswords { get; set; }
+        
         public Member() { }
 
         public Member(string username, string password, string emailAddress)
@@ -57,7 +59,8 @@ namespace ForumSystem
                 this.MyThreads = new List<string>();
                 this.MyFriends = new List<string>();
                 this.MemberType = (int)Types.Regular;
-                this.numOfPublishedMessages = 0;
+                this.NumOfPublishedMessages = 0;
+                this.oldPasswords = new List<string>();
                 Logger.logDebug(String.Format("A new user has been created. ID: {0} username: {1}, password: {2}, email: {3}", ID, Username, Password, emailAddress));
             }
         }
@@ -84,5 +87,18 @@ namespace ForumSystem
             this.TimeLoggedIn += DateTime.Now.Millisecond;
         }
 
+        public void changePassword(string newPasword)
+        {
+            if (!oldPasswords.Contains(newPasword))
+            {
+                this.oldPasswords.Add(this.Password);
+                this.Password = newPasword;
+                Logger.logDebug(String.Format("the password for {0} has been changed to: {1}", Username, newPasword));
+            }
+            else
+            {
+                Logger.logError(String.Format("the password: {0} has already been used", newPasword);
+            }
+        }
     }
 }
