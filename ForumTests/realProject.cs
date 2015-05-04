@@ -16,24 +16,23 @@ namespace ForumTests
             system.addForum(f);
             return f;
         }
-
-        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
-        {
-            SubForum sb = new SubForum(title, moderators, parent, maxModerators);
-            AdminForum f = system.
-                enterForum(parent);
-            if (f != null)
-            {
-                f.addSubForum(sb);
-            }
-            else
-            {
-                f = new Forum(parent, moderators);  //(parent, moderators);
-                f.addSubForum(sb);
-            }
-            return sb;
-        }
-
+        /*
+                public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
+                {
+                    SubForum sb = new SubForum(title, moderators, parent, maxModerators);
+                    AdminForum f = system.enterForum(parent);
+                    if (f != null)
+                    {
+                        f.addSubForum(sb);
+                    }
+                    else
+                    {
+                        f = new Forum(parent, moderators);  //(parent, moderators);
+                        f.addSubForum(sb);
+                    }
+                    return sb;
+                }
+                    */
         public Member createMember(string username, string password, string email)
         {
             Guest g = new Guest();

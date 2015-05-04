@@ -49,12 +49,12 @@ namespace ForumTests
         {
             return system.searchForum(forumName);
         }
-
+        /*
         public SubForum setUpSubForum(string title, List<string> moderators, string parent, int maxModerators)
         {
             return bridge.createSubForum(title, moderators, parent, maxModerators);
         }
-
+        */
         public void Register(Guest g, string username, string password, string email)
         {
             bridge.register(g, username, password, email);

@@ -81,10 +81,10 @@ namespace ForumTests
             List<string> moderators = new List<string>();
             moderators.Add(base.Sagi.ID);
             List<SubForum> FoodSubs = new List<SubForum>();
-            SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Food");
-            SubForum ChosherRecepies = setUpSubForum("ChosherRecepies", moderators, "Food");
-            FoodSubs.Add(PassoverRecepies);
-            FoodSubs.Add(ChosherRecepies);
+     //       SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Food");
+       //     SubForum ChosherRecepies = setUpSubForum("ChosherRecepies", moderators, "Food");
+       //     FoodSubs.Add(PassoverRecepies);
+      //      FoodSubs.Add(ChosherRecepies);
             Assert.IsTrue(subForumInForum(FoodSubs, system.searchForum("Food")));
         }
 
@@ -94,8 +94,8 @@ namespace ForumTests
             List<string> moderators = new List<string>();
             moderators.Add(base.Sagi.ID);
             List<SubForum> FoodSubs = new List<SubForum>();
-            SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Ochel");
-            FoodSubs.Add(PassoverRecepies);
+      //      SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Ochel");
+       //     FoodSubs.Add(PassoverRecepies);
             Forum f = system.searchForum("Food");
             Assert.IsFalse(subForumInForum(FoodSubs, f));
         }
@@ -106,8 +106,8 @@ namespace ForumTests
             List<string> moderators = new List<string>();
             moderators.Add("sagiav");
             List<SubForum> FoodSubs = new List<SubForum>();
-            SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Food");
-            FoodSubs.Add(PassoverRecepies);
+        //    SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Food");
+      //      FoodSubs.Add(PassoverRecepies);
             Forum f =  system.searchForum("Dating");
             Assert.IsFalse(subForumInForum(FoodSubs,f));
         }

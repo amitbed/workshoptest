@@ -39,7 +39,7 @@ namespace ForumTests
             }
             return null;
         }
-
+        /*
         public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
         {
             if (this.real != null)
@@ -48,7 +48,7 @@ namespace ForumTests
             }
             return null;
         }
-
+        */
         public Member createMember(string username, string password, string email)
         {
             if (this.real != null)
