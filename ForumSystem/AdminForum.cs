@@ -30,15 +30,18 @@ namespace ForumSystem
             }
         }
 
-        public void addSubForum(SubForum subForum)
+        public void addSubForum(SubForum subForum, MemberSubForum memberSubForum, ModeratorSubForum moderatorSubForum)
         {
-            if (subForum != null)
+            if (subForum != null && memberSubForum != null && moderatorSubForum != null)
             {
-                SubForums.Add(subForum.Title, subForum);
-                MemberSubForum msf = new MemberSubForum(subForum);
-                MemberSubForums.Add(subForum.Title, msf);
-                ModeratorSubForums.Add(subForum.Title, new ModeratorSubForum(msf));
+                //MemberSubForum msf = new MemberSubForum(subForum.Title, subForum.Moderators, this.Title, subForum.MaxModerators);
+                //SubForums.Add(subForum.Title, subForum);
+                //MemberSubForums.Add(subForum.Title, msf);
+                //ModeratorSubForums.Add(subForum.Title, new ModeratorSubForum(msf));
 
+                base.SubForums.Add(subForum.Title ,subForum);
+                base.MemberSubForums.Add(memberSubForum.Title, memberSubForum);
+                base.ModeratorSubForums.Add(moderatorSubForum.Title, moderatorSubForum);
                 Logger.logDebug(string.Format("The new sub forum: {0} has been created successfully with id {1}", subForum.Title, subForum.ID));
             }
             else

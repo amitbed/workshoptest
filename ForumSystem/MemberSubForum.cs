@@ -8,11 +8,10 @@ namespace ForumSystem
 {
     public class MemberSubForum : SubForum
     {
-        private SubForum subForum;
         public MemberSubForum() { }
-        public MemberSubForum(SubForum subForum)
+        public MemberSubForum(string title, List<string> moderators, string parent, int maxModerators): base(title, moderators, parent, maxModerators)
         {
-            this.subForum = subForum;
+            
         }
     }
 }

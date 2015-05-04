@@ -13,10 +13,10 @@ namespace ForumSystem
         private string email;
         public string Password { get; set; }
         private bool isActive;
-        private List<string> myFriends;
-        private List<string> myThreads;
-        private List<string> mySubForums;
-        private List<string> myForums;
+        public List<string> MyFriends { get; set; }
+        public List<string> MyThreads { get; set; }
+        public List<string> MySubForums { get; set; }
+        public List<string> MyForums { get; set; }
         //private double seniority;
         public long TimeLoggedIn { get; set; }
         //private int numberOfMessagesLastYear;
@@ -60,34 +60,7 @@ namespace ForumSystem
             }
         }
 
-        public Forum enterForum(string forumName)
-        {
-            ForumSystem forumSystem = ForumSystem.initForumSystem();
-
-            if (forumSystem.Forums.ContainsKey(forumName))
-            {
-                Forum forumToEnter = forumSystem.Forums[forumName];
-                if (forumToEnter == null)
-                {
-                    Logger.logError(String.Format("Failed to recieve forum {0}", forumName));
-                    return null;
-                }
-                else
-                {
-                    if (myForums.Contains(forumToEnter.ID))
-                    {
-                        Logger.logDebug(String.Format("{0} enterd to forum {1} as Admin", this.ID, forumName));
-                        return forumSystem.AdminsForums[forumName];
-                    }
-                    else
-                    {
-                        Logger.logDebug(String.Format("{0} enterd to forum {1} as guest", this.ID, forumName));
-                        return forumToEnter;
-                    }
-                }
-            }
-            else return null;
-        }
+        
 
         public void upgrade()
         {
