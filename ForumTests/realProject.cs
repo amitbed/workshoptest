@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,23 +16,7 @@ namespace ForumTests
             system.addForum(f);
             return f;
         }
-        /*
-                public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
-                {
-                    SubForum sb = new SubForum(title, moderators, parent, maxModerators);
-                    AdminForum f = system.enterForum(parent);
-                    if (f != null)
-                    {
-                        f.addSubForum(sb);
-                    }
-                    else
-                    {
-                        f = new Forum(parent, moderators);  //(parent, moderators);
-                        f.addSubForum(sb);
-                    }
-                    return sb;
-                }
-                    */
+
         public Member createMember(string username, string password, string email)
         {
             Guest g = new Guest();
@@ -74,81 +57,3 @@ namespace ForumTests
         }
     }
 }
-=======
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ForumSystem;
-
-namespace ForumTests
-{
-    public class realProject : BridgeProject
-    {
-        ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
-
-        public Forum createForum(string title, List<string> admins)
-        {
-            Forum f = new Forum(title, admins);
-            system.addForum(f);
-            return f;
-        }
-
-        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators,Member member)
-        {
-            SubForum sb = new SubForum(title, moderators, parent, maxModerators);
-            //Forum forum = system.enterForum(parent);
-            AdminForum f = system.enterForum(member,parent);
-            if (f != null)
-            {
-                f.addSubForum(sb);
-            }
-            else
-            {
-                f = new Forum(parent, moderators);  //(parent, moderators);
-                f.addSubForum(sb);
-            }
-            return sb;
-        }
-
-        public Member createMember(string username, string password, string email)
-        {
-            Guest g = new Guest();
-            string memberID = g.register(username, password, email);
-            return system.Members[memberID];
-        }
-
-        public void removeSubForum(string sfName, string forumName)
-        {
-            Forum f = system.searchForum(forumName);
-            SubForum sf = f.SearchSubForum(sfName);
-
-            //TODO:
-        }
-
-        public string login(Guest g,string id, string username, string password)
-        {
-            return g.login(id,username,password);
-        }
-
-
-        public void register(Guest g, string username, string password, string email)
-        {
-            g.register(username, password, email);
-        }
-
-
-        public bool IsSubForumExists(string subForumName, string forumName)
-        {
-            Forum forum =  system.Forums[forumName];
-            return (forum.SubForums[subForumName] != null);
-        }
-
-
-        public void addMemberToSystem(Member member)
-        {
-            system.addMember(member.Username,member.Password,member.Email);
-        }
-    }
-}
->>>>>>> origin/master
