@@ -10,6 +10,10 @@ namespace ForumDB1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("bbb");
+            Console.WriteLine("ccc");
+            var db = new ForumDBContext();
+            Console.WriteLine("aaa");
         }
     }
 }
