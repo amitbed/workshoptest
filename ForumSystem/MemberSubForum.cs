@@ -44,7 +44,7 @@ namespace ForumSystem
                 Thread currThread = Threads[relatedThreadName];
                 Member currMember = forumSystem.Members[username];
                 Logger.logDebug(string.Format("Member: {0} increase number of published messages", username));
-                currMember.numOfPublishedMessages++;
+                currMember.NumOfPublishedMessages++;
                 currThread.Messages.Add(msg.Title, msg);
                 Logger.logDebug(string.Format("Message: {0} has added to thread", msg.Title));
             }
@@ -58,7 +58,7 @@ namespace ForumSystem
             if (currMember != null)
             {
                 Logger.logDebug(string.Format("Member: {0} increase number of published messages", username));
-                currMember.numOfPublishedMessages++;
+                currMember.NumOfPublishedMessages++;
             }
 
             Thread currThread = Threads[threadName];
