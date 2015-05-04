@@ -40,11 +40,11 @@ namespace ForumTests
             return null;
         }
 
-        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
+        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators, Member member)
         {
             if (this.real != null)
             {
-                return (real.createSubForum(title, moderators, parent,maxModerators));
+                return (real.createSubForum(title, moderators, parent,maxModerators,member));
             }
             return null;
         }

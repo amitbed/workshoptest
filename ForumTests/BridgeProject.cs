@@ -9,7 +9,7 @@ namespace ForumTests
     interface BridgeProject
     {
         Forum createForum(string title, List<string> admins);
-        SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators);
+        SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators,Member member);
         Member createMember(string username, string password, string email);
         void register(Guest g, string username, string password, string email);
         void removeSubForum(string sfName, string forumName);

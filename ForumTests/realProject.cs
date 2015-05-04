@@ -17,11 +17,11 @@ namespace ForumTests
             return f;
         }
 
-        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
+        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators,Member member)
         {
             SubForum sb = new SubForum(title, moderators, parent, maxModerators);
             //Forum forum = system.enterForum(parent);
-            AdminForum f = system.enterForum(parent);
+            AdminForum f = system.enterForum(member,parent);
             if (f != null)
             {
                 f.addSubForum(sb);
@@ -70,7 +70,7 @@ namespace ForumTests
 
         public void addMemberToSystem(Member member)
         {
-            throw new NotImplementedException();
+            system.addMember(member.Username,member.Password,member.Email);
         }
     }
 }
