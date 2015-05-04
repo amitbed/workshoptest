@@ -44,7 +44,7 @@ namespace ForumTests
         {
             if (this.real != null)
             {
-                return (real.createSubForum(title, moderators, parent));
+                return (real.createSubForum(title, moderators, parent,maxModerators));
             }
             return null;
         }

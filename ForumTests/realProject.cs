@@ -20,8 +20,8 @@ namespace ForumTests
         public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
         {
             SubForum sb = new SubForum(title, moderators, parent, maxModerators);
-            AdminForum f = system.
-                enterForum(parent);
+            //Forum forum = system.enterForum(parent);
+            AdminForum f = system.enterForum(parent);
             if (f != null)
             {
                 f.addSubForum(sb);
