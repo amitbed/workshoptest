@@ -34,3 +34,4 @@ C:\Users\ifat\Desktop\Project1\workshoptest\ForumTests\bin\Debug\EntityFramework
 C:\Users\ifat\Desktop\Project1\workshoptest\ForumTests\obj\Debug\ForumTests.dll
 C:\Users\ifat\Desktop\Project1\workshoptest\ForumTests\obj\Debug\ForumTests.pdb
 C:\Users\ifat\Desktop\Project1\workshoptest\ForumTests\obj\Debug\ForumTests.csprojResolveAssemblyReference.cache
+\\psf\Home\Documents\workshoptest\ForumTests\obj\Debug\ForumTests.csprojResolveAssemblyReference.cache

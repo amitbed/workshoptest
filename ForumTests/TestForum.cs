@@ -118,11 +118,14 @@ namespace ForumTests
             Guest NofarGuest = new Guest();
             Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
             Forum currForum = Nofar.enterForum("Food");
-            List<string> moderators = new List<string>();
-            moderators.Add(Nofar.ID);
-            SubForum ShavuotRecepies = setUpSubForum("ShavuotRecepies", moderators, "Food");
-            currForum.addSubForum(ShavuotRecepies);
-            Assert.IsTrue(IsSubForumExists("ShavuotRecepies", "Food"));
+            AdminForum tempAdminType = new AdminForum();
+            Assert.IsNotInstanceOfType(Nofar, tempAdminType.GetType());
+ 
+            //List<string> moderators = new List<string>();
+            //moderators.Add(Nofar.ID);
+            //SubForum ShavuotRecepies = setUpSubForum("ShavuotRecepies", moderators, "Food");
+            //currForum.addSubForum(ShavuotRecepies);
+            //Assert.IsFalse(IsSubForumExists("ShavuotRecepies", "Food"));
         }
 
         [TestMethod]

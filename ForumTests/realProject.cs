@@ -10,29 +10,25 @@ namespace ForumTests
     {
         ForumSystem.ForumSystem system = ForumSystem.ForumSystem.initForumSystem();
 
-        public void addNewaddNewForum(Forum forum)
-        {
-            system.addForum(forum);
-        }
-
         public Forum createForum(string title, List<string> admins)
         {
-            Forum f = new Forum(title, admins, new System.Text.RegularExpressions.Regex(""));
+            Forum f = new Forum(title, admins);
             system.addForum(f);
             return f;
         }
 
-        public SubForum createSubForum(string title, List<string> moderators, string parent)
+        public SubForum createSubForum(string title, List<string> moderators, string parent, int maxModerators)
         {
-            SubForum sb = new SubForum(title, moderators, parent);
-            Forum f = system.searchForum(parent);
+            SubForum sb = new SubForum(title, moderators, parent, maxModerators);
+            AdminForum f = system.
+                enterForum(parent);
             if (f != null)
             {
                 f.addSubForum(sb);
             }
             else
             {
-                f = new Forum(parent, moderators, new System.Text.RegularExpressions.Regex(""));  //(parent, moderators);
+                f = new Forum(parent, moderators);  //(parent, moderators);
                 f.addSubForum(sb);
             }
             return sb;
