@@ -20,7 +20,7 @@ namespace ForumDB1
             }*/
             ForumSystemRepository repository = new ForumSystemRepository();
             Member member = new Member("Shimon", "123456789", "li@gmail.com");
-            
+            repository.dbAddMember(member);
         }
     }
 }

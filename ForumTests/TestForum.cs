@@ -48,8 +48,9 @@ namespace ForumTests
 
             Assert.AreEqual<int>(newNumOfForums, prevNumOfForums + 1);
         }
-
-       //UC6 - register
+        //UC3 - setProperties
+        //UC4 - enter forum
+        //UC5 - register
         [TestMethod]
         public void registerTest()
         {
@@ -65,7 +66,7 @@ namespace ForumTests
             Register(Nofar, "benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
             Assert.IsFalse(isGuestRegistered("nofar"));
         }
-
+        //UC6 - login / logout
         [TestMethod]
         public void loginTest()
         {
@@ -75,7 +76,26 @@ namespace ForumTests
             Assert.IsNotNull(ans);
         }
 
+        [TestMethod]
+        public void loginTest1()
+        {
+            Guest NofarGuest = new Guest();
+            Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
+            String forumList = login(NofarGuest,Nofar.ID, "benshnof", "matanShoham");
+            String realForumList=system.displayForums();
+            Assert.IsTrue(String.Equals(forumList,realForumList));
+        }
 
+        [TestMethod]
+        public void loginFalseTest()
+        {
+            Guest NofarGuest = new Guest();
+            String forumList = login(NofarGuest, "", "benshnof", "matanShoham");
+            String realForumList = system.displayForums();
+            Assert.IsFalse(String.Equals(forumList, realForumList));
+        }
+        // *************ADD logout
+        
         //UC7 - Create SubForum
         //[TestMethod]
         //public void AddNewSubForumTest()
@@ -130,39 +150,28 @@ namespace ForumTests
             //Assert.IsFalse(IsSubForumExists("ShavuotRecepies", "Food"));
         }
 
+        //UC8- view sub forums list
+        //UC14- delete message
         [TestMethod]
-        public void loginTest1()
+        public void deleteMessageFormTheOwnerOfTheMessage()
         {
-            Guest NofarGuest = new Guest();
-            Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
-            String forumList = login(NofarGuest,Nofar.ID, "benshnof", "matanShoham");
-            String realForumList=system.displayForums();
-            Assert.IsTrue(String.Equals(forumList,realForumList));
+            Member a = new Member("sdf", "cvxcv", "dsf@dff.com");
+            Message m = new Message("title", "content", "sdf");
+            //continue
         }
-
-        [TestMethod]
-        public void loginFalseTest()
-        {
-            Guest NofarGuest = new Guest();
-            String forumList = login(NofarGuest, "", "benshnof", "matanShoham");
-            String realForumList = system.displayForums();
-            Assert.IsFalse(String.Equals(forumList, realForumList));
-        }
-
-        public void addMemberToSystemCheckName(Member member)
-        {
-            Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
-            Assert.IsTrue(String.Equals(IfatMember.Username,"ifateli"));
-        }
-
-         public void addMemberToSystemCheckPassword(Member member)
-        {
-            Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
-            Assert.IsTrue(String.Equals(IfatMember.Password,"gilAd"));
-        }
-
       
-        }
+    }
 
 
 }
+        //public void addMemberToSystemCheckName(Member member)
+        //{
+        //    Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
+        //    Assert.IsTrue(String.Equals(IfatMember.Username,"ifateli"));
+        //}
+
+        // public void addMemberToSystemCheckPassword(Member member)
+        //{
+        //    Member IfatMember = CreateMember("ifateli", "gilAd", "ifateli@post.bgu.ac.il");
+        //    Assert.IsTrue(String.Equals(IfatMember.Password,"gilAd"));
+        //}
