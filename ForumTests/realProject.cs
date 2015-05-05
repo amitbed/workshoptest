@@ -13,7 +13,7 @@ namespace ForumTests
         public Forum createForum(string title, List<string> admins)
         {
             Forum f = new Forum(title, admins);
-            system.addForum(f);
+            system.createForum(f);
             return f;
         }
 

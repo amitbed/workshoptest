@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace ForumSystem
 {
-    public class ForumSystem
+    public class ForumSystem : IForumSystemManager
     {
         private static ForumSystem forumSystem = null;
         public Dictionary<string, Forum> Forums { get; set; }
@@ -45,7 +45,7 @@ namespace ForumSystem
 
 
         //This method adds a forum to the main forum system
-        public void addForum(Forum forum)
+        public void createForum(Forum forum)
         {
             if (forum == null)
             {

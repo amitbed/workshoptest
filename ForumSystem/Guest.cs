@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 namespace ForumSystem
 {
-   public class Guest : User
+   public class Guest : User, IGuestManager 
     {
         private ForumSystem forumSystem = ForumSystem.initForumSystem();
 

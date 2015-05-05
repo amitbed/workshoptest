@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumSystem
 {
-    public class Member : User
+    public class Member : User, IMemeberManager
     {
         public string ID { get; set; }
         public string Username { get; set; }
