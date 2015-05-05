@@ -76,9 +76,12 @@ namespace ForumSystem
                 this.MemberType = (int)Types.Silver;
             }
 
-            if (this.MemberType == (int)Types.Silver)
+            else
             {
-                this.MemberType = (int)Types.Gold;
+                if (this.MemberType == (int)Types.Silver)
+                {
+                    this.MemberType = (int)Types.Gold;
+                }
             }
         }
 
