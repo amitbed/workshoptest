@@ -27,7 +27,7 @@ namespace ForumSystem
                 if (String.IsNullOrEmpty(title))
                 {
                     Logger.logError("Failed to create a new sub-forum. Reason: title is empty");
-                }
+                } 
 
                 if (String.IsNullOrEmpty(parent))
                 {

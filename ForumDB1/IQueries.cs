@@ -9,14 +9,31 @@ namespace ForumDB1
 {
     interface IQueries
     {
-        List<Forum> getForums();                //This query retrieves all forums from the DB
-        //void addForum(string forumID);          //This query adds a new forum to the DB
-        //void removeForum(string forumID);       //This query removes a forum from the DB
-        //void updateForum(string forumID);       //This query updates a forum from the DB
+       
+        //Forums
+        Dictionary<string, Forum> dbGetForums();
+        void dbAddForum(Forum forum);
+        void dbRemoveForum(string forumID);
 
-        List<Member> getMembers();              //This query retrieves all members from the DB
-        //void addMember(string memberID);        //This query adds a new member to the DB
-        //void removeMember(string MemberID);     //This query removes a member from the DB
-        //void updateMember(string MemberID);     //This query updates a member from the DB
+        //Sub forums
+        Dictionary<string, SubForum> dbGetSubForum();
+        void dbAddSubForum(SubForum subForum);
+        void dbRemoveSubForum(string subForumID); 
+
+        //Threads
+        Dictionary<string, Thread> dbGetThreads();
+        void dbAddThread(Thread thread);
+        void dbRemoveThread(string ThreadID); 
+
+        //Messages
+        Dictionary<string, Message> dbGetMessages();
+        void dbAddMessage(Message message);
+        void dbRemoveMessage(string messageID);
+
+        //Members
+        Dictionary<string, Member> dbGetMembers();              //This query retrieves all members from the DB
+        void dbAddMember(Member member);        //This query adds a new member to the DB
+        void dbRemoveMember(string MemberID);     //This query removes a member from the DB
+        
     }
 }

@@ -16,7 +16,7 @@ namespace ForumDB1
             return fdbc.Forums.ToList();
         }
 
-        public List<Member> getMembers()
+        public List<Member> dbGetMembers()
         {
             var context = new ForumDBContext();
             var query = from member in context.Members select member;
