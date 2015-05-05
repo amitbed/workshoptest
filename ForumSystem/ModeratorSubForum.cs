@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumSystem
 {
-    public class ModeratorSubForum : MemberSubForum
+    public class ModeratorSubForum : MemberSubForum, IModeratorManager
     {
         List<string> moderators;
         public ModeratorSubForum(string title, List<string> moderators, string parent, int maxModerators)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumSystem
 {
-    public class AdminForum : Forum
+    public class AdminForum : Forum, IAdminManager
     {
         Forum parentforum;
         public int MaxModerators { get; set; }
@@ -62,12 +62,12 @@ namespace ForumSystem
             }
         }
 
-        public void upgradeMemberID(string memberID)
+        public void upgradeMember(string memberID)
         {
             //TODO: add implementation
         }
 
-        public void downgraeMember(string memberID)
+        public void downgradeMember(string memberID)
         {
             //TODO: add implementation
         }

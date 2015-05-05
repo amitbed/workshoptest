@@ -8,7 +8,7 @@ namespace ForumSystem
 {
     interface IGuestManager
     {
-        void register(string username, string password, string email);
-        void login(string username, string password);
+        string register(string username, string password, string email);
+        string login(string username, string password);
     }
 }

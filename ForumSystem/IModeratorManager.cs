@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ForumSystem
 {
-    interface Interface4
+    interface IModeratorManager
     {
+        void removeThread(string threadName);
     }
 }

@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace ForumSystem
 {
-    public class ForumSystem : IForumSystemManager
+    public class ForumSystem
     {
         private static ForumSystem forumSystem = null;
         public Dictionary<string, Forum> Forums { get; set; }
