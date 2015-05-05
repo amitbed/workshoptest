@@ -12,3 +12,5 @@ C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSyste
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
+C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
+C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
