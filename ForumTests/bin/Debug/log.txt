@@ -1,31 +1,32 @@
-02/05/2015 16:51:20 Debug: A new forum system has been created
-02/05/2015 16:51:20 Debug: New member id has been generated: 1
-02/05/2015 16:51:20 Debug: A new user has been created. ID: member1 username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: A new member has been added. ID: member1, username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: New member id has been generated: 2
-02/05/2015 16:51:20 Debug: A new user has been created. ID: member2 username: amitbed, password: ronahayafa, email: amitbed@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: A new member has been added. ID: member2, username: amitbed, password: ronahayafa, email: amitbed@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: New member id has been generated: 3
-02/05/2015 16:51:20 Debug: A new user has been created. ID: member3 username: abadie, password: liatush, email: abadie.post@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: A new member has been added. ID: member3, username: abadie, password: liatush, email: abadie.post@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: New forum id has been generated: 1
-02/05/2015 16:51:20 Debug: The new forum: Dating has been created successfully with id forum1
-02/05/2015 16:51:20 Debug: A new forum has been added to forum system. ID: forum1, Title: Dating
-02/05/2015 16:51:20 Debug: New forum id has been generated: 2
-02/05/2015 16:51:20 Debug: The new forum: Food has been created successfully with id forum2
-02/05/2015 16:51:20 Debug: A new forum has been added to forum system. ID: forum2, Title: Food
-02/05/2015 16:51:20 Debug: New member id has been generated: 4
-02/05/2015 16:51:20 Debug: A new user has been created. ID: member4 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: A new member has been added. ID: member4, username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: New member id has been generated: 5
-02/05/2015 16:51:20 Debug: A new user has been created. ID: member5 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: A new member has been added. ID: member5, username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: New sub forum id has been generated: 1
-02/05/2015 16:51:20 Debug: A new sub-forum has been created. ID: subforum1, title: PassoverRecepies
-02/05/2015 16:51:20 Debug: New member id has been generated: 6
-02/05/2015 16:51:20 Debug: A new user has been created. ID: member6 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: A new member has been added. ID: member6, username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
-02/05/2015 16:51:20 Debug: member6 enterd to forum Food as guest
-02/05/2015 16:51:20 Debug: New sub forum id has been generated: 2
-02/05/2015 16:51:20 Debug: A new sub-forum has been created. ID: subforum2, title: ShavuotRecepies
-02/05/2015 16:51:
+05/05/2015 00:58:36 Debug: A new forum system has been created
+05/05/2015 00:58:36 Debug: New member id has been generated: 1
+05/05/2015 00:58:36 Debug: A new user has been created. ID: member1 username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: A new member has been added. ID: member1, username: sagiav, password: maihayafa, email: sagiav@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: New member id has been generated: 2
+05/05/2015 00:58:36 Debug: A new user has been created. ID: member2 username: amitbed, password: ronahayafa, email: amitbed@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: A new member has been added. ID: member2, username: amitbed, password: ronahayafa, email: amitbed@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: New member id has been generated: 3
+05/05/2015 00:58:36 Debug: A new user has been created. ID: member3 username: abadie, password: liatush, email: abadie.post@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: A new member has been added. ID: member3, username: abadie, password: liatush, email: abadie.post@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: New forum id has been generated: 1
+05/05/2015 00:58:36 Debug: The new forum: Dating has been created successfully with id forum1
+05/05/2015 00:58:36 Debug: A new forum has been added to forum system. ID: forum1, Title: Dating
+05/05/2015 00:58:36 Debug: New forum id has been generated: 2
+05/05/2015 00:58:36 Debug: The new forum: Food has been created successfully with id forum2
+05/05/2015 00:58:36 Debug: A new forum has been added to forum system. ID: forum2, Title: Food
+05/05/2015 00:58:36 Debug: New forum id has been generated: 3
+05/05/2015 00:58:36 Debug: The new forum: Sport has been created successfully with id forum3
+05/05/2015 00:58:36 Debug: A new forum has been added to forum system. ID: forum3, Title: Sport
+05/05/2015 00:58:36 Debug: New member id has been generated: 4
+05/05/2015 00:58:36 Debug: A new user has been created. ID: member4 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: A new member has been added. ID: member4, username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: New member id has been generated: 5
+05/05/2015 00:58:36 Debug: A new user has been created. ID: member5 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: A Member with the same user name alredy exist
+05/05/2015 00:58:36 Debug: Member: ID:member1 usernamer:sagiav has logged in
+05/05/2015 00:58:36 Debug: New member id has been generated: 6
+05/05/2015 00:58:36 Debug: A new user has been created. ID: member6 username: benshnof, password: matanShoham, email: benshnof@post.bgu.ac.il
+05/05/2015 00:58:36 Debug: A Member with the same user name alredy exist
+05/05/2015 00:58:36 Debug: member4 enterd to forum Food as guest
+05/05/2015 00:58:36 Debug: New member id has been generated: 7
+05/05/2015 00:58:36 Debug: A new user has been created. ID: member7 username: benshnof, password

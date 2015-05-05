@@ -35,7 +35,8 @@ namespace ForumSystem
             StringBuilder sb = new StringBuilder();
             foreach (Message message in Messages.Values)
             {
-                sb.Append(message.displayMessage() + "\n");
+                sb.Append(message.displayMessage());
+                sb.AppendLine();
             }
             return sb.ToString();
         }

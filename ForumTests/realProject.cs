@@ -21,7 +21,7 @@ namespace ForumTests
         {
             Guest g = new Guest();
             string memberID = g.register(username, password, email);
-            return system.Members[memberID];
+            return system.Members[username];
         }
 
         public void removeSubForum(string sfName, string forumName)
@@ -54,6 +54,16 @@ namespace ForumTests
         public void addMemberToSystem(Member member)
         {
             throw new NotImplementedException();
+        }
+
+
+        public Member getMember(string userName)
+        {
+            if (system.Members.ContainsKey(userName))
+            {
+                return system.Members[userName];
+            }
+            return null;
         }
     }
 }

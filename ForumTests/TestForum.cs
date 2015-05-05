@@ -42,7 +42,7 @@ namespace ForumTests
         {
             int prevNumOfForums = system.Forums.Count;
             List<string> adminSport = new List<string>();
-            adminSport.Add(base.Dean.ID);
+            adminSport.Add("abadie");
             Forum Sport = createForum("Sport", adminSport);
             int newNumOfForums = system.Forums.Count;
 
@@ -66,58 +66,60 @@ namespace ForumTests
             Assert.IsFalse(isGuestRegistered("nofar"));
         }
 
-        //[TestMethod]
-        //public void loginTest()
-        //{
-        //    Member Sagi = searchMember("sagiav");
-        //    login(Sagi);
-        //}
+        [TestMethod]
+        public void loginTest()
+        {
+            Guest Sagi = new Guest();
+            Member sagiMem = getMember("sagiav");
+            string ans = login(Sagi, sagiMem.ID, sagiMem.Username, sagiMem.Password);
+            Assert.IsNotNull(ans);
+        }
 
 
         //UC7 - Create SubForum
-        [TestMethod]
-        public void AddNewSubForumTest()
-        {
-            List<string> moderators = new List<string>();
-            moderators.Add(base.Sagi.ID);
-            List<SubForum> FoodSubs = new List<SubForum>();
+        //[TestMethod]
+        //public void AddNewSubForumTest()
+        //{
+        //    List<string> moderators = new List<string>();
+        //    moderators.Add(base.Sagi.ID);
+        //    List<SubForum> FoodSubs = new List<SubForum>();
      //       SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Food");
        //     SubForum ChosherRecepies = setUpSubForum("ChosherRecepies", moderators, "Food");
        //     FoodSubs.Add(PassoverRecepies);
       //      FoodSubs.Add(ChosherRecepies);
-            Assert.IsTrue(subForumInForum(FoodSubs, system.searchForum("Food")));
-        }
+        //    Assert.IsTrue(subForumInForum(FoodSubs, system.searchForum("Food")));
+        //}
 
-        [TestMethod]
-        public void AddNewSubForumWithWrongForumNameTest()
-        {
-            List<string> moderators = new List<string>();
-            moderators.Add(base.Sagi.ID);
-            List<SubForum> FoodSubs = new List<SubForum>();
-      //      SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Ochel");
-       //     FoodSubs.Add(PassoverRecepies);
-            Forum f = system.searchForum("Food");
-            Assert.IsFalse(subForumInForum(FoodSubs, f));
-        }
+      //  [TestMethod]
+      //  public void AddNewSubForumWithWrongForumNameTest()
+      //  {
+      //      List<string> moderators = new List<string>();
+      //      moderators.Add(base.Sagi.ID);
+      //      List<SubForum> FoodSubs = new List<SubForum>();
+      ////      SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Ochel");
+      // //     FoodSubs.Add(PassoverRecepies);
+      //      Forum f = system.searchForum("Food");
+      //      Assert.IsFalse(subForumInForum(FoodSubs, f));
+      //  }
 
-        [TestMethod]
-        public void SubForumAddedOnlyToNeededForumTest()
-        {
-            List<string> moderators = new List<string>();
-            moderators.Add("sagiav");
-            List<SubForum> FoodSubs = new List<SubForum>();
+        //[TestMethod]
+        //public void SubForumAddedOnlyToNeededForumTest()
+        //{
+        //    List<string> moderators = new List<string>();
+        //    moderators.Add("sagiav");
+        //    List<SubForum> FoodSubs = new List<SubForum>();
         //    SubForum PassoverRecepies = setUpSubForum("PassoverRecepies", moderators, "Food");
-      //      FoodSubs.Add(PassoverRecepies);
-            Forum f =  system.searchForum("Dating");
-            Assert.IsFalse(subForumInForum(FoodSubs,f));
-        }
+        //    FoodSubs.Add(PassoverRecepies);
+        //    Forum f =  system.searchForum("Dating");
+        //    Assert.IsFalse(subForumInForum(FoodSubs,f));
+        //}
 
         [TestMethod]
         public void nonAdminAddSubForumTest()
         {
             Guest NofarGuest = new Guest();
             Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
-            Forum currForum = Nofar.enterForum("Food");
+            Forum currForum = system.enterForum(Nofar, "Food");
             AdminForum tempAdminType = new AdminForum();
             Assert.IsNotInstanceOfType(Nofar, tempAdminType.GetType());
  
@@ -129,7 +131,7 @@ namespace ForumTests
         }
 
         [TestMethod]
-        public void loginTest()
+        public void loginTest1()
         {
             Guest NofarGuest = new Guest();
             Member Nofar = CreateMember("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
