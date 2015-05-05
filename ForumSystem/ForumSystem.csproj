@@ -57,10 +57,10 @@
     <Compile Include="Guest.cs" />
     <Compile Include="IdGen.cs" />
     <Compile Include="IGuestManager.cs" />
-    <Compile Include="IForumSystemManager.cs" />
     <Compile Include="IMemeberManager.cs" />
-    <Compile Include="Interface4.cs" />
-    <Compile Include="Interface5.cs" />
+    <Compile Include="IAdminManager.cs" />
+    <Compile Include="IMemberSubForumManager.cs" />
+    <Compile Include="IModeratorManager.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="MemberSubForum.cs" />

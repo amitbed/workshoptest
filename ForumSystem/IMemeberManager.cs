@@ -9,6 +9,5 @@ namespace ForumSystem
     interface IMemeberManager
     {
         void logout();
-
     }
 }

@@ -41,9 +41,9 @@ namespace ForumSystem
             return true;
         }
 
-        public string login(string id, string username, string password)
+        public string login(string username, string password)
         {
-            if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
             {
                 Logger.logError("one of the arguments is empty or null");
                 return null;

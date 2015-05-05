@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForumSystem
 {
-    public class MemberSubForum : SubForum
+    public class MemberSubForum : SubForum, IMemberSubForumManager
     {
 
         public MemberSubForum() { }
