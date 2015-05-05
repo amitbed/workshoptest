@@ -24,3 +24,6 @@ ForumDB/obj/Debug/ForumDB.csproj.FileListAbsolute.txt
 ForumDB/bin/Debug/ForumDB.pdb
 *.exe
 ForumSystem/obj/Debug/ForumSystem.exe
+ForumDB1/Program.cs
+ForumSystem/bin/Debug/ForumSystem.pdb
+*.exe

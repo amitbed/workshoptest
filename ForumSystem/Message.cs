@@ -8,6 +8,14 @@ namespace ForumSystem
 {
     public class Message
     {
+        //Variables
+        public string ID { get; set; }
+        public string Content { get; set; }
+        public string Title { get; set; }
+        public DateTime Date { get; set; }
+        public string UserName { get; set; }
+        public List<Message> Replies { get; set; }
+
         //Overload Contructor
         public Message(string title, string content, string userName)
         {
@@ -33,13 +41,6 @@ namespace ForumSystem
                 this.Replies = new List<Message>();
             }
         }
-        //Member Variables
-        public string ID { get; set; }
-        public string Content { get; set; }
-        public string Title { get; set; }
-        public DateTime Date { get; set; }
-        public string UserName { get; set; }
-        public List<Message> Replies { get; set; }
 
         //Methods
 
