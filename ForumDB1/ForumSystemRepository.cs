@@ -9,19 +9,46 @@ namespace ForumDB1
 {
     class ForumSystemRepository : IQueries
     {
-        public ForumDBContext initDB()
+        /*public void dbRetrieveLastID()
         {
-            return new ForumDBContext();
-        }
+            if
+            var context = new ForumDBContext();
+            
+        }*/
 
         
-        //This class contains methods that ask from the ForumDBContext to get data from the DB
+        //Forums
         public List<Forum> getForums()
         {
             ForumDBContext fdbc = new ForumDBContext();
             return fdbc.Forums.ToList();
         }
 
+        //Messages
+        //public List<Message> dbGetMessages()
+        //{
+            //var context = new ForumDBContext();
+            //var query = from message in context.Messages select message;
+            //var messages = query.ToList();
+            //return members;
+        //}
+
+        public void dbAddMessage(Message message)
+        {
+            var context = new ForumDBContext();
+            context.Messages.Add(message);
+            context.SaveChanges();
+        }
+
+        public void dbRemoveMessage(string messageID)
+        {
+            var context = new ForumDBContext();
+            var message = (from m in context.Messages
+                          where m.ID == messageID
+                          select m).FirstOrDefault();
+            context.Messages.Remove(message);
+            context.SaveChanges();
+        }
 
         //Members
         public List<Member> dbGetMembers()

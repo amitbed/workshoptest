@@ -27,13 +27,13 @@ namespace ForumDB1
 
         //Messages
         //Dictionary<string, Message> dbGetMessages();
-        //void dbAddMessage(Message message);
-        //void dbRemoveMessage(string messageID);
+        void dbAddMessage(Message message);
+        void dbRemoveMessage(string messageID);
 
         //Members
         //Dictionary<string, Member> dbGetMembers();              //This query retrieves all members from the DB
-        void dbAddMember(Member member);        //This query adds a new member to the DB
-        //void dbRemoveMember(string MemberID);     //This query removes a member from the DB
+        void dbAddMember(Member member);                        //This query adds a new member to the DB
+        void dbRemoveMember(string MemberID);                   //This query removes a member from the DB
         
     }
 }
