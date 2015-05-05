@@ -76,9 +76,12 @@ namespace ForumSystem
                 this.MemberType = (int)Types.Silver;
             }
 
-            if (this.MemberType == (int)Types.Silver)
+            else
             {
-                this.MemberType = (int)Types.Gold;
+                if (this.MemberType == (int)Types.Silver)
+                {
+                    this.MemberType = (int)Types.Gold;
+                }
             }
         }
 
@@ -88,17 +91,21 @@ namespace ForumSystem
             this.TimeLoggedIn += DateTime.Now.Millisecond;
         }
 
-        public void changePassword(string newPasword)
+        public bool changePassword(string newPasword)
         {
+            bool ans = false;
+            this.oldPasswords.Add(this.Password);
             if (!oldPasswords.Contains(newPasword))
             {
-                this.oldPasswords.Add(this.Password);
+                ans = true;
                 this.Password = newPasword;
                 Logger.logDebug(String.Format("the password for {0} has been changed to: {1}", Username, newPasword));
+                return ans;
             }
             else
             {
                 Logger.logError(String.Format("the password: {0} has already been used", newPasword));
+                return ans;
             }
         }
     }

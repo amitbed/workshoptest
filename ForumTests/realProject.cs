@@ -34,7 +34,7 @@ namespace ForumTests
 
         public string login(Guest g,string id, string username, string password)
         {
-            return g.login(id,username,password);
+            return g.login(username,password);
         }
 
 

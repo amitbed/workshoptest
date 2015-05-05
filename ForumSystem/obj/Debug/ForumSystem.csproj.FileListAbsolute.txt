@@ -9,9 +9,9 @@ C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFram
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
 C:\Users\נופר\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
-C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
+<<<<<<< HEAD
 C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.pdb
 C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe.config
 C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe
@@ -22,3 +22,14 @@ C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\OpenPop
 C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.xml
 C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\deana.HAIFA\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.exe
+=======
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe.config
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.exe
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\ForumSystem.pdb
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.dll
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\OpenPop.dll
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.xml
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
+>>>>>>> origin/master

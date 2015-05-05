@@ -26,7 +26,7 @@ namespace unitTestingDevelopers
         {
             Guest NofarGuest = new Guest();
             String nofarID = NofarGuest.register("benshnof", "matanShoham", "benshnof@post.bgu.ac.il");
-            String forumList = NofarGuest.login(nofarID, "benshnof", "matanShoham");
+            String forumList = NofarGuest.login("benshnof", "matanShoham");
             String realForumList = system.displayForums();
             Assert.IsTrue(String.Equals(forumList, realForumList));
         }
