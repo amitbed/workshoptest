@@ -19,3 +19,4 @@ C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramewor
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\OpenPop.dll
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.xml
 C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Amit\Documents\GitHub\workshoptest\ForumSystem\obj\Debug\ForumSystem.csprojResolveAssemblyReference.cache
